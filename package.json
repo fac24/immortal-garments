@@ -11,10 +11,13 @@
   "dependencies": {
     "next": "12.1.6",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "tailwindcss": "^1.9.6"
   },
   "devDependencies": {
+    "cypress": "^10.2.0",
     "eslint": "8.18.0",
-    "eslint-config-next": "12.1.6"
+    "eslint-config-next": "12.1.6",
+    "jest": "^28.1.1"
   }
 }
