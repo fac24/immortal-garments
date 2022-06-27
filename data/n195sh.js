@@ -1314,5 +1314,4 @@ const data = {
       ]
     }
     
-    const latitude =  51.55827637248936;
-    const longitude =  -0.13556094799084997;
+    export default data;
