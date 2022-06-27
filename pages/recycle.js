@@ -1,3 +1,3 @@
 export default function Recycle() {
-    return null;
+    return (<p>test</p>);
 }

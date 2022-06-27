@@ -1,3 +1,3 @@
 export default function Diy() {
-    return null;
+    return (<p>test</p>);
 }

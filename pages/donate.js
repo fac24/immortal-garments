@@ -1,3 +1,3 @@
 export default function Donate() {
-    return null;
+    return (<p>test</p>);
 }
