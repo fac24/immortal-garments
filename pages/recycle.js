@@ -1,31 +1,25 @@
+import React, { useState } from "react";
 import data from "../data/n195sh"
-
-// console.log(data)
-
 
 
 export default function Recycle() {
-    //create use state for search term
-    //entered text is matched against postcode we have (n195sh)
-    //generate list based on postcode or return an error message
-    // fetch(``)
-    //     .then((response) => {
-    //         if (!response.ok) throw new Error(response.status);
-    //         console.log(response.json());
-    //         return response.json();
-    //     })
 
+    function handleSearch(e) {
+        e.preventDefault();
+        console.log(data)
+    }
 
-    //    async function getData(postcode){
-
-    //          const data = await `www.fdjkkdjgjkdl${postcode}dkfjkdsfdkl`
-
-    //     }
+    // Change line 2 to `../data/${userInput}`
+    // Save the user input the a variable for the dynamic string
+    // Save the data we want to display to either a tider object or variables
+    // Add the data to the return below to show on the page
 
     return (
         <>
-            <form>
-                <input type="search"></input>
+            <form onSubmit={handleSearch}>
+                <label name="search">Enter your postcode...</label>
+                <input type="search" name="search"></input>
+                <button type="submit">Submit</button>
             </form>
             <p>test</p>
         </>
