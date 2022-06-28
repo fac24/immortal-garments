@@ -1,33 +1,54 @@
-import data from "../data/n195sh"
-
-// console.log(data)
-
-
+import React, { useState } from "react";
 
 export default function Recycle() {
-    //create use state for search term
-    //entered text is matched against postcode we have (n195sh)
-    //generate list based on postcode or return an error message
-    // fetch(``)
-    //     .then((response) => {
-    //         if (!response.ok) throw new Error(response.status);
-    //         console.log(response.json());
-    //         return response.json();
-    //     })
+    const [data, setData] = useState(null);
+    const [userInput, setUserInput] = useState("");
+    const [error, setError] = useState(null);
+    let listCount = 7;
+    
+    const onChange = event => setUserInput(event.target.value);
+    
+    async function handleSearch() {
+        const result = await fetch(`api/${userInput.replace(/ /g,'')}`)
 
+        if(!result.ok) {
+            setData(null)
+            setError(`Oops, something went wrong: ${result.status}.`)
+            return;
+        }
 
-    //    async function getData(postcode){
-
-    //          const data = await `www.fdjkkdjgjkdl${postcode}dkfjkdsfdkl`
-
-    //     }
-
+        setError(null)
+        const newdata = await result.json();
+        setData(newdata.items);
+    }
+    
     return (
         <>
-            <form>
-                <input type="search"></input>
+            <form onSubmit={e => {
+                e.preventDefault();
+            }}>
+                <label name="search">Enter your postcode...</label>
+                <input type="search" name="search" onChange={onChange} value={userInput}></input>
+                <button 
+                type="submit" 
+                onClick={handleSearch}
+                >Submit</button>
             </form>
-            <p>test</p>
+            <p>Find your nearest textile recycle point</p>
+            
+
+        {data ? data.map((item, index) => { 
+           if(index < listCount)
+            return (
+            <div key={item.id}>
+            <p>{item.name}</p> 
+            <p>{item.address}</p> 
+            <p>{item.distance}</p> 
+            </div>
+            )}): ""}
+
+        {error ? error : ""}
+
         </>
     );
 }
