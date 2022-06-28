@@ -5,10 +5,10 @@ export default function Choicebutton(props) {
     return (
         <Link href={props.href}>
             <Image
-                src={props.imageUrl}
+                src={props.src}
                 alt={props.alt}
-            // width={500} automatically provided
-            // height={500} automatically provided
+                width={100}
+                height={100}
             // blurDataURL="data:..." automatically provided
             // placeholder="blur" // Optional blur-up while loading
             />

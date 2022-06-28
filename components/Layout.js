@@ -12,8 +12,5 @@ export default function Layout() {
             <h1>Immortal Garments</h1>
             <Navbar />
         </header>
-        <footer>
-            <p>text to be replaced</p>
-        </footer>
     </>);
 }
