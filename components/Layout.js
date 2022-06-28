@@ -1,7 +1,7 @@
 import Head from "next/head"
 import Navbar from '../components/Navbar'
 
-export default function Layout() {
+export default function Layout({ children }) {
     return (<>
         <Head>
             <title>Immortal Garments</title>
@@ -12,5 +12,8 @@ export default function Layout() {
             <h1>Immortal Garments</h1>
             <Navbar />
         </header>
+        <main>
+            {children}
+        </main>
     </>);
 }
