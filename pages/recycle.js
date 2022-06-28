@@ -24,11 +24,13 @@ export default function Recycle() {
     
     return (
         <>
-            <form onSubmit={e => {
+            <form 
+            data-testid="recycle-form"
+            onSubmit={e => {
                 e.preventDefault();
             }}>
                 <label name="search">Enter your postcode...</label>
-                <input type="search" name="search" onChange={onChange} value={userInput}></input>
+                <input role="searchbox" type="search" name="search" onChange={onChange} value={userInput}></input>
                 <button 
                 type="submit" 
                 onClick={handleSearch}
