@@ -1,4 +1,4 @@
-import SearchPostcode from "../components/Searchpostcode";
+import SearchPostcode from "../components/SearchPostcode";
 
 export default function Donate() {
     return (
