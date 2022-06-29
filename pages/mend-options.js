@@ -1,4 +1,4 @@
-import Choicebutton from "../components/Choicebutton";
+import ChoiceButton from "../components/ChoiceButton";
 import Link from "next/link";
 import mendByMyself from "../public/images/mendbymyself.png";
 import repair from "../public/images/repair.png";
@@ -10,9 +10,9 @@ export default function TryToMend() {
       <section>
         <Breadcrumb page={"Mend options"} currentStep={2} />
         <h2>Mend...</h2>
-        <Choicebutton href="/diy" src={mendByMyself} alt=""></Choicebutton>
+        <ChoiceButton href="/diy" src={mendByMyself} alt=""></ChoiceButton>
         <Link href="/diy">by myself</Link>
-        <Choicebutton href="/tailors" src={repair} alt=""></Choicebutton>
+        <ChoiceButton href="/tailors" src={repair} alt=""></ChoiceButton>
         <Link href="/tailors">by a professional</Link>
       </section>
     </main>

@@ -1,5 +1,5 @@
 import styles from "../styles/Home.module.css";
-import Choicebutton from "../components/Choicebutton";
+// import ChoiceButton from "../components/ChoiceButton";
 import Link from "next/link";
 import React, { useState } from "react";
 import Breadcrumb from "../components/Breadcrumb";

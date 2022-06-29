@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import SearchPostcode from "../components/SearchPostcode";
+
 
 export default function Recycle() {
   const [data, setData] = useState(null);
@@ -10,7 +12,6 @@ export default function Recycle() {
 
   async function handleSearch() {
     const result = await fetch(`api/${userInput.replace(/ /g, "")}`);
-
     if (!result.ok) {
       setData(null);
       setError(`Oops, something went wrong: ${result.status}.`);
@@ -24,37 +25,29 @@ export default function Recycle() {
 
   return (
     <>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-        }}
-      >
-        <label name="search">Enter your postcode...</label>
-        <input
-          type="search"
-          name="search"
-          onChange={onChange}
-          value={userInput}
-        ></input>
-        <button type="submit" onClick={handleSearch}>
-          Submit
-        </button>
-      </form>
+      <SearchPostcode
+        onChange={onChange}
+        value={userInput}
+        handleSearch={handleSearch}
+      />
+
       <p>Find your nearest textile recycle point</p>
 
       {data
         ? data.map((item, index) => {
-            if (index < listCount)
-              return (
-                <ul key={item.id}>
-                  <li>
-                    {item.name} <br />
-                    {item.address} <br />
-                    {item.distance} <br />
-                  </li>
-                </ul>
-              );
-          })
+          if (index < listCount)
+            //['Salvation Army', 'Bernardos' ]
+            //if CharityObject does includes item.name then: 
+            return (
+              <ul key={item.id}>
+                <li>
+                  {item.name} <br />
+                  {item.address} <br />
+                  {item.distance} <br />
+                </li>
+              </ul>
+            );
+        })
         : ""}
 
       {error ? error : ""}
