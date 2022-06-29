@@ -1,7 +1,6 @@
 import styles from "../styles/Home.module.css";
-import Choicebutton from "../components/Choicebutton";
+// import ChoiceButton from "../components/ChoiceButton";
 import Link from "next/link";
-// import vercel from '../public/vercel.svg';
 
 export default function Home() {
   return (
@@ -24,9 +23,9 @@ export default function Home() {
         </section>
         <section>
           {/* breadcrumb thing */}
-          {/* <Choicebutton href="/get-rid-of" src={vercel} alt=""></Choicebutton> */}
+          {/* <ChoiceButton href="/get-rid-of" src={vercel} alt=""></ChoiceButton> */}
           <Link href="/get-rid-of">Donate And Recycle</Link>
-          {/* <Choicebutton href="/try-to-mend" src={vercel}></Choicebutton> */}
+          {/* <ChoiceButton href="/try-to-mend" src={vercel}></ChoiceButton> */}
           <Link href="/try-to-mend">Care And Repair</Link>
         </section>
       </main>

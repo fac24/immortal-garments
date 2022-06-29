@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from "next/link";
 
-export default function Choicebutton(props) {
+export default function ChoiceButton(props) {
     return (
         <Link href={props.href}>
             <Image
