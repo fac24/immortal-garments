@@ -12,7 +12,6 @@ export default function Recycle() {
 
     async function handleSearch() {
         const result = await fetch(`api/${userInput.replace(/ /g, "")}`);
-        console.log("reached handleSearch");
         if (!result.ok) {
             setData(null);
             setError(`Oops, something went wrong: ${result.status}.`);
@@ -37,6 +36,8 @@ export default function Recycle() {
             {data
                 ? data.map((item, index) => {
                     if (index < listCount)
+                        //['Salvation Army', 'Bernardos' ]
+                        //if CharityObject does includes item.name then: 
                         return (
                             <ul key={item.id}>
                                 <li>
