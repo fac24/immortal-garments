@@ -25,6 +25,7 @@ export default function Recycle() {
   return (
     <>
       <form
+      data-testid="recycle-form"
         onSubmit={(e) => {
           e.preventDefault();
         }}
