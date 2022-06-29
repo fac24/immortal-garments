@@ -1,16 +1,19 @@
 import Choicebutton from "../components/Choicebutton";
 import Link from "next/link";
-import vercel from '../public/vercel.svg';
+import mendnybyself from "../public/images/mendbymyself.png";
+import repair from "../public/images/repair.png";
 
 export default function TryToMend() {
-    return (<main>
-        <section>
-            {/* breadcrumb thing */}
-            <h2>Mend...</h2>
-            <Choicebutton href='/diy' src={vercel} alt=''></Choicebutton>
-            <Link href='/diy'>by myself</Link>
-            <Choicebutton href='/tailors' src={vercel} alt=''></Choicebutton>
-            <Link href='/tailors'>by a professional</Link>
-        </section>
-    </main>);
+  return (
+    <main>
+      <section>
+        {/* breadcrumb thing */}
+        <h2>Mend...</h2>
+        <Choicebutton href="/diy" src={mendnybyself} alt=""></Choicebutton>
+        <Link href="/diy">by myself</Link>
+        <Choicebutton href="/tailors" src={repair} alt=""></Choicebutton>
+        <Link href="/tailors">by a professional</Link>
+      </section>
+    </main>
+  );
 }
