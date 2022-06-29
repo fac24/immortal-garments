@@ -1,4 +1,5 @@
 import Choicebutton from "../components/Choicebutton";
+import Breadcrumb from "../components/Breadcrumb";
 import Link from "next/link";
 import Image from "next/image";
 import ingoodcondition from "../public/images/ingoodcondition.png";
@@ -9,7 +10,7 @@ export default function GetRidOf() {
     <>
       <main>
         <section>
-          {/* breadcrumb thing */}
+          <Breadcrumb page={"Clothes condition"} currentStep={2} />
           <h2>My item of clothing is...</h2>
           <Choicebutton
             href="/donate"
