@@ -3,6 +3,6 @@
 describe('Test', () => {
   it('checks the test test files are linked', () => {
     // Basic check to test config
-    cy.visit('https://immortal-garments.vercel.app/')
+    cy.visit('http://localhost:3000')
   })
 })
