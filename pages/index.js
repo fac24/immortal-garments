@@ -1,7 +1,6 @@
 import styles from "../styles/Home.module.css";
 import ChoiceButton from "../components/ChoiceButton";
 import Link from "next/link";
-// import vercel from '../public/vercel.svg';
 
 export default function Home() {
   return (
