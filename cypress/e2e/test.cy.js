@@ -1,5 +1,5 @@
-describe('Navigation', () => {
-  it('should navigate to the about page', () => {
+describe('Navigation bar', () => {
+  it('checks the links on the nav bar', () => {
     // Visit landing page
     cy.visit('https://immortal-garments.vercel.app/')
     // Click on the donate tab
@@ -18,17 +18,3 @@ describe('Navigation', () => {
     // The loaded page should contain an h1 with "something" ADD HERE
   })
 })
-
-describe('User can search a post code on Recycle page', () => {
-cy.visit('https://immortal-garments.vercel.app/recycle')
-// fill in the form
-// page contains expected output
-}
-)
-
-describe('User is displayed an error if data cant be fetched on Recycle', () => {
-  cy.visit('https://immortal-garments.vercel.app/recycle')
-  // fill in the form
- // page contains expected output
-}
-)
