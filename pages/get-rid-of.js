@@ -1,6 +1,6 @@
 import ChoiceButton from "../components/ChoiceButton";
 import Link from "next/link";
-import Image from "next/image";
+// import Image from "next/image";
 import ingoodcondition from "../public/images/ingoodcondition.png";
 import inbadcondition from "../public/images/inbadcondition.png";
 

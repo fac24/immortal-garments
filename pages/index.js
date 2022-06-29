@@ -1,5 +1,5 @@
 import styles from "../styles/Home.module.css";
-import ChoiceButton from "../components/ChoiceButton";
+// import ChoiceButton from "../components/ChoiceButton";
 import Link from "next/link";
 
 export default function Home() {
