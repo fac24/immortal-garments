@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import SearchPostcode from "../components/SearchPostcode";
-
+import dynamic from "next/dynamic";
+const MyAwesomeMap = dynamic(() => import("../components/Map"), { ssr: false });
 
 export default function Recycle() {
   const [data, setData] = useState(null);
   const [userInput, setUserInput] = useState("");
   const [error, setError] = useState(null);
+  const [coordinates, setCoordinates] = useState([]);
   let listCount = 7;
 
   const onChange = (event) => setUserInput(event.target.value);
@@ -23,22 +25,31 @@ export default function Recycle() {
     setData(newdata.items);
   }
 
+
+
+
+
   return (
     <>
+      <MyAwesomeMap></MyAwesomeMap>
+
       <SearchPostcode
         onChange={onChange}
         value={userInput}
         handleSearch={handleSearch}
       />
 
-      <p>Find your nearest textile recycle point</p>
+      <p>Find your nearest textile recycle point.</p>
 
       {data
         ? data.map((item, index) => {
           if (index < listCount)
-            //['Salvation Army', 'Bernardos' ]
-            //if CharityObject does includes item.name then: 
-            return (
+            setCoordinates(coordinates => [coordinates, newElement]);
+          console.log(coordinates);
+          //['Salvation Army', 'Bernardos' ]
+          //if CharityObject does includes item.name then: 
+          return (
+            <>
               <ul key={item.id}>
                 <li>
                   {item.name} <br />
@@ -46,11 +57,14 @@ export default function Recycle() {
                   {item.distance} <br />
                 </li>
               </ul>
-            );
+
+            </>
+          );
         })
         : ""}
 
       {error ? error : ""}
     </>
   );
+
 }
