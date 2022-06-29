@@ -1,12 +1,21 @@
 import styles from "../styles/Home.module.css";
 import Choicebutton from "../components/Choicebutton";
 import Link from "next/link";
-// import vercel from '../public/vercel.svg';
+import React, { useState } from "react";
+import Breadcrumb from "../components/Breadcrumb";
 
 export default function Home() {
+  const [crumbs, setCrumbs] = useState(["Home", "Category", "Sub category"]);
+
+  const selected = (crumb) => {
+    console.log(crumb);
+  };
+
   return (
     <div className={styles.container}>
       <main className={styles.main}>
+        <Breadcrumb crumbs={crumbs} selected={selected} />
+
         <section>
           <h2 className="text-3xl font-bold underline">About</h2>
           <p>
