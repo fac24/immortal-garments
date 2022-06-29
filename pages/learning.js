@@ -8,7 +8,6 @@ import * as d3 from 'd3';
 const data = c02DataWearingApparel;
 
 function BarChart() {
-    console.log(data.year);
     const ref = useD3(
         (svg) => {
             const height = 500;
