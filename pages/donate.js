@@ -1,7 +1,5 @@
-// import SearchPostcode from "../components/SearchPostcode";
+import Breadcrumb from "../components/Breadcrumb";
 
 export default function Donate() {
-    return (
-        <p>test</p>
-    )
+  return <Breadcrumb page={"Donate"} currentStep={3} />;
 }

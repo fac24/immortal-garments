@@ -3,6 +3,7 @@ import Link from "next/link";
 import mendByMyself from "../public/images/mendbymyself.png";
 import repair from "../public/images/repair.png";
 import Breadcrumb from "../components/Breadcrumb";
+import React, { useState } from "react";
 
 export default function TryToMend() {
   return (

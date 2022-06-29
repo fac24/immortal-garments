@@ -19,7 +19,7 @@ const Breadcrumb = ({ page, currentStep }) => (
       <li></li>
       {links
         .filter(
-          ({ key, label, step }) =>
+          ({ label, step }) =>
             step < currentStep || (step === currentStep && page === label)
         )
         .map(({ key, href, label }) => {
