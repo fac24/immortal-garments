@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SearchPostcode from "../components/SearchPostcode";
+import Search from "../components/Search";
 
 
 export default function Recycle() {
@@ -25,10 +25,11 @@ export default function Recycle() {
 
   return (
     <>
-      <SearchPostcode
+      <Search
         onChange={onChange}
         value={userInput}
         handleSearch={handleSearch}
+        labelText={'Enter your postcode...'}
       />
 
       <p>Find your nearest textile recycle point</p>
