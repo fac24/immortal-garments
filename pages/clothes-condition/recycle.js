@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import Breadcrumb from "../../components/Breadcrumb";
 import dynamic from "next/dynamic";
-import Search from "../components/Search";
+import Search from "../../components/Search";
 
-const LondonMap = dynamic(() => import("../components/Map"), { ssr: false });
+const LondonMap = dynamic(() => import("../../components/Map"), { ssr: false });
 
 export default function Recycle() {
   const [data, setData] = useState(null);
@@ -27,33 +28,33 @@ export default function Recycle() {
 
   return (
     <>
+      <Breadcrumb></Breadcrumb>
       <Search
         onChange={onChange}
         value={userInput}
         handleSearch={handleSearch}
-        labelText={'Enter your postcode...'}
+        labelText={"Enter your postcode..."}
       />
 
       <p>Find your nearest textile recycle point.</p>
 
       {data
         ? data.map((item, index) => {
-          if (index < listCount)
-            //['Salvation Army', 'Bernardos' ]
-            //if CharityObject does includes item.name then: 
-            return (
-              <>
-                <ul key={item.id}>
-                  <li>
-                    {item.name} <br />
-                    {item.address} <br />
-                    {item.distance} <br />
-                  </li>
-                </ul>
-
-              </>
-            );
-        })
+            if (index < listCount)
+              //['Salvation Army', 'Bernardos' ]
+              //if CharityObject does includes item.name then:
+              return (
+                <>
+                  <ul key={item.id}>
+                    <li>
+                      {item.name} <br />
+                      {item.address} <br />
+                      {item.distance} <br />
+                    </li>
+                  </ul>
+                </>
+              );
+          })
         : ""}
 
       {error ? error : ""}
@@ -66,5 +67,4 @@ export default function Recycle() {
         : ""}
     </>
   );
-
 }
