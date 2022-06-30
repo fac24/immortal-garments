@@ -19,7 +19,7 @@ export default function ClothesCondition() {
           ></ChoiceButton>
           <Link href="/clothes-condition/donate">in good condition</Link>
           <ChoiceButton
-            href="/recycle"
+            href="/clothes-condition/recycle"
             src={inbadcondition}
             alt=""
           ></ChoiceButton>

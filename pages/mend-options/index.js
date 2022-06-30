@@ -16,13 +16,13 @@ export default function MendOptions() {
           src={mendByMyself}
           alt=""
         ></ChoiceButton>
-        <Link href="/diy">by myself</Link>
+        <Link href="/mend-options/diy">by myself</Link>
         <ChoiceButton
           href="/mend-options/tailors"
           src={repair}
           alt=""
         ></ChoiceButton>
-        <Link href="/tailors">by a professional</Link>
+        <Link href="/mend-options/tailors">by a professional</Link>
       </section>
     </main>
   );
