@@ -30,8 +30,6 @@ export default function Recycle() {
 
   return (
     <>
-      <LondonMap data={data}></LondonMap>
-
       <SearchPostcode
         onChange={onChange}
         value={userInput}
@@ -61,6 +59,7 @@ export default function Recycle() {
         : ""}
 
       {error ? error : ""}
+      {data ? <LondonMap data={data}></LondonMap> : ""}
     </>
   );
 
