@@ -8,13 +8,6 @@ import { useState } from 'react';
 
 export default function Map({ data, listCount }) {
     const position = [51.505, -0.09]
-    const multiPolygon = [
-
-        [51.51, -0.12],
-        [51.51, -0.13],
-        [51.53, -0.13],
-    ]
-    console.log(data);
 
     L.Icon.Default.imagePath = "/../public/images/"
     return (
