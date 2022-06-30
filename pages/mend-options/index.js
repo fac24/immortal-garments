@@ -10,7 +10,7 @@ export default function MendOptions() {
     <main>
       <section>
         <Breadcrumb />
-        <h2>Mend...</h2>
+        <h2 className="py-3 text-xl">Mend...</h2>
         <ChoiceButton
           href="/mend-options/diy"
           src={mendByMyself}

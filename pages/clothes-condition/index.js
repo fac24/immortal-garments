@@ -11,7 +11,7 @@ export default function ClothesCondition() {
       <main>
         <section>
           <Breadcrumb page={"Clothes condition"} currentStep={2} />
-          <h2>My item of clothing is...</h2>
+          <h2 className="text-xl py-3">My item of clothing is...</h2>
           <ChoiceButton
             href="/clothes-condition/donate"
             src={ingoodcondition}
