@@ -1,7 +1,10 @@
 export default async function handlerTailors(req, res) {
   const postcode = req.query.input;
 
-  const url = `https://api.yelp.com/v3/businesses/search?location=${postcode}&categories=sewingalterations&sort_by=distance`;
+  const url = `https://api.yelp.com/v3/businesses/search?location=${postcode.replace(
+    / /g,
+    ""
+  )}&categories=sewingalterations&sort_by=distance`;
 
   const options = {
     headers: {
@@ -12,8 +15,5 @@ export default async function handlerTailors(req, res) {
 
   const result = await fetch(url, options);
   const data = await result.json();
-  console.log(data)
-  res.status(200).json(data);  
-  // tailorsData = data;
-  // res.redirect("/mend-options/tailors");  
+  res.status(200).json(data);
 }
