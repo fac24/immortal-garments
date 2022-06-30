@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import SearchPostcode from "../components/SearchPostcode";
-
+import Breadcrumb from "../../components/Breadcrumb";
+import SearchPostcode from "../../components/SearchPostcode";
 
 export default function Recycle() {
   const [data, setData] = useState(null);
@@ -25,6 +25,7 @@ export default function Recycle() {
 
   return (
     <>
+      <Breadcrumb></Breadcrumb>
       <SearchPostcode
         onChange={onChange}
         value={userInput}
@@ -35,19 +36,19 @@ export default function Recycle() {
 
       {data
         ? data.map((item, index) => {
-          if (index < listCount)
-            //['Salvation Army', 'Bernardos' ]
-            //if CharityObject does includes item.name then: 
-            return (
-              <ul key={item.id}>
-                <li>
-                  {item.name} <br />
-                  {item.address} <br />
-                  {item.distance} <br />
-                </li>
-              </ul>
-            );
-        })
+            if (index < listCount)
+              //['Salvation Army', 'Bernardos' ]
+              //if CharityObject does includes item.name then:
+              return (
+                <ul key={item.id}>
+                  <li>
+                    {item.name} <br />
+                    {item.address} <br />
+                    {item.distance} <br />
+                  </li>
+                </ul>
+              );
+          })
         : ""}
 
       {error ? error : ""}
