@@ -1,6 +1,7 @@
 import styles from "../styles/Home.module.css";
 // import ChoiceButton from "../components/ChoiceButton";
 import Link from "next/link";
+import React, { useState } from "react";
 
 export default function Home() {
   return (
@@ -22,11 +23,10 @@ export default function Home() {
           </p>
         </section>
         <section>
-          {/* breadcrumb thing */}
-          {/* <ChoiceButton href="/get-rid-of" src={vercel} alt=""></ChoiceButton> */}
-          <Link href="/get-rid-of">Donate And Recycle</Link>
-          {/* <ChoiceButton href="/try-to-mend" src={vercel}></ChoiceButton> */}
-          <Link href="/try-to-mend">Care And Repair</Link>
+          {/* <Choicebutton href="/get-rid-of" src={vercel} alt=""></Choicebutton> */}
+          <Link href="/clothes-condition">Donate And Recycle</Link>
+          {/* <Choicebutton href="/try-to-mend" src={vercel}></Choicebutton> */}
+          <Link href="/mend-options">Care And Repair</Link>
         </section>
       </main>
     </div>
