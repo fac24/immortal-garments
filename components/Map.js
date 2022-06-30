@@ -1,13 +1,44 @@
-import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, Popup, useMapEvent } from 'react-leaflet'
 import "leaflet/dist/leaflet.css";
 // import L from 'leaflet';
-// import { useState } from 'react';
-
+import { useEffect, useRef } from 'react';
 //  Create the Icon
 
 
-export default function Map({ data, listCount }) {
-    const position = [51.505, -0.09]
+export default function Map({ data, listCount, userPosition }) {
+    console.log(userPosition);
+    let position = [51.5007, -0.1246];
+    if (userPosition !== null) {
+        position = [userPosition.result.latitude, userPosition.result.longitude];
+    }
+    console.log(position);
+    // const map = useMap();
+
+    function SetViewOnClick() {
+        const map = useMapEvent('click', (e) => {
+            map.setView(position, map.getZoom(), {
+            })
+        })
+        return null
+    }
+    const animateRef = useRef(true);
+    // console.log(userPosition);
+    // const [position, setPosition] = useState([51.5007, -0.1246])
+    // if (userPosition !== null) {
+    //     setPosition[userPosition.result.latitude, userPosition.result.longitude];
+    // }
+    // console.log(position);
+
+
+    // function SetViewOnClick() {
+    //     const map = useMapEvent();
+    //     useEffect(() => {
+    //         map.setView(position, map.getZoom(), {
+    //         })
+    //     }, [position])
+
+    //     return null
+    // }
 
     // L.Icon.Default.imagePath = "/../public/images/"
     return (
@@ -33,6 +64,7 @@ export default function Map({ data, listCount }) {
                         </Popup>
                     </Marker>)
             }) : ""}
+            <SetViewOnClick />
         </MapContainer >
     )
 }

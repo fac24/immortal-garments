@@ -10,11 +10,11 @@ export default function Recycle() {
   const [userInput, setUserInput] = useState("");
   const [error, setError] = useState(null);
   const [listCount, setListCount] = useState(7);
-
+  const [userPosition, setUserPosition] = useState(null);
   const onChange = (event) => setUserInput(event.target.value);
 
   async function handleSearch() {
-    const result = await fetch(`api/${userInput.replace(/ /g, "")}`);
+    const result = await fetch(`../api/${userInput.replace(/ /g, "")}`);
     if (!result.ok) {
       setData(null);
       setError(`Oops, something went wrong: ${result.status}.`);
@@ -24,6 +24,16 @@ export default function Recycle() {
     setError(null);
     const newdata = await result.json();
     setData(newdata.items);
+
+    const postcodeResult = await fetch(`https://api.postcodes.io/postcodes/${userInput}`);
+    if (!result.ok) {
+      setUserPosition(null);
+      setError(`Oops, something went wrong: ${postcodeResult.status}.`);
+      return;
+    }
+    const postObject = await postcodeResult.json();
+    setUserPosition(postObject);
+    //this seems to be working now but failed a couple times, which makes me wonder if there might be a race condition going on
   }
 
   return (
@@ -37,34 +47,25 @@ export default function Recycle() {
       />
 
       <p>Find your nearest textile recycle point.</p>
-
-      {data
-        ? data.map((item, index) => {
+      <ul>
+        {data
+          ? data.map((item, index) => {
             if (index < listCount)
               //['Salvation Army', 'Bernardos' ]
               //if CharityObject does includes item.name then:
               return (
-                <>
-                  <ul key={item.id}>
-                    <li>
-                      {item.name} <br />
-                      {item.address} <br />
-                      {item.distance} <br />
-                    </li>
-                  </ul>
-                </>
+                <li key={item.id}>
+                  {item.name} <br />
+                  {item.address} <br />
+                  {item.distance} <br />
+                </li>
               );
           })
-        : ""}
+          : ""}
+      </ul>
 
       {error ? error : ""}
-      {data
-        ? <LondonMap
-          data={data}
-          listCount={listCount}
-        >
-        </LondonMap>
-        : ""}
+      {data ? <LondonMap data={data} listCount={listCount} userPosition={userPosition}></LondonMap> : ""}
     </>
   );
 }
