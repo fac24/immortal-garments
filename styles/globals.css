@@ -18,3 +18,8 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.leaflet-container {
+  width: 500px;
+  height: 500px;
+}
