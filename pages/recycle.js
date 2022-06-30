@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import SearchPostcode from "../components/SearchPostcode";
 import dynamic from "next/dynamic";
+import Search from "../components/Search";
+
 const LondonMap = dynamic(() => import("../components/Map"), { ssr: false });
 
 export default function Recycle() {
@@ -26,10 +27,11 @@ export default function Recycle() {
 
   return (
     <>
-      <SearchPostcode
+      <Search
         onChange={onChange}
         value={userInput}
         handleSearch={handleSearch}
+        labelText={'Enter your postcode...'}
       />
 
       <p>Find your nearest textile recycle point.</p>
