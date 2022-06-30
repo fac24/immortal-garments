@@ -31,7 +31,7 @@ export default function Recycle() {
 
   return (
     <>
-      <MyAwesomeMap></MyAwesomeMap>
+      <MyAwesomeMap data={data}></MyAwesomeMap>
 
       <SearchPostcode
         onChange={onChange}
@@ -44,22 +44,20 @@ export default function Recycle() {
       {data
         ? data.map((item, index) => {
           if (index < listCount)
-            setCoordinates(coordinates => [coordinates, newElement]);
-          console.log(coordinates);
-          //['Salvation Army', 'Bernardos' ]
-          //if CharityObject does includes item.name then: 
-          return (
-            <>
-              <ul key={item.id}>
-                <li>
-                  {item.name} <br />
-                  {item.address} <br />
-                  {item.distance} <br />
-                </li>
-              </ul>
+            //['Salvation Army', 'Bernardos' ]
+            //if CharityObject does includes item.name then: 
+            return (
+              <>
+                <ul key={item.id}>
+                  <li>
+                    {item.name} <br />
+                    {item.address} <br />
+                    {item.distance} <br />
+                  </li>
+                </ul>
 
-            </>
-          );
+              </>
+            );
         })
         : ""}
 

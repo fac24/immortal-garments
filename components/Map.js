@@ -1,9 +1,12 @@
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 import "leaflet/dist/leaflet.css";
+import L from 'leaflet';
+import { useState } from 'react';
+
+//  Create the Icon
 
 
-
-export default function Map() {
+export default function Map({ data }) {
     const position = [51.505, -0.09]
     const multiPolygon = [
 
@@ -11,7 +14,13 @@ export default function Map() {
         [51.51, -0.13],
         [51.53, -0.13],
     ]
+    console.log(data);
+    let listCount = 7;
+    //nb this is confusing since it's been declared in pages/recycle. ideally would be only one of these
 
+
+
+    L.Icon.Default.imagePath = "/../public/images/"
     return (
         <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
             <TileLayer
@@ -20,9 +29,19 @@ export default function Map() {
             />
             <Marker position={position}>
                 <Popup>
-                    A pretty CSS3 popup. <br /> Easily customizable.
+                    You are here.
                 </Popup>
             </Marker>
+            {data ? data.map((datum, index) => {
+                if (index < listCount) return (
+                    <Marker
+                        key={datum.id}
+                        position={[datum.latitude, datum.longitude]}>
+                        <Popup>
+                            {datum.name}
+                        </Popup>
+                    </Marker>)
+            }) : ""}
         </MapContainer >
     )
 }
