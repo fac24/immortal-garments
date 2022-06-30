@@ -7,7 +7,7 @@ export default function Recycle() {
   const [data, setData] = useState(null);
   const [userInput, setUserInput] = useState("");
   const [error, setError] = useState(null);
-  let listCount = 7;
+  const [listCount, setListCount] = useState(7);
 
   const onChange = (event) => setUserInput(event.target.value);
 
@@ -23,10 +23,6 @@ export default function Recycle() {
     const newdata = await result.json();
     setData(newdata.items);
   }
-
-
-
-
 
   return (
     <>
@@ -59,7 +55,7 @@ export default function Recycle() {
         : ""}
 
       {error ? error : ""}
-      {data ? <LondonMap data={data}></LondonMap> : ""}
+      {data ? <LondonMap data={data} listCount={listCount}></LondonMap> : ""}
     </>
   );
 

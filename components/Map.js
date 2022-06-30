@@ -6,7 +6,7 @@ import { useState } from 'react';
 //  Create the Icon
 
 
-export default function Map({ data }) {
+export default function Map({ data, listCount }) {
     const position = [51.505, -0.09]
     const multiPolygon = [
 
@@ -15,10 +15,6 @@ export default function Map({ data }) {
         [51.53, -0.13],
     ]
     console.log(data);
-    let listCount = 7;
-    //nb this is confusing since it's been declared in pages/recycle. ideally would be only one of these
-
-
 
     L.Icon.Default.imagePath = "/../public/images/"
     return (
