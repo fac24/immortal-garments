@@ -32,13 +32,13 @@ export default function Map({ data }) {
                     You are here.
                 </Popup>
             </Marker>
-            {data ? data.map((datum, index) => {
+            {data ? data.map((item, index) => {
                 if (index < listCount) return (
                     <Marker
-                        key={datum.id}
-                        position={[datum.latitude, datum.longitude]}>
+                        key={item.id}
+                        position={[item.latitude, item.longitude]}>
                         <Popup>
-                            {datum.name}
+                            {item.name}
                         </Popup>
                     </Marker>)
             }) : ""}
