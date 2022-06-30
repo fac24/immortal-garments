@@ -1,10 +1,8 @@
-import { resources } from "../../data/diy-resources";
-import Link from "next/link";
 import Breadcrumb from "../../components/Breadcrumb";
 import React, { useState } from "react";
-import { resources } from "../data/diy-resources";
+import { resources } from "../../data/diy-resources";
 import Link from "next/link";
-import Search from "../components/Search";
+import Search from "../../components/Search";
 
 export default function Diy() {
   const [userInput, setUserInput] = useState("");

@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import Breadcrumb from "../../components/Breadcrumb";
-import SearchPostcode from "../../components/SearchPostcode";
 import dynamic from "next/dynamic";
-import Search from "../components/Search";
+import Search from "../../components/Search";
 
-const LondonMap = dynamic(() => import("../components/Map"), { ssr: false });
+const LondonMap = dynamic(() => import("../../components/Map"), { ssr: false });
 
 export default function Recycle() {
   const [data, setData] = useState(null);
