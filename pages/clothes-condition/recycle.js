@@ -65,7 +65,9 @@ export default function Recycle() {
       </ul>
 
       {error ? error : ""}
-      {data ? <LondonMap data={data} listCount={listCount} userPosition={userPosition}></LondonMap> : ""}
+      {/* {data ?  */}
+      <LondonMap data={data} listCount={listCount} userPosition={userPosition}></LondonMap>
+      {/* : ""} */}
     </>
   );
 }
