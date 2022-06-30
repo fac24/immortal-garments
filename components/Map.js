@@ -38,7 +38,9 @@ export default function Map({ data }) {
                         key={item.id}
                         position={[item.latitude, item.longitude]}>
                         <Popup>
-                            {item.name}
+                            Name: {item.name}
+                            <br></br>
+                            Address: {item.address}
                         </Popup>
                     </Marker>)
             }) : ""}
