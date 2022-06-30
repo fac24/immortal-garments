@@ -1,7 +1,7 @@
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 import "leaflet/dist/leaflet.css";
-import L from 'leaflet';
-import { useState } from 'react';
+// import L from 'leaflet';
+// import { useState } from 'react';
 
 //  Create the Icon
 
@@ -9,7 +9,7 @@ import { useState } from 'react';
 export default function Map({ data, listCount }) {
     const position = [51.505, -0.09]
 
-    L.Icon.Default.imagePath = "/../public/images/"
+    // L.Icon.Default.imagePath = "/../public/images/"
     return (
         <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
             <TileLayer
