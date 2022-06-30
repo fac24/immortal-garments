@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import Breadcrumb from "../../components/Breadcrumb";
 import SearchPostcode from "../../components/SearchPostcode";
+import dynamic from "next/dynamic";
+import Search from "../components/Search";
+
+const LondonMap = dynamic(() => import("../components/Map"), { ssr: false });
 
 export default function Recycle() {
   const [data, setData] = useState(null);
   const [userInput, setUserInput] = useState("");
   const [error, setError] = useState(null);
-  let listCount = 7;
+  const [listCount, setListCount] = useState(7);
 
   const onChange = (event) => setUserInput(event.target.value);
 
@@ -26,13 +30,14 @@ export default function Recycle() {
   return (
     <>
       <Breadcrumb></Breadcrumb>
-      <SearchPostcode
+      <Search
         onChange={onChange}
         value={userInput}
         handleSearch={handleSearch}
+        labelText={"Enter your postcode..."}
       />
 
-      <p>Find your nearest textile recycle point</p>
+      <p>Find your nearest textile recycle point.</p>
 
       {data
         ? data.map((item, index) => {
@@ -40,18 +45,21 @@ export default function Recycle() {
               //['Salvation Army', 'Bernardos' ]
               //if CharityObject does includes item.name then:
               return (
-                <ul key={item.id}>
-                  <li>
-                    {item.name} <br />
-                    {item.address} <br />
-                    {item.distance} <br />
-                  </li>
-                </ul>
+                <>
+                  <ul key={item.id}>
+                    <li>
+                      {item.name} <br />
+                      {item.address} <br />
+                      {item.distance} <br />
+                    </li>
+                  </ul>
+                </>
               );
           })
         : ""}
 
       {error ? error : ""}
+      {data ? <LondonMap data={data} listCount={listCount}></LondonMap> : ""}
     </>
   );
 }

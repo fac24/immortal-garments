@@ -1,13 +1,12 @@
 
 export default function SearchPostcode(props) {
-    console.log('reached here');
     return (
         <form
             onSubmit={(e) => {
                 e.preventDefault();
             }}
         >
-            <label name="search">Enter your postcode...</label>
+            <label name="search">{props.labelText}</label>
             <input
                 type="search"
                 name="search"
