@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import SearchPostcode from "../components/SearchPostcode";
 import dynamic from "next/dynamic";
-const MyAwesomeMap = dynamic(() => import("../components/Map"), { ssr: false });
+const LondonMap = dynamic(() => import("../components/Map"), { ssr: false });
 
 export default function Recycle() {
   const [data, setData] = useState(null);
   const [userInput, setUserInput] = useState("");
   const [error, setError] = useState(null);
-  const [coordinates, setCoordinates] = useState([]);
   let listCount = 7;
 
   const onChange = (event) => setUserInput(event.target.value);
@@ -31,7 +30,7 @@ export default function Recycle() {
 
   return (
     <>
-      <MyAwesomeMap data={data}></MyAwesomeMap>
+      <LondonMap data={data}></LondonMap>
 
       <SearchPostcode
         onChange={onChange}
