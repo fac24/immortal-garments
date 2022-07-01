@@ -16,7 +16,7 @@ const Breadcrumb = () => {
         </li>
         {items.map((item, index) => (
           <li key={index}>
-            {item.replaceAll("-", " ")} >
+            {item.replaceAll("-", " ")} /
             {/* <Link
               href={{
                 pathname: `${item === items[1]}`
