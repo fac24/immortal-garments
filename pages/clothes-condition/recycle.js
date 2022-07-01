@@ -19,7 +19,9 @@ export default function Recycle() {
     );
     if (!result.ok) {
       setData(null);
-      setError(`Oops, something went wrong: ${result.status}.`);
+      setError(
+        `Oops, looks like we don't have any information for this postcode, yet. Try the postcode n195sh.`
+      );
       return;
     }
 
@@ -31,15 +33,14 @@ export default function Recycle() {
   return (
     <>
       <Breadcrumb></Breadcrumb>
+      <h2 className="text-xl py-3">Recycle</h2>
+      <p>Find your nearest textile recycling point.</p>
       <Search
         onChange={onChange}
         value={userInput}
         handleSearch={handleSearch}
         labelText={"Enter your postcode..."}
       />
-
-      <p>Find your nearest textile recycle point.</p>
-
       {data
         ? data.map((item, index) => {
             if (index < listCount)
