@@ -18,7 +18,7 @@ export default function Recycle() {
     if (!result.ok) {
       setData(null);
       setError(
-        `Oops, looks like we don't have any information for this postcode, yet. Try the postcode N195SH.`
+        `Oops, looks like we don't have any information for this postcode, yet. Try the postcode n195sh.`
       );
       return;
     }
