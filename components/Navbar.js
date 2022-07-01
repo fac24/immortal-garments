@@ -2,7 +2,7 @@ import Navlink from "./Navlink";
 
 export default function Navbar() {
   return (
-    <nav>
+    <nav className="flex justify-center gap-5 text-2xl font-semibold">
       <Navlink href="/">Home</Navlink>
       <Navlink href="/clothes-condition/donate">Donate</Navlink>
       <Navlink href="/clothes-condition/recycle">Recycle</Navlink>

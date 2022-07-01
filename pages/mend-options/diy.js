@@ -18,7 +18,7 @@ export default function Diy() {
   return (
     <>
       <Breadcrumb />
-      <h2>DIY</h2>
+      <h2 className="text-xl py-3">DIY</h2>
       <p>
         We probably want to add some text here. Do you have some cothes to mend
         or upcycle? And some info why, the benifits...
@@ -29,17 +29,21 @@ export default function Diy() {
         handleSearch={handleSearch}
         labelText={"Enter a keyword"}
       />
-      {resources
-        .filter((item) =>
-          item.title.toLowerCase().includes(userInput.toLowerCase())
-        )
-        .map((item) => {
-          return (
-            <Link key={item.title} href={item.url}>
-              <p className="diy-link">{item.title}</p>
-            </Link>
-          );
-        })}
+      <div className="flex flex-wrap">
+        {resources
+          .filter((item) =>
+            item.title.toLowerCase().includes(userInput.toLowerCase())
+          )
+          .map((item) => {
+            return (
+              <Link key={item.title} href={item.url}>
+                <div className="block p-6 max-w-sm rounded-lg border shadow-md cursor-pointer m-4">
+                  <p className="diy-link">{item.title}</p>
+                </div>
+              </Link>
+            );
+          })}
+      </div>
     </>
   );
 }

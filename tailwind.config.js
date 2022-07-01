@@ -5,6 +5,13 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    colors: {
+      coral: "#F27289",
+      piggyBankPink: "#F2949C",
+      pistachioGreen: "#C9F2E3",
+      lightGreen: "#A3D9B0",
+      darkGreen: "#75BF87",
+    },
     extend: {},
   },
   plugins: [],

@@ -17,7 +17,9 @@ export default function Recycle() {
     const result = await fetch(`../api/${userInput.replace(/ /g, "")}`);
     if (!result.ok) {
       setData(null);
-      setError(`Oops, something went wrong: ${result.status}.`);
+      setError(
+        `Oops, looks like we don't have any information for this postcode, yet. Try the postcode N195SH.`
+      );
       return;
     }
 
@@ -39,6 +41,8 @@ export default function Recycle() {
   return (
     <>
       <Breadcrumb></Breadcrumb>
+      <h2 className="text-xl py-3">Recycle</h2>
+      <p>Find your nearest textile recycling point.</p>
       <Search
         onChange={onChange}
         value={userInput}
