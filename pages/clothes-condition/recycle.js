@@ -14,7 +14,9 @@ export default function Recycle() {
   const onChange = (event) => setUserInput(event.target.value);
 
   async function handleSearch() {
-    const result = await fetch(`api/${userInput.replace(/ /g, "")}`);
+    const result = await fetch(
+      `../api/${userInput.replace(/ /g, "").toLowerCase()}`
+    );
     if (!result.ok) {
       setData(null);
       setError(`Oops, something went wrong: ${result.status}.`);

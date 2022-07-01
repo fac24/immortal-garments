@@ -5,11 +5,20 @@ import Breadcrumb from "../../components/Breadcrumb";
 export default function Tailors() {
   const [postcode, setPostcode] = useState("");
   const [tailorsData, setTailorsData] = useState(null);
+  const [error, setError] = useState(null);
 
   async function fetchData(x) {
-    const response = await fetch(`/api/tailors?input=${x}`);
-    const data = await response.json();
-    setTailorsData(data);
+    const result = await fetch(`../api/tailors?input=${x}`);
+    const data = await result.json();
+
+    // Error handling incase of a failed fetch
+    if (data.error) {
+      setTailorsData(null);
+      setError(data.error.description);
+    } else {
+      setError(null);
+      setTailorsData(data);
+    }
   }
 
   return (
@@ -28,6 +37,7 @@ export default function Tailors() {
         />
         <button type="submit">search</button>
         <div>
+          {error ? error : ""}
           {tailorsData
             ? tailorsData.businesses.map((place) => {
                 return (
