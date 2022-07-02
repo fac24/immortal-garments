@@ -24,9 +24,13 @@ export default function Home() {
         </section>
         <section>
           {/* <Choicebutton href="/get-rid-of" src={vercel} alt=""></Choicebutton> */}
-          <Link href="/clothes-condition">Donate And Recycle</Link>
+          <Link href="/clothes-condition">
+            <a>Donate And Recycle</a>
+          </Link>
           {/* <Choicebutton href="/try-to-mend" src={vercel}></Choicebutton> */}
-          <Link href="/mend-options">Care And Repair</Link>
+          <Link href="/mend-options">
+            <a>Care And Repair</a>
+          </Link>
         </section>
       </main>
     </div>
