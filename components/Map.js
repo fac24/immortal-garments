@@ -15,7 +15,7 @@ export default function Map({ data, listCount, userPosition }) {
     if (userPosition !== null) {
         position = [userPosition.result.latitude, userPosition.result.longitude];
     }
-
+    console.log(position);
     function SetViewOnClick() {
         const map = useMapEvent('click', (e) => {
             map.setView(position, map.getZoom(), {
@@ -23,7 +23,7 @@ export default function Map({ data, listCount, userPosition }) {
         })
         return null
     }
-    const animateRef = useRef(true);
+
     // console.log(userPosition);
     // const [position, setPosition] = useState([51.5007, -0.1246])
     // if (userPosition !== null) {

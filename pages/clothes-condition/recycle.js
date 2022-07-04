@@ -28,13 +28,16 @@ export default function Recycle() {
     setError(null);
     const newdata = await result.json();
     setData(newdata.items);
+  }
+  async function postcodeSearch() {
 
     const postcodeResult = await fetch(`https://api.postcodes.io/postcodes/${userInput}`);
-    if (!result.ok) {
+    if (!postcodeResult.ok) {
       setUserPosition(null);
       setError(`Oops, something went wrong: ${postcodeResult.status}.`);
       return;
     }
+    setError(null);
     const postObject = await postcodeResult.json();
     setUserPosition(postObject);
     //this seems to be working now but failed a couple times, which makes me wonder if there might be a race condition going on
@@ -49,6 +52,7 @@ export default function Recycle() {
         onChange={onChange}
         value={userInput}
         handleSearch={handleSearch}
+        postcodeSearch={postcodeSearch}
         labelText={"Enter your postcode..."}
       />
 

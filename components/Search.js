@@ -19,7 +19,7 @@ export default function SearchPostcode(props) {
         ></input>
         <button
           type="submit"
-          onClick={props.handleSearch}
+          onClick={() => { props.handleSearch(); props.postcodeSearch() }}
           className="bg-darkGreen hover:bg-[#51ae68] text-gray-900 font-semibold py-2 px-4 border border-gray-400 rounded shadow flex-auto"
         >
           Submit
