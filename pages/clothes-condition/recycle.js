@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Breadcrumb from "../../components/Breadcrumb";
 import dynamic from "next/dynamic";
-import Search from "../../components/Search";
+import Search from "../../components/SearchRecycle";
 
 const LondonMap = dynamic(() => import("../../components/Map"), { ssr: false });
 
@@ -66,7 +66,8 @@ export default function Recycle({ userPosition, setUserPosition, listCount, setL
                 <li key={item.id}>
                   {item.name} <br />
                   {item.address} <br />
-                  {item.distance} <br />
+                  {item.distance} miles
+                  <br />
                 </li>
               );
           })
