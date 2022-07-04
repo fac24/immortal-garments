@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Navbar from "../components/Navbar";
+import Footer from "./Footer";
 
 export default function Layout({ children }) {
   return (
@@ -14,6 +15,7 @@ export default function Layout({ children }) {
         <Navbar />
       </header>
       <main className="mx-8">{children}</main>
+      <Footer />
     </>
   );
 }
