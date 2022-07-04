@@ -32,16 +32,14 @@ export default function Map({ data, listCount, userPosition }) {
     // console.log(position);
 
 
-    // function SetViewOnClick() {
-    //     const map = useMapEvent();
+
+    // const map = useMapEvent();
+    // function useViewAutomatically() {
     //     useEffect(() => {
     //         map.setView(position, map.getZoom(), {
     //         })
-    //     }, [map])
-
-    //     return null
+    //     }, [position, map])
     // }
-
     const greenIcon = new L.Icon({
         iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
         shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -79,6 +77,7 @@ export default function Map({ data, listCount, userPosition }) {
                     </Marker>)
             }) : ""}
             <SetViewOnClick />
+            {/* <setViewAutomatically></setViewAutomatically> */}
         </MapContainer >
     )
 }
