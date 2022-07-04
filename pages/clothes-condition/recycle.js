@@ -15,7 +15,8 @@ export default function Recycle() {
 
   async function handleSearch() {
     const result = await fetch(
-      `../api/${userInput.replace(/ /g, "").toLowerCase()}`
+      `../api/recylePoint?abc=${userInput.toUpperCase()}
+      `
     );
     if (!result.ok) {
       setData(null);
@@ -54,7 +55,6 @@ export default function Recycle() {
         labelText={"Enter your postcode..."}
       />
 
-      <p>Find your nearest textile recycle point.</p>
       <ul>
         {data
           ? data.map((item, index) => {
@@ -71,15 +71,16 @@ export default function Recycle() {
             })
           : ""}
       </ul>
-
       {error ? error : ""}
-      {/* {data ?  */}
-      <LondonMap
-        data={data}
-        listCount={listCount}
-        userPosition={userPosition}
-      ></LondonMap>
-      {/* : ""} */}
+      {data ? (
+        <LondonMap
+          data={data}
+          listCount={listCount}
+          userPosition={userPosition}
+        ></LondonMap>
+      ) : (
+        ""
+      )}
     </>
   );
 }
