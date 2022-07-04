@@ -5,12 +5,11 @@ import Search from "../../components/Search";
 
 const LondonMap = dynamic(() => import("../../components/Map"), { ssr: false });
 
-export default function Recycle() {
+export default function Recycle({ userPosition, setUserPosition, listCount, setListCount }) {
   const [data, setData] = useState(null);
   const [userInput, setUserInput] = useState("");
-  const [error, setError] = useState(null);
-  const [listCount, setListCount] = useState(7);
-  const [userPosition, setUserPosition] = useState(null);
+  const [error, setError] = useState([]);
+
   const onChange = (event) => setUserInput(event.target.value);
 
   async function handleSearch() {
@@ -28,20 +27,23 @@ export default function Recycle() {
 
     setError(null);
     const newdata = await result.json();
+    console.log(newdata);
     setData(newdata.items);
+    setUserPosition([newdata.latitude, newdata.longitude])
   }
-  async function postcodeSearch() {
+  // async function postcodeSearch() {
 
-    const postcodeResult = await fetch(`https://api.postcodes.io/postcodes/${userInput}`);
-    if (!postcodeResult.ok) {
-      setUserPosition(null);
-      setError(`Oops, something went wrong: ${postcodeResult.status}.`);
-      return;
-    }
-    setError(null);
-    const postObject = await postcodeResult.json();
-    setUserPosition(postObject);
-  }
+  //   const postcodeResult = await fetch(`https://api.postcodes.io/postcodes/${userInput}`);
+  //   if (!postcodeResult.ok) {
+  //     setUserPosition(null);
+  //     setError(`Oops, something went wrong: ${postcodeResult.status}.`);
+  //     return;
+  //   }
+  //   setError(null);
+  //   const postObject = await postcodeResult.json();
+  //   console.log(postObject);
+  //   setUserPosition(postObject);
+  // }
 
   return (
     <>
@@ -52,7 +54,7 @@ export default function Recycle() {
         onChange={onChange}
         value={userInput}
         handleSearch={handleSearch}
-        postcodeSearch={postcodeSearch}
+        // postcodeSearch={postcodeSearch}
         labelText={"Enter your postcode..."}
       />
 

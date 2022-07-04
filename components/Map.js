@@ -7,16 +7,27 @@ import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css'; // Re-uses images from ~leaflet package
 import * as L from 'leaflet';
 import 'leaflet-defaulticon-compatibility';
-
+import { useRouter } from "next/router";
 
 export default function Map({ data, listCount, userPosition }) {
-
-
+    // console.log(userPosition);
+    // console.log(listCount);
+    const router = useRouter();
+    console.log(router);
     let position = [51.5007, -0.1246];
     if (userPosition !== null) {
-        position = [userPosition.result.latitude, userPosition.result.longitude];
+        position = [userPosition[0], userPosition[1]];
     }
     console.log(position);
+    let externalLocation = [];
+
+    // function setExternalLocation() {
+    //     if (router.pathname.includes("/recycle")) {
+    //         externalLocation = [item.latitude, item.longitude]
+    //     } else {
+    //         externalLocation = [item.coordinates.latitude, items.coordinates.longitude]
+    //     }
+    // }
 
     function ResetView({ coords }) {
         const map = useMap();
@@ -45,10 +56,15 @@ export default function Map({ data, listCount, userPosition }) {
                 </Popup>
             </Marker>
             {data ? data.map((item, index) => {
+                if (router.pathname.includes("/recycle")) {
+                    externalLocation = [item.latitude, item.longitude]
+                } else {
+                    externalLocation = [item.coordinates.latitude, item.coordinates.longitude]
+                }
                 if (index < listCount) return (
                     <Marker
                         key={item.id}
-                        position={[item.latitude, item.longitude]}
+                        position={externalLocation}
                         icon={greenIcon}
                     >
                         <Popup>
