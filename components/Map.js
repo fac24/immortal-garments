@@ -1,17 +1,8 @@
-// import { MapContainer, TileLayer, Marker, Popup, useMapEvent } from 'react-leaflet'
-// import "leaflet/dist/leaflet.css";
-// // import L from 'leaflet';
-import { useEffect, useRef } from 'react';
-//  Create the Icon
-// import marker from '../public/images/marker-icon-2x.png';
-import React, { Component } from 'react';
-// import L from 'leaflet';
+import React, { Component, useEffect, useRef } from 'react';
 import {
     MapContainer, TileLayer, Marker, Popup, useMapEvent
 } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
-// import icon from 'leaflet/dist/images/marker-icon.png';
-// import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css'; // Re-uses images from ~leaflet package
 import * as L from 'leaflet';
