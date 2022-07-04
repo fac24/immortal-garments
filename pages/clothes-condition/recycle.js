@@ -32,15 +32,8 @@ export default function Recycle() {
   }
   async function postcodeSearch() {
 
-<<<<<<< HEAD
     const postcodeResult = await fetch(`https://api.postcodes.io/postcodes/${userInput}`);
     if (!postcodeResult.ok) {
-=======
-    const postcodeResult = await fetch(
-      `https://api.postcodes.io/postcodes/${userInput}`
-    );
-    if (!result.ok) {
->>>>>>> bb31baf69aa73442f32a1a4b630d853b80d77f0a
       setUserPosition(null);
       setError(`Oops, something went wrong: ${postcodeResult.status}.`);
       return;
