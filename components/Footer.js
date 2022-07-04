@@ -43,14 +43,14 @@ export default function Footer() {
           <li className="no-underline hover:underline">
             <Link href="https://www.loveyourclothes.org.uk/blogs/why-its-great-give-second-hand-shopping-go">
               <a target="_blank" rel="noopener noreferrer">
-                Why it's great to give second hand shopping a go
+                Why it `s great to give second hand shopping a go
               </a>
             </Link>
           </li>
           <li className="no-underline hover:underline">
             <Link href="https://www.loveyourclothes.org.uk/blogs/can-clothes-really-spark-joy">
               <a target="_blank" rel="noopener noreferrer">
-                Can clothes really 'spark joy'?
+                Can clothes really `spark joy`?
               </a>
             </Link>
           </li>
