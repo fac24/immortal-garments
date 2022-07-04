@@ -15,9 +15,8 @@ export default function Recycle() {
 
   async function handleSearch() {
     const result = await fetch(
-      // `http://localhost:3000/api/recylePoint?abc=${userInput.toUpperCase()}
-      // `
-      `https://immortal-garments.vercel.app/api/recylePoint?abc=${userInput.toUpperCase()}`
+      `../api/recylePoint?abc=${userInput.toUpperCase()}
+      `
     );
     if (!result.ok) {
       setData(null);
