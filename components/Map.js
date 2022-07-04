@@ -7,7 +7,7 @@ import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css'; // Re-uses images from ~leaflet package
 import * as L from 'leaflet';
 import 'leaflet-defaulticon-compatibility';
-
+import donate from '../public/images/donateclothes.png';
 export default function Map({ data, listCount, userPosition }) {
 
 
@@ -37,10 +37,19 @@ export default function Map({ data, listCount, userPosition }) {
     //     useEffect(() => {
     //         map.setView(position, map.getZoom(), {
     //         })
-    //     }, [position])
+    //     }, [map])
 
     //     return null
     // }
+
+    const greenIcon = new L.Icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
 
     // L.Icon.Default.imagePath = "/../public/images/marker-icon-2x.png"
     return (
@@ -58,7 +67,10 @@ export default function Map({ data, listCount, userPosition }) {
                 if (index < listCount) return (
                     <Marker
                         key={item.id}
-                        position={[item.latitude, item.longitude]}>
+                        position={[item.latitude, item.longitude]}
+                        icon={greenIcon}
+                    // style={{ filter: "hue-rotate(120deg)" }}
+                    >
                         <Popup>
                             Name: {item.name}
                             <br></br>
