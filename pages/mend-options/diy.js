@@ -2,18 +2,10 @@ import Breadcrumb from "../../components/Breadcrumb";
 import React, { useState } from "react";
 import { resources } from "../../data/diy-resources";
 import Link from "next/link";
-import Search from "../../components/Search";
+import Search from "../../components/SearchDIY";
 
 export default function Diy() {
   const [userInput, setUserInput] = useState("");
-
-  const onChange = (event) => {
-    setUserInput(event.target.value);
-  };
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-  };
 
   return (
     <>
@@ -24,9 +16,8 @@ export default function Diy() {
         or upcycle? And some info why, the benifits...
       </p>
       <Search
-        onChange={onChange}
         value={userInput}
-        handleSearch={handleSearch}
+        setUserInput={setUserInput}
         labelText={"Enter a keyword"}
       />
       <div className="flex flex-wrap">

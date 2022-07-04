@@ -1,4 +1,11 @@
-export default function SearchPostcode(props) {
+export default function SearchDIY(props) {
+  const onChange = (event) => {
+    props.setUserInput(event.target.value);
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+  };
   return (
     <div>
       <form
@@ -13,13 +20,13 @@ export default function SearchPostcode(props) {
         <input
           type="search"
           name="search"
-          onChange={props.onChange}
+          onChange={onChange}
           value={props.userInput}
           className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline min-w-full"
         ></input>
         <button
           type="submit"
-          onClick={props.handleSearch}
+          onClick={handleSearch}
           className="bg-darkGreen hover:bg-[#51ae68] text-gray-900 font-semibold py-2 px-4 border border-gray-400 rounded shadow flex-auto"
         >
           Submit

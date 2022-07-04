@@ -8,20 +8,6 @@ export default function Tailors() {
   const [tailorsData, setTailorsData] = useState(null);
   const [error, setError] = useState(null);
 
-  async function fetchData(x) {
-    const result = await fetch(`../api/tailors?input=${x}`);
-    const data = await result.json();
-
-    // Error handling incase of a failed fetch
-    if (data.error) {
-      setTailorsData(null);
-      setError(data.error.description);
-    } else {
-      setError(null);
-      setTailorsData(data);
-    }
-  }
-
   return (
     <>
       <Breadcrumb />
