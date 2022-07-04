@@ -31,19 +31,6 @@ export default function Recycle({ userPosition, setUserPosition, listCount, setL
     setData(newdata.items);
     setUserPosition([newdata.latitude, newdata.longitude])
   }
-  // async function postcodeSearch() {
-
-  //   const postcodeResult = await fetch(`https://api.postcodes.io/postcodes/${userInput}`);
-  //   if (!postcodeResult.ok) {
-  //     setUserPosition(null);
-  //     setError(`Oops, something went wrong: ${postcodeResult.status}.`);
-  //     return;
-  //   }
-  //   setError(null);
-  //   const postObject = await postcodeResult.json();
-  //   console.log(postObject);
-  //   setUserPosition(postObject);
-  // }
 
   return (
     <>
@@ -54,7 +41,6 @@ export default function Recycle({ userPosition, setUserPosition, listCount, setL
         onChange={onChange}
         value={userInput}
         handleSearch={handleSearch}
-        // postcodeSearch={postcodeSearch}
         labelText={"Enter your postcode..."}
       />
 
