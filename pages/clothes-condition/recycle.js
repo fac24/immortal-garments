@@ -15,7 +15,8 @@ export default function Recycle() {
 
   async function handleSearch() {
     const result = await fetch(
-      `../api/${userInput.replace(/ /g, "").toLowerCase()}`
+      `../api/recylePoint?abc=${userInput.toUpperCase()}
+      `
     );
     if (!result.ok) {
       setData(null);
@@ -29,7 +30,9 @@ export default function Recycle() {
     const newdata = await result.json();
     setData(newdata.items);
 
-    const postcodeResult = await fetch(`https://api.postcodes.io/postcodes/${userInput}`);
+    const postcodeResult = await fetch(
+      `https://api.postcodes.io/postcodes/${userInput}`
+    );
     if (!result.ok) {
       setUserPosition(null);
       setError(`Oops, something went wrong: ${postcodeResult.status}.`);
@@ -52,28 +55,32 @@ export default function Recycle() {
         labelText={"Enter your postcode..."}
       />
 
-      <p>Find your nearest textile recycle point.</p>
       <ul>
         {data
           ? data.map((item, index) => {
-            if (index < listCount)
-              //['Salvation Army', 'Bernardos' ]
-              //if CharityObject does includes item.name then:
-              return (
-                <li key={item.id}>
-                  {item.name} <br />
-                  {item.address} <br />
-                  {item.distance} <br />
-                </li>
-              );
-          })
+              if (index < listCount)
+                //['Salvation Army', 'Bernardos' ]
+                //if CharityObject does includes item.name then:
+                return (
+                  <li key={item.id}>
+                    {item.name} <br />
+                    {item.address} <br />
+                    {item.distance} <br />
+                  </li>
+                );
+            })
           : ""}
       </ul>
-
       {error ? error : ""}
-      {/* {data ?  */}
-      <LondonMap data={data} listCount={listCount} userPosition={userPosition}></LondonMap>
-      {/* : ""} */}
+      {data ? (
+        <LondonMap
+          data={data}
+          listCount={listCount}
+          userPosition={userPosition}
+        ></LondonMap>
+      ) : (
+        ""
+      )}
     </>
   );
 }
