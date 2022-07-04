@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Breadcrumb from "../../components/Breadcrumb";
 import dynamic from "next/dynamic";
-import Search from "../../components/Search";
+import Search from "../../components/SearchAPI";
 
 const LondonMap = dynamic(() => import("../../components/Map"), { ssr: false });
 
@@ -29,7 +29,9 @@ export default function Recycle() {
     const newdata = await result.json();
     setData(newdata.items);
 
-    const postcodeResult = await fetch(`https://api.postcodes.io/postcodes/${userInput}`);
+    const postcodeResult = await fetch(
+      `https://api.postcodes.io/postcodes/${userInput}`
+    );
     if (!result.ok) {
       setUserPosition(null);
       setError(`Oops, something went wrong: ${postcodeResult.status}.`);
@@ -56,23 +58,27 @@ export default function Recycle() {
       <ul>
         {data
           ? data.map((item, index) => {
-            if (index < listCount)
-              //['Salvation Army', 'Bernardos' ]
-              //if CharityObject does includes item.name then:
-              return (
-                <li key={item.id}>
-                  {item.name} <br />
-                  {item.address} <br />
-                  {item.distance} <br />
-                </li>
-              );
-          })
+              if (index < listCount)
+                //['Salvation Army', 'Bernardos' ]
+                //if CharityObject does includes item.name then:
+                return (
+                  <li key={item.id}>
+                    {item.name} <br />
+                    {item.address} <br />
+                    {item.distance} <br />
+                  </li>
+                );
+            })
           : ""}
       </ul>
 
       {error ? error : ""}
       {/* {data ?  */}
-      <LondonMap data={data} listCount={listCount} userPosition={userPosition}></LondonMap>
+      <LondonMap
+        data={data}
+        listCount={listCount}
+        userPosition={userPosition}
+      ></LondonMap>
       {/* : ""} */}
     </>
   );
