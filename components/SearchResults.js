@@ -1,6 +1,7 @@
-import { loadGetInitialProps } from "next/dist/shared/lib/utils";
-
 export default function SearchResults({ tailorsData, error, tailors }) {
+  // The API gives us distance in meters, getMiles converts it to miles and trims it to 2 decimal places
+  const getMiles = (meters) => Number(meters * 0.000621371192).toFixed(2);
+
   return (
     <div>
       {error ? error : ""}
@@ -27,6 +28,7 @@ export default function SearchResults({ tailorsData, error, tailors }) {
                     {place.location.zip_code}
                   </p>
                   <p>{place.phone}</p>
+                  <p>{getMiles(place.distance)} miles</p>
                   {tailors ? <p>{place.price}</p> : null}
                 </section>
               </div>

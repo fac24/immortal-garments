@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Breadcrumb from "../../components/Breadcrumb";
 import SearchAPI from "../../components/SearchAPI";
 import SearchResults from "../../components/SearchResults";
-//import Image from "next/image";
 
 export default function Tailors() {
   const [tailorsData, setTailorsData] = useState(null);
