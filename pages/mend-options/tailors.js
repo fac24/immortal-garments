@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Breadcrumb from "../../components/Breadcrumb";
 import SearchAPI from "../../components/SearchAPI";
+import SearchResults from "../../components/SearchResults";
 //import Image from "next/image";
 
 export default function Tailors() {
@@ -26,47 +27,16 @@ export default function Tailors() {
       <Breadcrumb />
       <h2 className="text-xl py-3">Tailors</h2>
       <p>
-        Find your nearest clothing tailors, dry cleaners or seamstress for your
-        clothes repairs. The perfect option for you if you do not want to part
-        with damaged item!
+        Find your nearest tailors, dry cleaners or seamstress for your clothes
+        repairs. The perfect option for you if you do not want to part with
+        damaged items in your wardrobe!
       </p>
       <SearchAPI
         searchCategory="tailors"
         setTailorsData={setTailorsData}
         setError={setError}
       />
-      <div>
-        {error ? error : ""}
-        {tailorsData
-          ? tailorsData.businesses.map((place) => {
-              return (
-                <div key={place.id} className="flex m-10">
-                  <section>
-                    <img
-                      src={
-                        place.image_url.length > 1
-                          ? place.image_url
-                          : "https://thumbs.dreamstime.com/z/tailor-made-icon-vector-illustration-tailor-made-icon-vector-illustration-white-background-119861864.jpg"
-                      }
-                      alt={place.name}
-                      className="h-20"
-                    />
-                  </section>
-
-                  <section>
-                    <p>{place.name}</p>
-                    <p>
-                      {place.location.address1}, {place.location.city},{" "}
-                      {place.location.zip_code}
-                    </p>
-                    <p>{place.phone}</p>
-                    <p>{place.price}</p>
-                  </section>
-                </div>
-              );
-            })
-          : ""}
-      </div>
+      <SearchResults tailorsData={tailorsData} error={error} />
     </>
   );
 }

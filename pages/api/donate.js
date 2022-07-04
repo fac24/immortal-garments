@@ -1,7 +1,6 @@
-export default async function handlerTailors(req, res) {
+export default async function handlerDonate(req, res) {
   // Grab the user input
-  // const postcode = req.query.input;
-  let postcode = "n42rb";
+  const postcode = req.query.input;
 
   const url = `https://api.yelp.com/v3/businesses/search?sort_by=distance&location=${postcode
     .replace(/ /g, "")
