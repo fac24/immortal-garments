@@ -15,7 +15,8 @@ export default function Recycle() {
 
   async function handleSearch() {
     const result = await fetch(
-      `../api/${userInput.replace(/ /g, "").toLowerCase()}`
+      `../api/recylePoint?abc=${userInput.toUpperCase()}
+      `
     );
     if (!result.ok) {
       setData(null);
@@ -31,8 +32,15 @@ export default function Recycle() {
   }
   async function postcodeSearch() {
 
+<<<<<<< HEAD
     const postcodeResult = await fetch(`https://api.postcodes.io/postcodes/${userInput}`);
     if (!postcodeResult.ok) {
+=======
+    const postcodeResult = await fetch(
+      `https://api.postcodes.io/postcodes/${userInput}`
+    );
+    if (!result.ok) {
+>>>>>>> bb31baf69aa73442f32a1a4b630d853b80d77f0a
       setUserPosition(null);
       setError(`Oops, something went wrong: ${postcodeResult.status}.`);
       return;
@@ -56,7 +64,6 @@ export default function Recycle() {
         labelText={"Enter your postcode..."}
       />
 
-      <p>Find your nearest textile recycle point.</p>
       <ul>
         {data
           ? data.map((item, index) => {
@@ -73,11 +80,16 @@ export default function Recycle() {
           })
           : ""}
       </ul>
-
       {error ? error : ""}
-      {/* {data ? */}
-      <LondonMap data={data} listCount={listCount} userPosition={userPosition}></LondonMap>
-      {/* : ""} */}
+      {data ? (
+        <LondonMap
+          data={data}
+          listCount={listCount}
+          userPosition={userPosition}
+        ></LondonMap>
+      ) : (
+        ""
+      )}
     </>
   );
 }
