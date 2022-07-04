@@ -14,8 +14,11 @@ export default function Layout({ children }) {
         <h1>Immortal Garments</h1>
         <Navbar />
       </header>
-      <main className="mx-8">{children}</main>
-      <Footer />
+      <body className="mx-8">
+        {children}
+        <main></main>
+        <Footer />
+      </body>
     </>
   );
 }
