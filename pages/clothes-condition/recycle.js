@@ -65,7 +65,8 @@ export default function Recycle() {
                   <li key={item.id}>
                     {item.name} <br />
                     {item.address} <br />
-                    {item.distance} <br />
+                    {item.distance} miles
+                    <br />
                   </li>
                 );
             })
