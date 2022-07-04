@@ -32,15 +32,8 @@ export default function Recycle() {
   }
   async function postcodeSearch() {
 
-<<<<<<< HEAD
     const postcodeResult = await fetch(`https://api.postcodes.io/postcodes/${userInput}`);
     if (!postcodeResult.ok) {
-=======
-    const postcodeResult = await fetch(
-      `https://api.postcodes.io/postcodes/${userInput}`
-    );
-    if (!result.ok) {
->>>>>>> bb31baf69aa73442f32a1a4b630d853b80d77f0a
       setUserPosition(null);
       setError(`Oops, something went wrong: ${postcodeResult.status}.`);
       return;
@@ -48,7 +41,6 @@ export default function Recycle() {
     setError(null);
     const postObject = await postcodeResult.json();
     setUserPosition(postObject);
-    //this seems to be working now but failed a couple times, which makes me wonder if there might be a race condition going on
   }
 
   return (
@@ -68,8 +60,6 @@ export default function Recycle() {
         {data
           ? data.map((item, index) => {
             if (index < listCount)
-              //['Salvation Army', 'Bernardos' ]
-              //if CharityObject does includes item.name then:
               return (
                 <li key={item.id}>
                   {item.name} <br />

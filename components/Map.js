@@ -1,13 +1,14 @@
 import React, { Component, useEffect, useRef } from 'react';
 import {
-    MapContainer, TileLayer, Marker, Popup, useMapEvent
+    MapContainer, TileLayer, Marker, Popup, useMapEvent, useMap
 } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css'; // Re-uses images from ~leaflet package
 import * as L from 'leaflet';
 import 'leaflet-defaulticon-compatibility';
-import donate from '../public/images/donateclothes.png';
+
+
 export default function Map({ data, listCount, userPosition }) {
 
 
@@ -16,30 +17,13 @@ export default function Map({ data, listCount, userPosition }) {
         position = [userPosition.result.latitude, userPosition.result.longitude];
     }
     console.log(position);
-    function SetViewOnClick() {
-        const map = useMapEvent('click', (e) => {
-            map.setView(position, map.getZoom(), {
-            })
-        })
-        return null
+
+    function ResetView({ coords }) {
+        const map = useMap();
+        map.setView([coords[0], coords[1]], map.getZoom());
+        return null;
     }
 
-    // console.log(userPosition);
-    // const [position, setPosition] = useState([51.5007, -0.1246])
-    // if (userPosition !== null) {
-    //     setPosition[userPosition.result.latitude, userPosition.result.longitude];
-    // }
-    // console.log(position);
-
-
-
-    // const map = useMapEvent();
-    // function useViewAutomatically() {
-    //     useEffect(() => {
-    //         map.setView(position, map.getZoom(), {
-    //         })
-    //     }, [position, map])
-    // }
     const greenIcon = new L.Icon({
         iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
         shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -49,7 +33,6 @@ export default function Map({ data, listCount, userPosition }) {
         shadowSize: [41, 41]
     });
 
-    // L.Icon.Default.imagePath = "/../public/images/marker-icon-2x.png"
     return (
         <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
             <TileLayer
@@ -67,7 +50,6 @@ export default function Map({ data, listCount, userPosition }) {
                         key={item.id}
                         position={[item.latitude, item.longitude]}
                         icon={greenIcon}
-                    // style={{ filter: "hue-rotate(120deg)" }}
                     >
                         <Popup>
                             Name: {item.name}
@@ -76,8 +58,7 @@ export default function Map({ data, listCount, userPosition }) {
                         </Popup>
                     </Marker>)
             }) : ""}
-            <SetViewOnClick />
-            {/* <setViewAutomatically></setViewAutomatically> */}
+            <ResetView coords={position} />
         </MapContainer >
     )
 }
