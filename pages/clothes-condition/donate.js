@@ -7,7 +7,7 @@ export default function Donate() {
   const onChange = (event) => setUserInput(event.target.value);
 
   async function handleSearch() {
-    const result = await fetch(`api/${userInput.replace(/ /g, "")}`);
+    const result = await fetch(`./api/${userInput.replace(/ /g, "")}`);
     if (!result.ok) {
       setData(null);
       setError(
