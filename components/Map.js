@@ -12,19 +12,22 @@ import { useRouter } from "next/router";
 export default function Map({ data, listCount, userPosition }) {
 
     const router = useRouter();
+
+    //initialises user position at Big Ben but updates when a postcode is searched
     let position = [51.5007, -0.1246];
     if (userPosition !== null) {
         position = [userPosition[0], userPosition[1]];
     }
     let externalLocation = [];
 
-
+    //this function recentres the map in response to a new user search
     function ResetView({ coords }) {
         const map = useMap();
         map.setView([coords[0], coords[1]], map.getZoom());
         return null;
     }
 
+    //creates a green icon that overrides the default blue for markers that don't represent the user
     const greenIcon = new L.Icon({
         iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
         shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -46,6 +49,8 @@ export default function Map({ data, listCount, userPosition }) {
                 </Popup>
             </Marker>
             {data ? data.map((item, index) => {
+                //uses router to check page and decides how to access coordinates from API 
+                //this is needed because the yelp (tailors, donate) and valpak (recycle) APIs return the coordinates at different nesting levels 
                 if (router.pathname.includes("/recycle")) {
                     externalLocation = [item.latitude, item.longitude]
                 } else {

@@ -3,6 +3,8 @@ import Breadcrumb from "../../components/Breadcrumb";
 import dynamic from "next/dynamic";
 import Search from "../../components/SearchRecycle";
 
+//this was needed to get the full map to load, rather than just a couple of squares
+//I don't fully understand how it's working, but setting server-side rendering to false means that the map is dynamically loaded on the client side
 const LondonMap = dynamic(() => import("../../components/Map"), { ssr: false });
 
 export default function Recycle({ userPosition, setUserPosition, listCount, setListCount }) {
@@ -27,7 +29,6 @@ export default function Recycle({ userPosition, setUserPosition, listCount, setL
 
     setError(null);
     const newdata = await result.json();
-    console.log(newdata);
     setData(newdata.items);
     setUserPosition([newdata.latitude, newdata.longitude])
   }

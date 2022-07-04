@@ -8,11 +8,9 @@ export default function SearchAPI({
   setUserPosition,
 }) {
   const [postcode, setPostcode] = useState("");
-  // console.log(userPosition);
   async function fetchData(x) {
     const result = await fetch(`../api/${searchCategory}?input=${x}`);
     const data = await result.json();
-    console.log(data);
     // Error handling incase of a failed fetch
     if (data.error) {
       setTailorsData(null);
