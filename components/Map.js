@@ -10,24 +10,14 @@ import 'leaflet-defaulticon-compatibility';
 import { useRouter } from "next/router";
 
 export default function Map({ data, listCount, userPosition }) {
-    // console.log(userPosition);
-    // console.log(listCount);
+
     const router = useRouter();
-    console.log(router);
     let position = [51.5007, -0.1246];
     if (userPosition !== null) {
         position = [userPosition[0], userPosition[1]];
     }
-    console.log(position);
     let externalLocation = [];
 
-    // function setExternalLocation() {
-    //     if (router.pathname.includes("/recycle")) {
-    //         externalLocation = [item.latitude, item.longitude]
-    //     } else {
-    //         externalLocation = [item.coordinates.latitude, items.coordinates.longitude]
-    //     }
-    // }
 
     function ResetView({ coords }) {
         const map = useMap();
