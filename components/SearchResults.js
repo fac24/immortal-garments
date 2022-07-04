@@ -1,4 +1,6 @@
-export default function SearchResults({ tailorsData, error }) {
+import { loadGetInitialProps } from "next/dist/shared/lib/utils";
+
+export default function SearchResults({ tailorsData, error, tailors }) {
   return (
     <div>
       {error ? error : ""}
@@ -25,7 +27,7 @@ export default function SearchResults({ tailorsData, error }) {
                     {place.location.zip_code}
                   </p>
                   <p>{place.phone}</p>
-                  <p>{place.price}</p>
+                  {tailors ? <p>{place.price}</p> : null}
                 </section>
               </div>
             );

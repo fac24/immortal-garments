@@ -21,6 +21,7 @@ export default function Tailors() {
         searchCategory="tailors"
         setTailorsData={setTailorsData}
         setError={setError}
+        tailors="true"
       />
       <SearchResults tailorsData={tailorsData} error={error} />
     </>
