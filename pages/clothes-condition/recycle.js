@@ -15,7 +15,8 @@ export default function Recycle() {
 
   async function handleSearch() {
     const result = await fetch(
-      `http://localhost:3000/api/recylePoint?abc=${userInput.toUpperCase()}
+      process.env.RECYCLE_URL +
+        `${userInput.toUpperCase()}
       `
     );
     if (!result.ok) {
@@ -80,12 +81,6 @@ export default function Recycle() {
         userPosition={userPosition}
       ></LondonMap>
       {/* : ""} */}
-      <form action="/api/recylePoint" method="GET">
-        <label name="abc"></label>
-        <input type="text" id="abc" name="abc" />
-
-        <button>submit</button>
-      </form>
     </>
   );
 }
