@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Breadcrumb from "../../components/Breadcrumb";
-//import Image from "next/image";
 import SearchAPI from "../../components/SearchAPI";
+//import Image from "next/image";
 
 export default function Tailors() {
   const [tailorsData, setTailorsData] = useState(null);
@@ -24,7 +24,17 @@ export default function Tailors() {
   return (
     <>
       <Breadcrumb />
-      <SearchAPI setTailorsData={setTailorsData} setError={setError} />
+      <h2 className="text-xl py-3">Tailors</h2>
+      <p>
+        Find your nearest clothing tailors, dry cleaners or seamstress for your
+        clothes repairs. The perfect option for you if you do not want to part
+        with damaged item!
+      </p>
+      <SearchAPI
+        searchCategory="tailors"
+        setTailorsData={setTailorsData}
+        setError={setError}
+      />
       <div>
         {error ? error : ""}
         {tailorsData

@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 
-export default function SearchAPI({ setTailorsData, setError }) {
+export default function SearchAPI({
+  searchCategory,
+  setTailorsData,
+  setError,
+}) {
   const [postcode, setPostcode] = useState("");
 
   async function fetchData(x) {
-    const result = await fetch(`../api/tailors?input=${x}`);
+    const result = await fetch(`../api/${searchCategory}?input=${x}`);
     const data = await result.json();
 
     // Error handling incase of a failed fetch
