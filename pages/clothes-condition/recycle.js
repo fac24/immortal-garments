@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Breadcrumb from "../../components/Breadcrumb";
 import dynamic from "next/dynamic";
-import Search from "../../components/SearchAPI";
+import Search from "../../components/SearchRecycle";
 
 const LondonMap = dynamic(() => import("../../components/Map"), { ssr: false });
 
