@@ -15,13 +15,14 @@ export default function Donate({ userPosition, setUserPosition, listCount, setLi
     <>
       <Breadcrumb />
       <h2 className="text-xl py-3">Donate</h2>
-      <p>
-        Reuse is better than recycling. It requires less energy and labour to pass an item of clothing onto a new user than it does to break that item of clothing down into constituent parts.
-      </p>
-      <p>
-        Donation does not need to be formal. We can give and receive clothes between family and friends. Many charity shops will also accept items of clothing, which they will sell. Further options include reselling your own clothes. Most charity shops will recycle clothes that they cannot sell, but it is worth asking about what they do with these clothes, as some may instead send them to landfill.
-      </p>
-
+      <article>
+        <p>
+          Reuse is better than recycling. It requires less energy and labour to pass an item of clothing onto a new user than it does to break that item of clothing down into constituent parts.
+        </p>
+        <p>
+          Donation does not need to be formal. We can give and receive clothes between family and friends. Many charity shops will also accept items of clothing, which they will sell. Further options include reselling your own clothes. Most charity shops will recycle clothes that they cannot sell, but it is worth asking about what they do with these clothes, as some may instead send them to landfill.
+        </p>
+      </article>
       <p>
         Find your nearest clothing donation bank to donate your unwanted
         clothes.
