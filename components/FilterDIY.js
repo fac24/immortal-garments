@@ -1,4 +1,4 @@
-export default function SearchDIY(props) {
+export default function FilterDIY(props) {
   const onChange = (event) => {
     props.setUserInput(event.target.value);
   };

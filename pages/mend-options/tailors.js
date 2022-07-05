@@ -40,6 +40,7 @@ export default function Tailors({
         setListCount={setListCount}
       />
       <UpdateCount
+        // Component with a button to let users view more list items
         data={data}
         listCount={listCount}
         setListCount={setListCount}
