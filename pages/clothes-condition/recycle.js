@@ -17,6 +17,8 @@ export default function Recycle({
   const [data, setData] = useState(null);
   const [userInput, setUserInput] = useState("");
   const [error, setError] = useState([]);
+  const [unit, setUnit] = useState("miles");
+  const [km, setKm] = useState(false);
 
   const onChange = (event) => setUserInput(event.target.value);
 
@@ -39,6 +41,18 @@ export default function Recycle({
     setUserPosition([newdata.latitude, newdata.longitude]);
   }
 
+  const handleToggle = () => {
+    if (unit === "km") {
+      setUnit("miles");
+      setKm(false);
+    } else {
+      setUnit("km");
+      setKm(true);
+    }
+  };
+
+  const getKm = (miles) => Number(miles * 1.6).toFixed(2);
+
   return (
     <>
       <Breadcrumb></Breadcrumb>
@@ -50,15 +64,26 @@ export default function Recycle({
         handleSearch={handleSearch}
         labelText={"Enter your postcode..."}
       />
+      {data ? (
+        <button
+          className="font-medium hover:underline decoration-coral underline-offset-4"
+          onClick={handleToggle}
+        >
+          miles/km
+        </button>
+      ) : null}
       <ul>
         {data
           ? data.map((item, index) => {
               if (index < listCount)
                 return (
                   <li key={item.id}>
-                    {item.name} <br />
-                    {item.address} <br />
-                    {item.distance} miles
+                    <p> {item.name} </p>
+                    <p> {item.address}</p>
+                    <p>
+                      {km ? getKm(item.distance) : item.distance}{" "}
+                      <span>{unit}</span>
+                    </p>
                     <br />
                   </li>
                 );

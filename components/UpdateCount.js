@@ -4,6 +4,13 @@ export default function updateCount({ data, listCount, setListCount }) {
   };
 
   if (data && listCount < 19) {
-    return <button onClick={updateCount}>Show more</button>;
+    return (
+      <button
+        className="font-medium hover:underline decoration-coral underline-offset-4"
+        onClick={updateCount}
+      >
+        Show more
+      </button>
+    );
   } else return null;
 }
