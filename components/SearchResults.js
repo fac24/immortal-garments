@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function SearchResults({ data, error, listCount }) {
+export default function SearchResults({ data, error, listCount, tailors }) {
   const [unit, setUnit] = useState("miles");
   const [km, setKm] = useState(false);
 
@@ -52,7 +52,10 @@ export default function SearchResults({ data, error, listCount }) {
                   <section>
                     <p>
                       {place.name}{" "}
-                      {place.price ? <span>({place.price})</span> : null}
+                      {/* only show the price if it is the tailors page and the api has a price for the place */}
+                      {tailors && place.price ? (
+                        <span>({place.price})</span>
+                      ) : null}
                     </p>
                     <p>
                       {place.location.address1}, {place.location.city},{" "}
@@ -60,6 +63,7 @@ export default function SearchResults({ data, error, listCount }) {
                     </p>
                     <p>{place.phone}</p>
                     <p>
+                      {/* the km state changes on click of a button, this will toggle the distance and unit depending on that action */}
                       {km ? getKm(place.distance) : getMiles(place.distance)}{" "}
                       <span>{unit}</span>
                     </p>

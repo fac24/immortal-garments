@@ -16,6 +16,7 @@ export default function Tailors({
 }) {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
+
   return (
     <>
       <Breadcrumb />
@@ -38,6 +39,7 @@ export default function Tailors({
         error={error}
         listCount={listCount}
         setListCount={setListCount}
+        tailors={true}
       />
       <UpdateCount
         // Component with a button to let users view more list items
