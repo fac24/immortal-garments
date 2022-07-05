@@ -4,13 +4,13 @@ export default function SearchAPI({
   searchCategory,
   setTailorsData,
   setError,
+  // userPosition,
+  setUserPosition,
 }) {
   const [postcode, setPostcode] = useState("");
-
   async function fetchData(x) {
     const result = await fetch(`../api/${searchCategory}?input=${x}`);
     const data = await result.json();
-
     // Error handling incase of a failed fetch
     if (data.error) {
       setTailorsData(null);
@@ -18,6 +18,7 @@ export default function SearchAPI({
     } else {
       setError(null);
       setTailorsData(data);
+      setUserPosition([data.region.center.latitude, data.region.center.longitude]);
     }
   }
 
@@ -47,3 +48,4 @@ export default function SearchAPI({
     </form>
   );
 }
+
