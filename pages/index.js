@@ -4,10 +4,16 @@ import Link from "next/link";
 import React, { useState } from "react";
 import donateclothes from "../public/images/donateclothes.png";
 import repair from "../public/images/repair.png";
+import ProgressBar from "../components/ProgressBar";
 
 export default function Home() {
   return (
     <>
+      <section>
+        <div>
+          <ProgressBar completed={0} aria-valuenow={0} />
+        </div>
+      </section>
       <h1 className="text-2xl pb-4">Immortal Garments</h1>
       <div className="flex flex-col flex-wrap gap-3">
         <section>
