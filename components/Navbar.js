@@ -75,7 +75,6 @@ export default function Navbar() {
         items-start 
         justify-between 
         pt-6 
-        font-headline
         text-3xl
         font-bold
         
