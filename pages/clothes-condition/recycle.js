@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Breadcrumb from "../../components/Breadcrumb";
 import dynamic from "next/dynamic";
 import Search from "../../components/SearchRecycle";
+import ProgressBar from "../../components/ProgressBar";
 
 const LondonMap = dynamic(() => import("../../components/Map"), { ssr: false });
 
@@ -11,6 +12,16 @@ export default function Recycle() {
   const [error, setError] = useState(null);
   const [listCount, setListCount] = useState(7);
   const [userPosition, setUserPosition] = useState(null);
+  const [progress, setProgress] = useState(75);
+
+  useEffect(() => {
+    if (data) {
+      setProgress(100);
+    } else {
+      setProgress(75);
+    }
+  }, [data]);
+
   const onChange = (event) => setUserInput(event.target.value);
 
   async function handleSearch() {
@@ -21,7 +32,7 @@ export default function Recycle() {
     if (!result.ok) {
       setData(null);
       setError(
-        `Oops, looks like we don't have any information for this postcode, yet. Try the postcode n195sh.`
+        `Oops, looks like we don't have any information for this postcode, yet.`
       );
       return;
     }
@@ -46,6 +57,12 @@ export default function Recycle() {
   return (
     <>
       <Breadcrumb></Breadcrumb>
+      <section>
+        <div>
+          <ProgressBar completed={progress} aria-valuenow={progress} />
+        </div>
+      </section>
+
       <h2 className="text-xl py-3">Recycle</h2>
       <p>Find your nearest textile recycling point.</p>
       <Search
