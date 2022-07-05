@@ -50,8 +50,8 @@ export default function Navbar() {
            peer-checked:scale-0 peer-checked:transition-all"
           />
           <div
-            className="m-0 h-[0.35rem] w-full rounded bg-coral transition-all peer-checked:absolute  peer-checked:top-[50%] 
-          peer-checked:rotate-45 peer-checked:rounded peer-checked:transition-all peer-checked:bg-darkGreen"
+            className="m-0 h-[0.35rem] w-[50%] rounded bg-coral transition-all peer-checked:absolute  peer-checked:top-[50%] 
+          peer-checked:rotate-45 peer-checked:rounded peer-checked:transition-all peer-checked:bg-darkGreen peer-checked:w-full"
           />
           <div
             className="m-0 h-[0.35rem] w-full rounded-t-md bg-coral transition-all  
