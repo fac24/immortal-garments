@@ -22,7 +22,7 @@ export default function SearchPostcode(props) {
           onClick={props.handleSearch}
           className="bg-darkGreen hover:bg-[#51ae68] text-gray-900 font-semibold py-2 px-4 border border-gray-400 rounded shadow flex-auto"
         >
-          Submit
+          Search
         </button>
       </form>
     </div>
