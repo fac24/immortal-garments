@@ -28,8 +28,8 @@ export default function Map({ data, listCount, userPosition }) {
     }
 
     //creates a green icon that overrides the default blue for markers that don't represent the user
-    const greenIcon = new L.Icon({
-        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+    const violetIcon = new L.Icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-violet.png',
         shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
         iconSize: [25, 41],
         iconAnchor: [12, 41],
@@ -60,7 +60,7 @@ export default function Map({ data, listCount, userPosition }) {
                     <Marker
                         key={item.id}
                         position={externalLocation}
-                        icon={greenIcon}
+                        icon={violetIcon}
                     >
                         <Popup>
                             Name: {item.name}
