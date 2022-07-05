@@ -10,7 +10,7 @@ export default function Navbar() {
   return (
     <>
       <header
-        className="relative mx-auto mt-5 flex max-w-[25.125rem] justify-between px-[clamp(0.75rem,3.9630rem+-14.8148vw,0rem)] sm:max-w-[402px] md:mt-8 md:max-w-[800px]
+        className="relative mx-auto my-5 flex justify-between px-[clamp(0.75rem,3.9630rem+-14.8148vw,0rem)] md:max-w-[800px] 
       xl:max-w-[1200px] xl:px-[clamp(1.5rem,4.1667rem+-5.5556vw,0rem)] "
       >
         {/* logo */}
@@ -28,12 +28,12 @@ export default function Navbar() {
        xl:text-3xl"
             aria-label=""
           >
-            LOGO
+            <img src="../public/images/logo.png" alt="our logo" />
           </a>
         </Link>
 
         {/* burger logic */}
-        <div className="absolute top-0 right-3 z-50 md:hidden ">
+        <div className="absolute top-0 right-5 z-50 md:hidden ">
           <label
             htmlFor="checkbox"
             className="relative flex h-[1.65rem] w-[2rem] flex-col justify-between  "
@@ -69,16 +69,15 @@ export default function Navbar() {
         top-[120%] 
         z-50 
         flex 
-        h-[400px] 
+        h-[300px] 
         w-full 
         origin-top
         flex-col 
-        items-start 
+        items-center 
         justify-between 
         pt-6 
         text-2xl
     
-
         md:static 
         md:left-[unset] 
         md:top-[unset]  
