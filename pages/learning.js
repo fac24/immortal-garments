@@ -11,7 +11,7 @@ function BarChart() {
     const ref = useD3(
         (svg) => {
             const height = 500;
-            const width = 500;
+            const width = 1300;
             const margin = { top: 20, right: 30, bottom: 30, left: 40 };
 
             const x = d3
@@ -26,16 +26,26 @@ function BarChart() {
                 .rangeRound([height - margin.bottom, margin.top]);
 
             const xAxis = (g) =>
-                g.attr("transform", `translate(0,${height - margin.bottom})`).call(
-                    d3
-                        .axisBottom(x)
-                        .tickValues(
-                            d3
-                                .ticks(...d3.extent(x.domain()), width / 40)
-                                .filter((v) => x(v) !== undefined)
-                        )
-                        .tickSizeOuter(0)
-                );
+                g
+                    // .attr("transform", `translate(0,${height - margin.bottom})`).call(
+                    //     d3
+                    //         .axisBottom(x)
+                    //         .tickValues(
+                    //             d3
+                    //                 .ticks(...d3.extent(x.domain()), width / 40)
+                    //                 .filter((v) => x(v) !== undefined)
+                    //         )
+                    //         .tickSizeOuter(0)
+                    .attr("transform", `translate(0,${height - margin.bottom})`)
+                    .call(d3.axisBottom(x).ticks(width / 80, ","))
+                    .call(g => g.select(".domain").remove())
+                    .call(g => g.append("text")
+                        .attr("x", width)
+                        .attr("y", margin.bottom - 4)
+                        .attr("fill", "currentColor")
+                        .attr("text-anchor", "end")
+                        .text("Year →"))
+            // );
 
             const y1Axis = (g) =>
                 g
@@ -45,29 +55,80 @@ function BarChart() {
                     .call((g) => g.select(".domain").remove())
                     .call((g) =>
                         g
-                            .append("text")
-                            .attr("x", -margin.left)
-                            .attr("y", 10)
-                            .attr("fill", "currentColor")
-                            .attr("text-anchor", "start")
-                            .text(data.y1)
+                            .attr("transform", `translate(${margin.left},0)`)
+                            .call(d3.axisLeft(y1))
+                            .call(g => g.select(".domain").remove())
+                            .call(g => g.append("text")
+                                .attr("x", -margin.left)
+                                .attr("y", 10)
+                                .attr("fill", "currentColor")
+                                .attr("text-anchor", "start")
+                                .text("↑ C02 emissions"))
+                        // .append("text")
+                        // .attr("x", -margin.left)
+                        // .attr("y", 10)
+                        // .attr("fill", "currentColor")
+                        // .attr("text-anchor", "start")
+                        // .text(data.y1)
                     );
+            // yAxis = g => g
+            const tooltip = d3.select("body")
+                .append("div")
+                .style("position", "absolute")
+                .style("z-index", "10")
+                .style("visibility", "hidden")
+                .style("background", "#000")
+                .text("a simple tooltip");
+
+            d3.select("body")
+                .selectAll("div")
+                .data(data)
+                .enter().append("div")
+                .style("width", function (d) { return x(d) + "50" + "px"; })
+                .text(function (d) { return d; })
+                .on("mouseover", function (d) { tooltip.text(d); return tooltip.style("visibility", "visible"); })
+                .on("mousemove", function () { return tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px"); })
+                .on("mouseout", function () { return tooltip.style("visibility", "hidden"); });
 
             svg.select(".x-axis").call(xAxis);
             svg.select(".y-axis").call(y1Axis);
 
-            svg
-                .select(".plot-area")
-                .attr("fill", "steelblue")
-                .selectAll(".bar")
-                .data(data)
-                .join("rect")
-                .attr("class", "bar")
-                .attr("x", (d) => x(d.year))
-                .attr("width", x.bandwidth())
-                .attr("y", (d) => y1(d.emissions))
-                .attr("height", (d) => y1(0) - y1(d.emissions));
+            // svg
+            //     .select(".plot-area")
+            //     .attr("fill", "steelblue")
+            //     .selectAll(".bar")
+            //     .data(data)
+            //     .join("rect")
+            //     .attr("class", "bar")
+            //     .attr("x", (d) => x(d.year))
+            //     .attr("width", x.bandwidth())
+            //     .attr("y", (d) => y1(d.emissions))
+            //     .attr("height", (d) => y1(0) - y1(d.emissions));
+            svg.append("path")
+                .datum(data)
+                .attr("fill", "none")
+                .attr("stroke", "steelblue")
+                .attr("stroke-width", 1.5)
+                .attr("d", d3.line()
+                    .x(function (d) { return x(d.year) })
+                    .y(function (d) { return y1(d.emissions) })
+                )
+            // svg.append("text")
+            //     .attr("class", "x label")
+            //     .attr("text-anchor", "end")
+            //     .attr("x", width)
+            //     .attr("y", height - 6)
+            //     .text("year");
+
+            // svg.append("text")
+            //     .attr("class", "y label")
+            //     .attr("text-anchor", "end")
+            //     .attr("y", 6)
+            //     // .attr("dy", "1em")
+            //     .attr("transform", "rotate(-90)")
+            //     .text("C02 emissions");
         },
+
         [data.length]
     );
 
