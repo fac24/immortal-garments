@@ -3,8 +3,17 @@ import Breadcrumb from "../../components/Breadcrumb";
 import SearchAPI from "../../components/SearchAPI";
 import SearchResults from "../../components/SearchResults";
 import ProgressBar from "../../components/ProgressBar";
+import dynamic from "next/dynamic";
 
-export default function Donate() {
+//see note on recycle.js
+const LondonMap = dynamic(() => import("../../components/Map"), { ssr: false });
+
+export default function Donate({
+  userPosition,
+  setUserPosition,
+  listCount,
+  setListCount,
+}) {
   const [tailorsData, setTailorsData] = useState(null);
   const [progress, setProgress] = useState(75);
   const [error, setError] = useState(null);
@@ -39,8 +48,19 @@ export default function Donate() {
         searchCategory="donate"
         setTailorsData={setTailorsData}
         setError={setError}
+        userPosition={userPosition}
+        setUserPosition={setUserPosition}
       />
       <SearchResults tailorsData={tailorsData} error={error} />
+      {tailorsData ? (
+        <LondonMap
+          data={tailorsData.businesses}
+          userPosition={userPosition}
+          listCount={listCount}
+        ></LondonMap>
+      ) : (
+        ""
+      )}
     </>
   );
 }

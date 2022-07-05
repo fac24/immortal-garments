@@ -4,9 +4,16 @@ import dynamic from "next/dynamic";
 import Search from "../../components/SearchRecycle";
 import ProgressBar from "../../components/ProgressBar";
 
+//this was needed to get the full map to load, rather than just a couple of squares
+//I don't fully understand how it's working, but setting server-side rendering to false means that the map is dynamically loaded on the client side
 const LondonMap = dynamic(() => import("../../components/Map"), { ssr: false });
 
-export default function Recycle() {
+export default function Recycle({
+  userPosition,
+  setUserPosition,
+  listCount,
+  setListCount,
+}) {
   const [data, setData] = useState(null);
   const [userInput, setUserInput] = useState("");
   const [error, setError] = useState(null);
@@ -40,18 +47,7 @@ export default function Recycle() {
     setError(null);
     const newdata = await result.json();
     setData(newdata.items);
-
-    const postcodeResult = await fetch(
-      `https://api.postcodes.io/postcodes/${userInput}`
-    );
-    if (!result.ok) {
-      setUserPosition(null);
-      setError(`Oops, something went wrong: ${postcodeResult.status}.`);
-      return;
-    }
-    const postObject = await postcodeResult.json();
-    setUserPosition(postObject);
-    //this seems to be working now but failed a couple times, which makes me wonder if there might be a race condition going on
+    setUserPosition([newdata.latitude, newdata.longitude]);
   }
 
   return (
@@ -76,8 +72,6 @@ export default function Recycle() {
         {data
           ? data.map((item, index) => {
               if (index < listCount)
-                //['Salvation Army', 'Bernardos' ]
-                //if CharityObject does includes item.name then:
                 return (
                   <li key={item.id}>
                     {item.name} <br />
