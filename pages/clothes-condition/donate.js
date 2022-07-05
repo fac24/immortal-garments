@@ -15,14 +15,14 @@ export default function Donate({
   setListCount,
 }) {
   const [tailorsData, setTailorsData] = useState(null);
-  const [progress, setProgress] = useState(75);
+  const [progress, setProgress] = useState(50);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     if (tailorsData) {
       setProgress(100);
     } else {
-      setProgress(75);
+      setProgress(50);
     }
   }, [tailorsData]);
 

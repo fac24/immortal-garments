@@ -17,15 +17,13 @@ export default function Recycle({
   const [data, setData] = useState(null);
   const [userInput, setUserInput] = useState("");
   const [error, setError] = useState(null);
-  const [listCount, setListCount] = useState(7);
-  const [userPosition, setUserPosition] = useState(null);
-  const [progress, setProgress] = useState(75);
+  const [progress, setProgress] = useState(50);
 
   useEffect(() => {
     if (data) {
       setProgress(100);
     } else {
-      setProgress(75);
+      setProgress(50);
     }
   }, [data]);
 
