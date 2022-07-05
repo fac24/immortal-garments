@@ -1,5 +1,6 @@
 import Image from "next/image";
 import valpakLogo from "../public/images/valpak_logo.jpg";
+import yelpLogo from "../public/images/yelp_logo.png";
 import Link from "next/link";
 
 export default function Footer() {
@@ -58,12 +59,19 @@ export default function Footer() {
       </div>
 
       <div>
-        <p className="text-xl py-1 font-semibold">Data Source</p>
+        <p className="text-xl py-1 font-semibold">Data Sources</p>
         <Image
           src={valpakLogo}
           alt={"Valpak logo and text that says a Reconomy Group company"}
-          width={270}
-          height={100}
+          width={216}
+          height={80}
+          className=""
+        ></Image>
+        <Image
+          src={yelpLogo}
+          alt={"Yelp logo"}
+          width={216}
+          height={80}
           className=""
         ></Image>
       </div>
