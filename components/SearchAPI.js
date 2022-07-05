@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 export default function SearchAPI({
   searchCategory,
-  setTailorsData,
+  setData,
   setError,
   // userPosition,
   setUserPosition,
@@ -13,11 +13,11 @@ export default function SearchAPI({
     const data = await result.json();
     // Error handling incase of a failed fetch
     if (data.error) {
-      setTailorsData(null);
+      setData(null);
       setError(data.error.description);
     } else {
       setError(null);
-      setTailorsData(data);
+      setData(data);
       setUserPosition([
         data.region.center.latitude,
         data.region.center.longitude,

@@ -1,22 +1,17 @@
 export default function SearchResults({
-  tailorsData,
+  data,
   error,
-  tailors,
   listCount,
   setListCount,
 }) {
   // The API gives us distance in meters, getMiles converts it to miles and trims it to 2 decimal places
   const getMiles = (meters) => Number(meters * 0.000621371192).toFixed(2);
 
-  // const updateCount = () => {
-  //   setListCount((prev) => prev + 5);
-  // };
-
   return (
     <div>
       {error ? error : ""}
-      {tailorsData
-        ? tailorsData.businesses.map((place, index) => {
+      {data
+        ? data.businesses.map((place, index) => {
             if (index < listCount) {
               return (
                 <div key={place.id} className="flex m-10">
@@ -40,7 +35,7 @@ export default function SearchResults({
                     </p>
                     <p>{place.phone}</p>
                     <p>{getMiles(place.distance)} miles</p>
-                    {tailors ? <p>{place.price}</p> : null}
+                    {data ? <p>{place.price}</p> : null}
                   </section>
                 </div>
               );
@@ -50,9 +45,3 @@ export default function SearchResults({
     </div>
   );
 }
-
-// {tailorsData && listCount < 20 ? (
-//   <button onClick={updateCount}>Show more</button>
-//  ) : (
-//    ""
-//  )}

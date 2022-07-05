@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Breadcrumb from "../../components/Breadcrumb";
 import SearchAPI from "../../components/SearchAPI";
 import SearchResults from "../../components/SearchResults";
-
+import UpdateCount from "../../components/UpdateCount";
 import dynamic from "next/dynamic";
 
 //see note on recycle.js
@@ -14,7 +14,7 @@ export default function Tailors({
   listCount,
   setListCount,
 }) {
-  const [tailorsData, setTailorsData] = useState(null);
+  const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   return (
     <>
@@ -27,21 +27,26 @@ export default function Tailors({
       </p>
       <SearchAPI
         searchCategory="tailors"
-        setTailorsData={setTailorsData}
+        setData={setData}
         setError={setError}
         tailors="true"
         userPosition={userPosition}
         setUserPosition={setUserPosition}
       />
       <SearchResults
-        tailorsData={tailorsData}
+        data={data}
         error={error}
         listCount={listCount}
         setListCount={setListCount}
       />
-      {tailorsData ? (
+      <UpdateCount
+        data={data}
+        listCount={listCount}
+        setListCount={setListCount}
+      />
+      {data ? (
         <LondonMap
-          data={tailorsData.businesses}
+          data={data.businesses}
           userPosition={userPosition}
           listCount={listCount}
         ></LondonMap>
