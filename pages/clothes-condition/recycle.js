@@ -37,6 +37,19 @@ export default function Recycle({ userPosition, setUserPosition, listCount, setL
     <>
       <Breadcrumb></Breadcrumb>
       <h2 className="text-xl py-3">Recycle</h2>
+      <article>
+        <p>Textiles are almost always recyclable, yet they make up a significant portion of landfill waste, where it will take a long time to break down, especially with synthetic textiles. </p>
+
+        <p><a href="London Recycles">London Recycles</a> summarises what happens to clothing items in recycling: </p>
+        <ul>
+          <li>natural textiles are sorted by colour and material</li>
+          <li>textiles are broken down, cleaned and respun where appropriate</li>
+          <li>some textiles are used to make filling material for padding and insulation</li>
+          <li>synthetic textiles are broken down then melted</li>
+          <li>the melted textiles can then be used to create fibres which can then be used to make new fabrics</li>
+        </ul>
+        <p>In this way, your clothes can live on. However, it still requires a lot of energy to break down and remake clothing items. If you think your clothes are still useable, but you don’t want to use them, consider donating them.</p>
+      </article>
       <p>Find your nearest textile recycling point.</p>
       <Search
         onChange={onChange}
