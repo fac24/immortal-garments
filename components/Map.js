@@ -10,7 +10,7 @@ import 'leaflet-defaulticon-compatibility';
 import { useRouter } from "next/router";
 
 export default function Map({ data, listCount, userPosition }) {
-
+    console.log(data);
     const router = useRouter();
 
     //initialises user position at Big Ben but updates when a postcode is searched
@@ -19,6 +19,7 @@ export default function Map({ data, listCount, userPosition }) {
         position = [userPosition[0], userPosition[1]];
     }
     let externalLocation = [];
+    let externalAddress;
 
     //this function recentres the map in response to a new user search
     function ResetView({ coords }) {
@@ -53,8 +54,11 @@ export default function Map({ data, listCount, userPosition }) {
                 //this is needed because the yelp (tailors, donate) and valpak (recycle) APIs return the coordinates at different nesting levels 
                 if (router.pathname.includes("/recycle")) {
                     externalLocation = [item.latitude, item.longitude]
+                    externalAddress = item.address;
+
                 } else {
                     externalLocation = [item.coordinates.latitude, item.coordinates.longitude]
+                    externalAddress = `${item.location.address1}${item.location.address2 ? `, ${item.location.address2}` : ""}${item.location.zip_code ? `, ${item.location.zip_code}` : ""}`
                 }
                 if (index < listCount) return (
                     <Marker
@@ -65,7 +69,7 @@ export default function Map({ data, listCount, userPosition }) {
                         <Popup>
                             Name: {item.name}
                             <br></br>
-                            Address: {item.address}
+                            Address: {externalAddress}
                         </Popup>
                     </Marker>)
             }) : ""}
