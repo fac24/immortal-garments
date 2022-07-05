@@ -3,20 +3,17 @@ import Breadcrumb from "../../components/Breadcrumb";
 import SearchAPI from "../../components/SearchAPI";
 import SearchResults from "../../components/SearchResults";
 import ProgressBar from "../../components/ProgressBar";
+import UpdateCount from "../../components/UpdateCount";
 import dynamic from "next/dynamic";
 
 //see note on recycle.js
 const LondonMap = dynamic(() => import("../../components/Map"), { ssr: false });
 
-export default function Donate({
-  userPosition,
-  setUserPosition,
-  listCount,
-  setListCount,
-}) {
-  const [tailorsData, setTailorsData] = useState(null);
+export default function Donate({ userPosition, setUserPosition }) {
   const [progress, setProgress] = useState(50);
+  const [data, setData] = useState(null);
   const [error, setError] = useState(null);
+  const [listCount, setListCount] = useState(7);
 
   useEffect(() => {
     if (tailorsData) {
@@ -46,15 +43,25 @@ export default function Donate({
       </p>
       <SearchAPI
         searchCategory="donate"
-        setTailorsData={setTailorsData}
+        setData={setData}
         setError={setError}
         userPosition={userPosition}
         setUserPosition={setUserPosition}
       />
-      <SearchResults tailorsData={tailorsData} error={error} />
-      {tailorsData ? (
+      <SearchResults
+        data={data}
+        error={error}
+        listCount={listCount}
+        setListCount={setListCount}
+      />
+      <UpdateCount
+        data={data}
+        listCount={listCount}
+        setListCount={setListCount}
+      />
+      {data ? (
         <LondonMap
-          data={tailorsData.businesses}
+          data={data.businesses}
           userPosition={userPosition}
           listCount={listCount}
         ></LondonMap>

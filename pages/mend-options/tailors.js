@@ -4,28 +4,26 @@ import SearchAPI from "../../components/SearchAPI";
 import SearchResults from "../../components/SearchResults";
 import ProgressBar from "../../components/ProgressBar";
 
+import UpdateCount from "../../components/UpdateCount";
 import dynamic from "next/dynamic";
 
 //see note on recycle.js
 const LondonMap = dynamic(() => import("../../components/Map"), { ssr: false });
 
-export default function Tailors({
-  userPosition,
-  setUserPosition,
-  listCount,
-  setListCount,
-}) {
-  const [tailorsData, setTailorsData] = useState(null);
+export default function Tailors({ userPosition, setUserPosition }) {
+  const [data, setData] = useState(null);
   const [error, setError] = useState(null);
+  const [listCount, setListCount] = useState(7);
+
   const [progress, setProgress] = useState(75);
 
   useEffect(() => {
-    if (tailorsData) {
+    if (data) {
       setProgress(100);
     } else {
       setProgress(75);
     }
-  }, [tailorsData]);
+  }, [data]);
 
   return (
     <>
@@ -44,16 +42,28 @@ export default function Tailors({
       </p>
       <SearchAPI
         searchCategory="tailors"
-        setTailorsData={setTailorsData}
+        setData={setData}
         setError={setError}
         tailors="true"
         userPosition={userPosition}
         setUserPosition={setUserPosition}
       />
-      <SearchResults tailorsData={tailorsData} error={error} />
-      {tailorsData ? (
+      <SearchResults
+        data={data}
+        error={error}
+        listCount={listCount}
+        setListCount={setListCount}
+        tailors={true}
+      />
+      <UpdateCount
+        // Component with a button to let users view more list items
+        data={data}
+        listCount={listCount}
+        setListCount={setListCount}
+      />
+      {data ? (
         <LondonMap
-          data={tailorsData.businesses}
+          data={data.businesses}
           userPosition={userPosition}
           listCount={listCount}
         ></LondonMap>

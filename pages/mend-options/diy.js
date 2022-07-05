@@ -3,8 +3,8 @@ import React, { useState, useEffect } from "react";
 import { resources } from "../../data/diy-resources";
 import Link from "next/link";
 import Image from "next/image";
-import Search from "../../components/SearchDIY";
 import ProgressBar from "../../components/ProgressBar";
+import Search from "../../components/FilterDIY";
 import article from "../../public/images/article.png";
 import video from "../../public/images/video.png";
 
@@ -52,10 +52,6 @@ export default function Diy() {
             item.title.toLowerCase().includes(userInput.toLowerCase())
           )
           .map((item) => {
-            // let color;
-            // item.type === "video"
-            //   ? (color = "piggyBankPink")
-            //   : (color = "lightGreen");
             return (
               <Link key={item.title} href={item.url}>
                 <a
