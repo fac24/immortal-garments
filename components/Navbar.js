@@ -77,8 +77,8 @@ export default function Navbar() {
         justify-between 
         pt-6 
         text-2xl
-        
-        
+    
+
         md:static 
         md:left-[unset] 
         md:top-[unset]  
@@ -91,6 +91,7 @@ export default function Navbar() {
         md:scale-100
         md:flex-row 
         md:pt-0
+        md:items-center
         
 
         xl:max-w-[clamp(28.875rem,-1.9028rem+64.1204vw,46.1875rem)] 
@@ -106,7 +107,7 @@ export default function Navbar() {
               className={` ${
                 router.pathname === "/"
                   ? "border-b-4 border-solid "
-                  : "hover:border-coral hover:border-b-4 hover:border-solid"
+                  : "hover:border-coral hover:border-b-4 hover:border-solidf"
               }`}
               aria-label=""
             >
@@ -161,7 +162,6 @@ export default function Navbar() {
               DIY
             </a>
           </Link>
-
           <Link
             href={{
               pathname: "/mend-options/tailors",
