@@ -1,28 +1,29 @@
-
-import styles from '../styles/Home.module.css'
-import Choicebutton from '../components/Choicebutton';
-import Link from 'next/link';
-import vercel from '../public/vercel.svg';
+import styles from "../styles/Home.module.css";
+import ChoiceButton from "../components/ChoiceButton";
+import Link from "next/link";
+import React, { useState } from "react";
+import donateclothes from "../public/images/donateclothes.png";
+import repair from "../public/images/repair.png";
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <>
+      <h1 className="text-2xl pb-4">Immortal Garments</h1>
+      <div className="flex flex-col flex-wrap gap-3">
+        <section>
+          <ChoiceButton
+            href="/clothes-condition"
+            src={donateclothes}
+            alt=""
+          ></ChoiceButton>
+          <Link href="/clothes-condition">Donate And Recycle</Link>
+        </section>
 
-      <main className={styles.main}>
         <section>
-          <h2>About</h2>
-          <p>Immortal Garments believes that your clothes can live forever. Are you looking to mend, recycle or donate your clothes?</p>
-          <p>Are you unsure which makes sense for you? We aim to make this process easier for you, with a set of resources, tools, and the ability to search for places where you can take your clothes.</p>
-          <p>Search via the navigation bar or use our decision-making tool below. </p>
+          <ChoiceButton href="/mend-options" src={repair}></ChoiceButton>
+          <Link href="/mend-options">Care And Repair</Link>
         </section>
-        <section>
-          {/* breadcrumb thing */}
-          <Choicebutton href='/get-rid-of' src={vercel} alt=''></Choicebutton>
-          <Link href='/get-rid-of'>Donate And Recycle</Link>
-          <Choicebutton href='/try-to-mend' src={vercel}></Choicebutton>
-          <Link href='/try-to-mend'>Care And Repair</Link>
-        </section>
-      </main>
-    </div>
-  )
+      </div>
+    </>
+  );
 }
