@@ -8,7 +8,12 @@ import dynamic from "next/dynamic";
 //see note on recycle.js
 const LondonMap = dynamic(() => import("../../components/Map"), { ssr: false });
 
-export default function Tailors({ userPosition, setUserPosition, listCount, setListCount }) {
+export default function Tailors({
+  userPosition,
+  setUserPosition,
+  listCount,
+  setListCount,
+}) {
   const [tailorsData, setTailorsData] = useState(null);
   const [error, setError] = useState(null);
   return (
@@ -28,7 +33,12 @@ export default function Tailors({ userPosition, setUserPosition, listCount, setL
         userPosition={userPosition}
         setUserPosition={setUserPosition}
       />
-      <SearchResults tailorsData={tailorsData} error={error} />
+      <SearchResults
+        tailorsData={tailorsData}
+        error={error}
+        listCount={listCount}
+        setListCount={setListCount}
+      />
       {tailorsData ? (
         <LondonMap
           data={tailorsData.businesses}
