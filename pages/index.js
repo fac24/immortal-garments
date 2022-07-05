@@ -11,11 +11,18 @@ export default function Home() {
     <>
       <section>
         <div>
+          <p className="text-base">Your immortal garments journey</p>
           <ProgressBar completed={0} aria-valuenow={0} />
         </div>
       </section>
-      <h1 className="text-2xl pb-4">Immortal Garments</h1>
-      <div className="flex flex-col flex-wrap gap-3">
+      {/* <h1 className="text-2xl pb-4">Immortal Garments</h1> */}
+      <p className="text-center text-lg my-5 ">
+        {" "}
+        An estimated £140m worth of clothing is sent to UK landfill each year.
+        What do you want to do with your unwanted garments? <br />
+        Here are some suggestions{" "}
+      </p>
+      <div className="flex gap-3 justify-center">
         <section>
           <ChoiceButton
             href="/clothes-condition"
