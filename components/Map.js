@@ -50,8 +50,8 @@ export default function Map({ data, listCount, userPosition }) {
                 </Popup>
             </Marker>
             {data ? data.map((item, index) => {
-                //uses router to check page and decides how to access coordinates from API 
-                //this is needed because the yelp (tailors, donate) and valpak (recycle) APIs return the coordinates at different nesting levels 
+                //uses router to check page and decides how to access coordinates and address from API 
+                //this is needed because the yelp (tailors, donate) and valpak (recycle) APIs return the coordinates and address at different nesting levels 
                 if (router.pathname.includes("/recycle")) {
                     externalLocation = [item.latitude, item.longitude]
                     externalAddress = item.address;
