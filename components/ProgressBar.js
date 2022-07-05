@@ -15,10 +15,13 @@ export default function ProgressBar({ completed }) {
   return (
     <div className="relative h-2 rounded-full bg-[#e0e0de]">
       <div className="h-full bg-lightGreen" style={fillerStyles}>
-        <span style={labelStyles}>
-          {/* role="progressbar" aria-valuenow=${completed}
-          aria-valuemin="0" aria-valuemax="100" */}
-        </span>
+        <span
+          style={labelStyles}
+          role="progressbar"
+          aria-valuenow={completed}
+          aria-valuemin="0"
+          aria-valuemax="100"
+        ></span>
       </div>
       <span
         className="absolute text-sm font-bold pt-1"
