@@ -65,7 +65,7 @@ export default function Recycle({ userPosition, setUserPosition }) {
           className="font-medium hover:underline decoration-coral underline-offset-4"
           onClick={handleToggle}
         >
-          miles/km
+          Switch to {km ? "miles" : "km"}
         </button>
       ) : null}
       <ul>
