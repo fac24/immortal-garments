@@ -28,7 +28,13 @@ export default function Navbar() {
        xl:text-3xl"
             aria-label=""
           >
-            <img src="../public/images/logo.png" alt="our logo" />
+            <img
+              src="../../images/logo.png"
+              alt="Immortal Garments"
+              className=" h-10 w-10
+              
+              "
+            />
           </a>
         </Link>
 
