@@ -51,7 +51,9 @@ export default function Diy() {
             //   : (color = "lightGreen");
             return (
               <Link key={item.title} href={item.url}>
-                <div
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={`bg-${
                     item.type === "video" ? "piggyBankPink" : "darkGreen"
                   } block p-6 max-w-sm rounded-lg border shadow-md cursor-pointer m-4`}
@@ -65,7 +67,7 @@ export default function Diy() {
                       layout="fill"
                     />
                   </div>
-                </div>
+                </a>
               </Link>
             );
           })}
