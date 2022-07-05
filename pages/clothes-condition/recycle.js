@@ -8,17 +8,13 @@ import UpdateCount from "../../components/UpdateCount";
 //I don't fully understand how it's working, but setting server-side rendering to false means that the map is dynamically loaded on the client side
 const LondonMap = dynamic(() => import("../../components/Map"), { ssr: false });
 
-export default function Recycle({
-  userPosition,
-  setUserPosition,
-  listCount,
-  setListCount,
-}) {
+export default function Recycle({ userPosition, setUserPosition }) {
   const [data, setData] = useState(null);
   const [userInput, setUserInput] = useState("");
   const [error, setError] = useState([]);
   const [unit, setUnit] = useState("miles");
   const [km, setKm] = useState(false);
+  const [listCount, setListCount] = useState(7);
 
   const onChange = (event) => setUserInput(event.target.value);
 
