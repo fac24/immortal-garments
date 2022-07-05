@@ -1,10 +1,11 @@
 export default async function handlerDonate(req, res) {
   // Grab the user input
   const postcode = req.query.input;
+  let limit = 7;
 
   const url = `https://api.yelp.com/v3/businesses/search?sort_by=distance&location=${postcode
     .replace(/ /g, "")
-    .toLowerCase()}&term=clothes+donation`;
+    .toLowerCase()}&term=clothes+donation&limit=${limit}`;
 
   // Set the headers to be able to access the Yelp API
   const options = {

@@ -1,45 +1,33 @@
 import React, { Component, useEffect, useRef } from 'react';
 import {
-    MapContainer, TileLayer, Marker, Popup, useMapEvent
+    MapContainer, TileLayer, Marker, Popup, useMapEvent, useMap
 } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css'; // Re-uses images from ~leaflet package
 import * as L from 'leaflet';
 import 'leaflet-defaulticon-compatibility';
-import donate from '../public/images/donateclothes.png';
+import { useRouter } from "next/router";
+
 export default function Map({ data, listCount, userPosition }) {
 
+    const router = useRouter();
 
+    //initialises user position at Big Ben but updates when a postcode is searched
     let position = [51.5007, -0.1246];
     if (userPosition !== null) {
-        position = [userPosition.result.latitude, userPosition.result.longitude];
+        position = [userPosition[0], userPosition[1]];
     }
-    console.log(position);
-    function SetViewOnClick() {
-        const map = useMapEvent('click', (e) => {
-            map.setView(position, map.getZoom(), {
-            })
-        })
-        return null
+    let externalLocation = [];
+
+    //this function recentres the map in response to a new user search
+    function ResetView({ coords }) {
+        const map = useMap();
+        map.setView([coords[0], coords[1]], map.getZoom());
+        return null;
     }
 
-    // console.log(userPosition);
-    // const [position, setPosition] = useState([51.5007, -0.1246])
-    // if (userPosition !== null) {
-    //     setPosition[userPosition.result.latitude, userPosition.result.longitude];
-    // }
-    // console.log(position);
-
-
-
-    // const map = useMapEvent();
-    // function useViewAutomatically() {
-    //     useEffect(() => {
-    //         map.setView(position, map.getZoom(), {
-    //         })
-    //     }, [position, map])
-    // }
+    //creates a green icon that overrides the default blue for markers that don't represent the user
     const greenIcon = new L.Icon({
         iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
         shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -49,7 +37,6 @@ export default function Map({ data, listCount, userPosition }) {
         shadowSize: [41, 41]
     });
 
-    // L.Icon.Default.imagePath = "/../public/images/marker-icon-2x.png"
     return (
         <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
             <TileLayer
@@ -62,12 +49,18 @@ export default function Map({ data, listCount, userPosition }) {
                 </Popup>
             </Marker>
             {data ? data.map((item, index) => {
+                //uses router to check page and decides how to access coordinates from API 
+                //this is needed because the yelp (tailors, donate) and valpak (recycle) APIs return the coordinates at different nesting levels 
+                if (router.pathname.includes("/recycle")) {
+                    externalLocation = [item.latitude, item.longitude]
+                } else {
+                    externalLocation = [item.coordinates.latitude, item.coordinates.longitude]
+                }
                 if (index < listCount) return (
                     <Marker
                         key={item.id}
-                        position={[item.latitude, item.longitude]}
+                        position={externalLocation}
                         icon={greenIcon}
-                    // style={{ filter: "hue-rotate(120deg)" }}
                     >
                         <Popup>
                             Name: {item.name}
@@ -76,8 +69,7 @@ export default function Map({ data, listCount, userPosition }) {
                         </Popup>
                     </Marker>)
             }) : ""}
-            <SetViewOnClick />
-            {/* <setViewAutomatically></setViewAutomatically> */}
+            <ResetView coords={position} />
         </MapContainer >
     )
 }
