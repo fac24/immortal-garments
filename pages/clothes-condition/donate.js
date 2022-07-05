@@ -16,12 +16,12 @@ export default function Donate({ userPosition, setUserPosition }) {
   const [listCount, setListCount] = useState(7);
 
   useEffect(() => {
-    if (tailorsData) {
+    if (data) {
       setProgress(100);
     } else {
       setProgress(50);
     }
-  }, [tailorsData]);
+  }, [data]);
 
   return (
     <>
