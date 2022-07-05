@@ -55,7 +55,7 @@ export default function Diy() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`bg-${
-                    item.type === "video" ? "darkGreen" : "piggyBankPink"
+                    item.type === "video" ? "darkGreen" : "pistachioGreen"
                   } block p-6 max-w-sm rounded-lg border shadow-md cursor-pointer m-4`}
                 >
                   <p className="diy-link">{item.title}</p>
