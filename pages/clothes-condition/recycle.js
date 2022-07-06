@@ -79,10 +79,10 @@ export default function Recycle({ userPosition, setUserPosition }) {
       />
       {data ? (
         <button
-          className="font-medium hover:underline decoration-coral underline-offset-4"
+          className="text-base bg-eggshellWhite hover:bg-lightGray text-gray-800 px-4 border border-gray-400 rounded shadow my-2"
           onClick={handleToggle}
         >
-          Switch to {km ? "miles" : "km"}
+          Switch distance to {km ? "miles" : "km"}
         </button>
       ) : null}
       <ul>
