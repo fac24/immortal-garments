@@ -2,6 +2,7 @@ import { render, screen, cleanup } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 import Recycle from "../pages/clothes-condition/recycle";
+import { getMiles, getKm } from "../components/SearchResults";
 
 //*********** Test mocks, helpers & resets **************//
 
@@ -27,7 +28,7 @@ global.fetch = jest.fn(() =>
   })
 );
 
-// Need to 'mock' the router plugin for when the breadcrumb component renders in the components
+// Need to 'mock' the router plugin for when the breadcrumb component renders in the components otherwise render(<ComponentName />) fails!
 jest.mock("next/router", () => ({
   useRouter() {
     return {
@@ -43,25 +44,37 @@ jest.mock("next/router", () => ({
 test("should render a prompt to the user", () => {
   render(<Recycle />);
   expect(
-    screen.getByText("Find your nearest textile recycle point.")
+    screen.getByText("Find your nearest textile recycling point.")
   ).toBeInTheDocument();
 });
 
-//*********** Tests still in progress **************//
-test("submit button should NOT change DOM if nothing typed", () => {
-  render(<Recycle />);
-  const input = screen.getByRole("searchbox");
-  const submitButon = screen.getByRole("button", { name: /submit/i });
-  //fireEvent.click(submitButon);
+//*********** Testing the unit conversion functions  --> PASSING **************//
+
+test("getMiles function returns correct integer", () => {
+  expect(getMiles(1234567)).toBe("767.12");
 });
 
-test("submit button should change DOM result/error", () => {
-  render(<Recycle />);
-  const input = screen.getByRole("searchbox");
-  //simulate input
-  const submitButon = screen.getByRole("button", { name: /submit/i });
-  //check stuff is on page
+test("getKm functions return correct integer", () => {
+  expect(getKm(12345.67)).toBe("12.35");
 });
+
+//*********** Testing ??? **************//
+
+//*********** Tests still in progress **************//
+// test("submit button should NOT change DOM if nothing typed", () => {
+//   render(<Recycle />);
+//   const input = screen.getByRole("searchbox");
+//   const submitButon = screen.getByRole("button", { name: /submit/i });
+//   //fireEvent.click(submitButon);
+// });
+
+// test("submit button should change DOM result/error", () => {
+//   render(<Recycle />);
+//   const input = screen.getByRole("searchbox");
+//   //simulate input
+//   const submitButon = screen.getByRole("button", { name: /submit/i });
+//   //check stuff is on page
+// });
 
 // Fetch tests
 // test('render name, distance and address after a fetch is made', async () => {
