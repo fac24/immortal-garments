@@ -3,8 +3,8 @@
 export default function SearchByUserLocation({ setData, setError, setUserInput }) {
 
     async function handleSearchFromLocation(pos) {
-        const crd = pos.coords;
 
+        const crd = pos.coords;
         let lat = crd.latitude;
         let lon = crd.longitude;
 
