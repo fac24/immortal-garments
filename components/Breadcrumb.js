@@ -7,25 +7,26 @@ const Breadcrumb = () => {
   const items = router.asPath.split("/");
 
   return (
-    <nav>
-      <ul>
-        <li>
+    <nav className="flex p-0" aria-label="Breadcrumb">
+      <ul className="inline-flex items-center space-x-1 shadow-lg">
+        <li className="text-base">
           <Link href="/">
-            <a>home</a>
+            <a>home /</a>
           </Link>
         </li>
         {items.map((item, index) => (
           <li key={index}>
-            {item.replaceAll("-", " ")}/
-            {/* <Link
-              href={{
-                pathname: `${item === items[1]}`
-                  ? `/${items[1]}`
-                  : `/${items[1]}/${item}`,
-              }}
-            >
-              <a></a>
-            </Link>{" "} */}
+            {item === items[1] ? (
+              <Link
+                href={{
+                  pathname: `/${items[1]}`,
+                }}
+              >
+                <a> {item.replaceAll("-", " ")} / </a>
+              </Link>
+            ) : (
+              <p>{item.replaceAll("-", " ")}</p>
+            )}
           </li>
         ))}
       </ul>
