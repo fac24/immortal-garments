@@ -10,7 +10,7 @@ export default function Navbar() {
   return (
     <>
       <header
-        className="relative mx-auto mt-5 flex max-w-[25.125rem] justify-between px-[clamp(0.75rem,3.9630rem+-14.8148vw,0rem)] sm:max-w-[402px] md:mt-8 md:max-w-[800px]
+        className="relative mx-auto mt-5 mb-14  flex justify-center px-[clamp(0.75rem,3.9630rem+-14.8148vw,0rem)] md:max-w-[800px] 
       xl:max-w-[1200px] xl:px-[clamp(1.5rem,4.1667rem+-5.5556vw,0rem)] "
       >
         {/* logo */}
@@ -20,20 +20,25 @@ export default function Navbar() {
           }}
         >
           <a
-            className="LOGO z-50 grid  w-[93px] 
+            className="LOGO z-50 grid
       place-items-center 
-       md:w-[110px]
-       xl:h-[clamp(3.125rem,-0.8750rem+8.3333vw,5.375rem)]
-       xl:w-[clamp(6.875rem,-1.1250rem+16.6667vw,11.375rem)]
-       xl:text-3xl"
+      absolute
+      left-5
+      "
             aria-label=""
           >
-            LOGO
+            <img
+              src="../../images/logo.png"
+              alt="Immortal Garments"
+              className=" h-12 w-12
+              
+              "
+            />
           </a>
         </Link>
 
         {/* burger logic */}
-        <div className="absolute top-0 right-3 z-50 md:hidden ">
+        <div className="absolute top-0 right-5 z-50 md:hidden ">
           <label
             htmlFor="checkbox"
             className="relative flex h-[1.65rem] w-[2rem] flex-col justify-between  "
@@ -69,16 +74,15 @@ export default function Navbar() {
         top-[120%] 
         z-50 
         flex 
-        h-[400px] 
+        h-[300px] 
         w-full 
         origin-top
         flex-col 
-        items-start 
+        items-center 
         justify-between 
         pt-6 
         text-2xl
     
-
         md:static 
         md:left-[unset] 
         md:top-[unset]  
@@ -91,10 +95,9 @@ export default function Navbar() {
         md:scale-100
         md:flex-row 
         md:pt-0
-        md:items-center
         
 
-        xl:max-w-[clamp(28.875rem,-1.9028rem+64.1204vw,46.1875rem)] 
+       
         
         ${checked ? "scale-100" : "scale-0"}`}
         >
