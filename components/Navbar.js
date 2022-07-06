@@ -38,7 +38,7 @@ export default function Navbar() {
         </Link>
 
         {/* burger logic */}
-        <div className="absolute top-0 right-5 z-50 md:hidden ">
+        <div className="absolute top-0 right-5 z-[100] md:hidden ">
           <label
             htmlFor="checkbox"
             className="relative flex h-[1.65rem] w-[2rem] flex-col justify-between  "
@@ -107,10 +107,8 @@ export default function Navbar() {
             }}
           >
             <a
-              className={` ${
-                router.pathname === "/"
-                  ? "border-b-4 border-solid "
-                  : "hover:border-coral hover:border-b-4 hover:border-solidf"
+              className={`decoration-coral underline-offset-4 ${
+                router.pathname === "/" ? "underline " : "hover:underline"
               }`}
               aria-label=""
             >
@@ -123,10 +121,10 @@ export default function Navbar() {
             }}
           >
             <a
-              className={` ${
+              className={` decoration-coral underline-offset-4 ${
                 router.pathname === "/clothes-condition/donate"
-                  ? "border-b-4 border-solid "
-                  : "hover:border-coral hover:border-b-4 hover:border-solid"
+                  ? "underline "
+                  : "hover:underline"
               }`}
               aria-label=""
             >
@@ -139,10 +137,10 @@ export default function Navbar() {
             }}
           >
             <a
-              className={` ${
+              className={`decoration-coral underline-offset-4 ${
                 router.pathname === "/clothes-condition/recycle"
-                  ? "border-b-4 border-solid "
-                  : "hover:border-coral hover:border-b-4 hover:border-solid"
+                  ? "underline "
+                  : "hover:underline"
               }`}
               aria-label=""
             >
@@ -155,10 +153,10 @@ export default function Navbar() {
             }}
           >
             <a
-              className={` ${
+              className={`decoration-coral underline-offset-4 ${
                 router.pathname === "/mend-options/diy"
-                  ? "border-b-4 border-solid "
-                  : "hover:border-coral hover:border-b-4 hover:border-solid"
+                  ? "underline "
+                  : "hover:underline"
               }`}
               aria-label=""
             >
@@ -171,10 +169,10 @@ export default function Navbar() {
             }}
           >
             <a
-              className={` ${
+              className={`decoration-coral underline-offset-4 ${
                 router.pathname === "/mend-options/tailors"
-                  ? "border-b-4 border-solid "
-                  : "hover:border-coral hover:border-b-4 hover:border-solid"
+                  ? "underline "
+                  : "hover:underline"
               }`}
               aria-label=""
             >
