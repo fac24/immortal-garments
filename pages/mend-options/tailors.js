@@ -15,13 +15,13 @@ export default function Tailors({ userPosition, setUserPosition }) {
   const [error, setError] = useState(null);
   const [listCount, setListCount] = useState(7);
 
-  const [progress, setProgress] = useState(75);
+  const [progress, setProgress] = useState(65);
 
   useEffect(() => {
     if (data) {
       setProgress(100);
     } else {
-      setProgress(75);
+      setProgress(65);
     }
   }, [data]);
 

@@ -17,13 +17,13 @@ export default function Recycle({ userPosition, setUserPosition }) {
   const [km, setKm] = useState(false);
   const [listCount, setListCount] = useState(7);
 
-  const [progress, setProgress] = useState(50);
+  const [progress, setProgress] = useState(65);
 
   useEffect(() => {
     if (data) {
       setProgress(100);
     } else {
-      setProgress(50);
+      setProgress(65);
     }
   }, [data]);
 

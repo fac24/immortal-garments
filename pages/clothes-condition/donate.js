@@ -10,7 +10,7 @@ import dynamic from "next/dynamic";
 const LondonMap = dynamic(() => import("../../components/Map"), { ssr: false });
 
 export default function Donate({ userPosition, setUserPosition }) {
-  const [progress, setProgress] = useState(50);
+  const [progress, setProgress] = useState(65);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [listCount, setListCount] = useState(7);
@@ -19,7 +19,7 @@ export default function Donate({ userPosition, setUserPosition }) {
     if (data) {
       setProgress(100);
     } else {
-      setProgress(50);
+      setProgress(65);
     }
   }, [data]);
 
