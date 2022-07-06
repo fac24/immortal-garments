@@ -2,8 +2,8 @@ import styles from "../styles/Home.module.css";
 import ChoiceButton from "../components/ChoiceButton";
 import Link from "next/link";
 import React, { useState } from "react";
-import donaterecycle from "../public/images/donaterecycle.svg";
-import carerepair from "../public/images/carerepair.svg";
+import donaterecycle from "../../public/images/donaterecycle.svg";
+import carerepair from "../../public/images/carerepair.svg";
 import ProgressBar from "../components/ProgressBar";
 
 export default function Home() {
