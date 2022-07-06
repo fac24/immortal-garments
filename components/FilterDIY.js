@@ -1,4 +1,4 @@
-export default function SearchDIY(props) {
+export default function FilterDIY(props) {
   const onChange = (event) => {
     props.setUserInput(event.target.value);
   };
@@ -14,12 +14,13 @@ export default function SearchDIY(props) {
         }}
         className="max-w-xs flex flex-col my-4 gap-y-3"
       >
-        <label name="search" className="text-gray-800">
+        <label name="search" htmlFor="search" className="text-gray-800">
           {props.labelText}
         </label>
         <input
           type="search"
           name="search"
+          id="search"
           onChange={onChange}
           value={props.userInput}
           className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline min-w-full"

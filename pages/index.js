@@ -14,13 +14,17 @@ export default function Home() {
           <ChoiceButton
             href="/clothes-condition"
             src={donaterecycle}
-            alt=""
+            alt="Cartoon of a pink t-shirt with a while heart in good contion half inside a yellow box"
           ></ChoiceButton>
           <Link href="/clothes-condition">Donate And Recycle</Link>
         </section>
 
         <section>
-          <ChoiceButton href="/mend-options" src={carerepair}></ChoiceButton>
+          <ChoiceButton
+            href="/mend-options"
+            src={carerepair}
+            alt="cartoon of a pair of jeans with a belt and a t-shirt with a smiley face, slighty worn condition"
+          ></ChoiceButton>
           <Link href="/mend-options">Care And Repair</Link>
         </section>
       </div>
