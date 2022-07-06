@@ -22,21 +22,24 @@ export default function SearchResults({ data, error, listCount, tailors }) {
   };
 
   return (
-    <div>
+    <div className="w-[22.5rem]">
       {error ? error : ""}
       {data ? (
         <button
-          className="font-medium hover:underline decoration-coral underline-offset-4"
+          className="text-base bg-eggshellWhite hover:bg-lightGray text-gray-800 px-4 border border-gray-400 rounded shadow mb-1"
           onClick={handleToggle}
         >
-          Switch to {km ? "miles" : "km"}
+          Switch distance to {km ? "miles" : "km"}
         </button>
       ) : null}
       {data
         ? data.businesses.map((place, index) => {
             if (index < listCount) {
               return (
-                <div key={place.id} className="flex m-10">
+                <div
+                  key={place.id}
+                  className="text-base flex pl-2 border-b py-2"
+                >
                   <section>
                     <img
                       src={
