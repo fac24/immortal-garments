@@ -13,7 +13,7 @@ export default function MendOptions() {
         <Breadcrumb />
         <section>
           <div>
-            <ProgressBar completed={75} aria-valuenow={75} />
+            <ProgressBar completed={50} aria-valuenow={50} />
           </div>
         </section>
 
