@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import Search from "../../components/SearchRecycle";
 import ProgressBar from "../../components/ProgressBar";
 import UpdateCount from "../../components/UpdateCount";
+import SearchByUserLocation from "../../components/SearchByUserLocation";
 
 //this was needed to get the full map to load, rather than just a couple of squares
 //I don't fully understand how it's working, but setting server-side rendering to false means that the map is dynamically loaded on the client side
@@ -16,6 +17,7 @@ export default function Recycle({ userPosition, setUserPosition }) {
   const [unit, setUnit] = useState("miles");
   const [km, setKm] = useState(false);
   const [listCount, setListCount] = useState(7);
+  const [userLocation, setUserLocation] = useState(null);
 
   const [progress, setProgress] = useState(65);
 
@@ -28,6 +30,12 @@ export default function Recycle({ userPosition, setUserPosition }) {
   }, [data]);
 
   const onChange = (event) => setUserInput(event.target.value);
+
+  useEffect(() => {
+    if (userInput !== "") {
+      handleSearch()
+    }
+  }, [userInput])
 
   async function handleSearch() {
     const result = await fetch(
@@ -58,6 +66,12 @@ export default function Recycle({ userPosition, setUserPosition }) {
     }
   };
 
+
+
+
+
+
+
   const getKm = (miles) => Number(miles * 1.6).toFixed(2);
 
   return (
@@ -77,30 +91,37 @@ export default function Recycle({ userPosition, setUserPosition }) {
         handleSearch={handleSearch}
         labelText={"Enter your postcode..."}
       />
-      {data ? (
-        <button
-          className="font-medium hover:underline decoration-coral underline-offset-4"
-          onClick={handleToggle}
-        >
-          Switch to {km ? "miles" : "km"}
-        </button>
-      ) : null}
+      <SearchByUserLocation
+        setUserInput={setUserInput}
+        setData={setData}
+        setError={setError}
+      />
+      {
+        data ? (
+          <button
+            className="font-medium hover:underline decoration-coral underline-offset-4"
+            onClick={handleToggle}
+          >
+            Switch to {km ? "miles" : "km"}
+          </button>
+        ) : null
+      }
       <ul>
         {data
           ? data.map((item, index) => {
-              if (index < listCount)
-                return (
-                  <li key={item.id}>
-                    <p> {item.name} </p>
-                    <p> {item.address}</p>
-                    <p>
-                      {km ? getKm(item.distance) : item.distance}{" "}
-                      <span>{unit}</span>
-                    </p>
-                    <br />
-                  </li>
-                );
-            })
+            if (index < listCount)
+              return (
+                <li key={item.id}>
+                  <p> {item.name} </p>
+                  <p> {item.address}</p>
+                  <p>
+                    {km ? getKm(item.distance) : item.distance}{" "}
+                    <span>{unit}</span>
+                  </p>
+                  <br />
+                </li>
+              );
+          })
           : ""}
       </ul>
       {error ? error : ""}
@@ -109,15 +130,17 @@ export default function Recycle({ userPosition, setUserPosition }) {
         listCount={listCount}
         setListCount={setListCount}
       />
-      {data ? (
-        <LondonMap
-          data={data}
-          listCount={listCount}
-          userPosition={userPosition}
-        ></LondonMap>
-      ) : (
-        ""
-      )}
+      {
+        data ? (
+          <LondonMap
+            data={data}
+            listCount={listCount}
+            userPosition={userPosition}
+          ></LondonMap>
+        ) : (
+          ""
+        )
+      }
     </>
   );
 }
