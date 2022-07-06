@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Breadcrumb from "../../components/Breadcrumb";
 import dynamic from "next/dynamic";
 import Search from "../../components/SearchRecycle";
+import ProgressBar from "../../components/ProgressBar";
 import UpdateCount from "../../components/UpdateCount";
 
 //this was needed to get the full map to load, rather than just a couple of squares
@@ -16,6 +17,16 @@ export default function Recycle({ userPosition, setUserPosition }) {
   const [km, setKm] = useState(false);
   const [listCount, setListCount] = useState(7);
 
+  const [progress, setProgress] = useState(65);
+
+  useEffect(() => {
+    if (data) {
+      setProgress(100);
+    } else {
+      setProgress(65);
+    }
+  }, [data]);
+
   const onChange = (event) => setUserInput(event.target.value);
 
   async function handleSearch() {
@@ -26,7 +37,7 @@ export default function Recycle({ userPosition, setUserPosition }) {
     if (!result.ok) {
       setData(null);
       setError(
-        `Oops, looks like we don't have any information for this postcode, yet. Try the postcode n195sh.`
+        `Oops, looks like we don't have any information for this postcode, yet.`
       );
       return;
     }
@@ -52,6 +63,12 @@ export default function Recycle({ userPosition, setUserPosition }) {
   return (
     <>
       <Breadcrumb></Breadcrumb>
+      <section>
+        <div>
+          <ProgressBar completed={progress} aria-valuenow={progress} />
+        </div>
+      </section>
+
       <h2 className="text-xl py-3">Recycle</h2>
       <p>Find your nearest textile recycling point.</p>
       <Search

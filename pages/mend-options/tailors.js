@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Breadcrumb from "../../components/Breadcrumb";
 import SearchAPI from "../../components/SearchAPI";
 import SearchResults from "../../components/SearchResults";
+import ProgressBar from "../../components/ProgressBar";
+
 import UpdateCount from "../../components/UpdateCount";
 import dynamic from "next/dynamic";
 
@@ -13,9 +15,25 @@ export default function Tailors({ userPosition, setUserPosition }) {
   const [error, setError] = useState(null);
   const [listCount, setListCount] = useState(7);
 
+  const [progress, setProgress] = useState(65);
+
+  useEffect(() => {
+    if (data) {
+      setProgress(100);
+    } else {
+      setProgress(65);
+    }
+  }, [data]);
+
   return (
     <>
       <Breadcrumb />
+      <section>
+        <div>
+          <ProgressBar completed={progress} aria-valuenow={progress} />
+        </div>
+      </section>
+
       <h2 className="text-xl py-3">Tailors</h2>
       <p>
         Find your nearest tailors, dry cleaners or seamstress for your clothes
