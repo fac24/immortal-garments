@@ -16,9 +16,7 @@ export default function Recycle({ userPosition, setUserPosition }) {
   const [unit, setUnit] = useState("miles");
   const [km, setKm] = useState(false);
   const [listCount, setListCount] = useState(7);
-<<<<<<< HEAD
   const [userLocation, setUserLocation] = useState(null);
-=======
 
   const [progress, setProgress] = useState(65);
 
@@ -30,7 +28,6 @@ export default function Recycle({ userPosition, setUserPosition }) {
     }
   }, [data]);
 
->>>>>>> main
   const onChange = (event) => setUserInput(event.target.value);
 
   useEffect(() => {
