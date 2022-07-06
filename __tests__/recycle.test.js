@@ -58,8 +58,6 @@ test("getKm functions return correct integer", () => {
   expect(getKm(12345.67)).toBe("12.35");
 });
 
-//*********** Testing ??? **************//
-
 //*********** Tests still in progress **************//
 // test("submit button should NOT change DOM if nothing typed", () => {
 //   render(<Recycle />);
