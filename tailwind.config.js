@@ -14,6 +14,7 @@ module.exports = {
       eggshellWhite: "#f3f3f3",
       platinum: "#E5E4E2",
       lightGray: "#D3D3D3",
+      white: "#fff",
     },
     extend: {},
   },
