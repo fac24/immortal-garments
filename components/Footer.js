@@ -5,9 +5,9 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <section className="grid grid-cols-3 gap-7 px-6 py-3 mt-4 bg-pistachioGreen">
-      <div>
-        <h2 className="text-xl py-1 font-semibold">About Us</h2>
+    <section className="flex text-sm  flex-wrap justify-around items-center  bg-pistachioGreen">
+      <div className="max-w-[300px] m-2">
+        <h2 className=" text-[16px] py-1 font-semibold">About Us</h2>
         <p>
           Immortal Garments believes that your clothes can live forever. Are you
           looking to mend, recycle or donate your clothes? Are you unsure which
@@ -17,8 +17,8 @@ export default function Footer() {
         </p>
       </div>
 
-      <div>
-        <h2 className="text-xl py-1 font-semibold">Useful Resources</h2>
+      <div className="max-w-[300px] m-2">
+        <h2 className="text-[16px] py-1 font-semibold">Useful Resources</h2>
         <p>(Open in new tab)</p>
 
         <ul>
@@ -58,8 +58,8 @@ export default function Footer() {
         </ul>
       </div>
 
-      <div>
-        <p className="text-xl py-1 font-semibold">Data Sources</p>
+      <div className="max-w-[300px] m-2">
+        <p className="text-[16px] py-1 font-semibold">Data Source</p>
         <Image
           src={valpakLogo}
           alt={"Valpak logo and text that says a Reconomy Group company"}
