@@ -15,7 +15,7 @@ export default function Recycle({ userPosition, setUserPosition }) {
   const [unit, setUnit] = useState("miles");
   const [km, setKm] = useState(false);
   const [listCount, setListCount] = useState(7);
-
+  const [userLocation, setUserLocation] = useState(null);
   const onChange = (event) => setUserInput(event.target.value);
 
   async function handleSearch() {
@@ -26,7 +26,7 @@ export default function Recycle({ userPosition, setUserPosition }) {
     if (!result.ok) {
       setData(null);
       setError(
-        `Oops, looks like we don't have any information for this postcode, yet. Try the postcode n195sh.`
+        `Oops, looks like we don't have any information for this postcode, yet.`
       );
       return;
     }
@@ -47,6 +47,50 @@ export default function Recycle({ userPosition, setUserPosition }) {
     }
   };
 
+
+
+  async function handleSearchFromLocation(pos) {
+    console.log(pos);
+    const crd = pos.coords;
+
+    console.log('Your current position is:');
+    console.log(`Latitude : ${crd.latitude}`);
+    console.log(`Longitude: ${crd.longitude}`);
+
+
+    let lat = crd.latitude;
+
+    let lon = crd.longitude;
+
+    // let lon = 0.629834723775309
+    // let lat = 51.7923246977375
+
+    const postcode = await fetch(`https://api.postcodes.io/postcodes?lon=${lon}&lat=${lat}`);
+    const postJson = await postcode.json();
+    let userPostcode = postJson.result[0].postcode;
+    await setUserInput(userPostcode);
+    await handleSearch();
+
+    if (!postcode.ok) {
+      setData(null);
+      setError(
+        `Oops, looks like we can't locate you. Enter a postcode in the search bar.`
+      );
+      return;
+    }
+  }
+
+  function geoError(err) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+  }
+
+  function locator() {
+    console.log('here');
+    navigator.geolocation.getCurrentPosition(handleSearchFromLocation, geoError);
+  }
+
+
+
   const getKm = (miles) => Number(miles * 1.6).toFixed(2);
 
   return (
@@ -60,30 +104,39 @@ export default function Recycle({ userPosition, setUserPosition }) {
         handleSearch={handleSearch}
         labelText={"Enter your postcode..."}
       />
-      {data ? (
-        <button
-          className="font-medium hover:underline decoration-coral underline-offset-4"
-          onClick={handleToggle}
-        >
-          Switch to {km ? "miles" : "km"}
-        </button>
-      ) : null}
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          // fetchData(postcode);
+        }}>
+        <button onClick={() => { locator() }}>Find Me</button>
+      </form>
+      {
+        data ? (
+          <button
+            className="font-medium hover:underline decoration-coral underline-offset-4"
+            onClick={handleToggle}
+          >
+            Switch to {km ? "miles" : "km"}
+          </button>
+        ) : null
+      }
       <ul>
         {data
           ? data.map((item, index) => {
-              if (index < listCount)
-                return (
-                  <li key={item.id}>
-                    <p> {item.name} </p>
-                    <p> {item.address}</p>
-                    <p>
-                      {km ? getKm(item.distance) : item.distance}{" "}
-                      <span>{unit}</span>
-                    </p>
-                    <br />
-                  </li>
-                );
-            })
+            if (index < listCount)
+              return (
+                <li key={item.id}>
+                  <p> {item.name} </p>
+                  <p> {item.address}</p>
+                  <p>
+                    {km ? getKm(item.distance) : item.distance}{" "}
+                    <span>{unit}</span>
+                  </p>
+                  <br />
+                </li>
+              );
+          })
           : ""}
       </ul>
       {error ? error : ""}
@@ -92,15 +145,17 @@ export default function Recycle({ userPosition, setUserPosition }) {
         listCount={listCount}
         setListCount={setListCount}
       />
-      {data ? (
-        <LondonMap
-          data={data}
-          listCount={listCount}
-          userPosition={userPosition}
-        ></LondonMap>
-      ) : (
-        ""
-      )}
+      {
+        data ? (
+          <LondonMap
+            data={data}
+            listCount={listCount}
+            userPosition={userPosition}
+          ></LondonMap>
+        ) : (
+          ""
+        )
+      }
     </>
   );
 }
