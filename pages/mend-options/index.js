@@ -9,7 +9,6 @@ import ProgressBar from "../../components/ProgressBar";
 export default function MendOptions() {
   return (
     <>
-      <div></div>
       <section>
         <Breadcrumb />
         <section>
