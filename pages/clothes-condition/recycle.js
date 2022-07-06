@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Breadcrumb from "../../components/Breadcrumb";
 import dynamic from "next/dynamic";
 import Search from "../../components/SearchRecycle";
@@ -18,7 +18,14 @@ export default function Recycle({ userPosition, setUserPosition }) {
   const [userLocation, setUserLocation] = useState(null);
   const onChange = (event) => setUserInput(event.target.value);
 
+  useEffect(() => {
+    if (userInput !== "") {
+      handleSearch()
+    }
+  }, [userInput])
+
   async function handleSearch() {
+    console.log(userInput);
     const result = await fetch(
       `../api/recylePoint?abc=${userInput.toUpperCase()}
       `
@@ -69,7 +76,8 @@ export default function Recycle({ userPosition, setUserPosition }) {
     const postJson = await postcode.json();
     let userPostcode = postJson.result[0].postcode;
     await setUserInput(userPostcode);
-    await handleSearch();
+
+    // await handleSearch();
 
     if (!postcode.ok) {
       setData(null);
