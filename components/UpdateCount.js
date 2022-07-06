@@ -6,7 +6,7 @@ export default function updateCount({ data, listCount, setListCount }) {
   if (data && listCount < 19) {
     return (
       <button
-        className="font-medium hover:underline decoration-coral underline-offset-4"
+        className="text-base bg-eggshellWhite hover:bg-lightGray text-gray-800 px-4 border border-gray-400 rounded shadow my-2"
         onClick={updateCount}
       >
         Show more
