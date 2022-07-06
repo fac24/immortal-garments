@@ -5,6 +5,7 @@ import Search from "../../components/SearchRecycle";
 import ProgressBar from "../../components/ProgressBar";
 import UpdateCount from "../../components/UpdateCount";
 import SearchByUserLocation from "../../components/SearchByUserLocation";
+
 //this was needed to get the full map to load, rather than just a couple of squares
 //I don't fully understand how it's working, but setting server-side rendering to false means that the map is dynamically loaded on the client side
 const LondonMap = dynamic(() => import("../../components/Map"), { ssr: false });

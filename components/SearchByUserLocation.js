@@ -24,6 +24,7 @@ export default function SearchByUserLocation({ setData, setError, setUserInput }
 
     function geoError(err) {
         console.warn(`ERROR(${err.code}): ${err.message}`);
+        return (<p>We could not locate your device. Check privacy settings.</p>)
     }
 
     function locator() {
