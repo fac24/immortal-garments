@@ -20,11 +20,31 @@ export default function Diy() {
         </div>
       </section>
 
-      <h2 className="text-xl py-3">DIY</h2>
-      <p>
-        We probably want to add some text here. Do you have some cothes to mend
-        or upcycle? And some info why, the benifits...
-      </p>
+      <h2 className="text-2xl py-3 text-center">DIY</h2>
+      <div className="border-solid border-4 p-6">
+        <h3 className="text-xl pb-1 font-semibold">
+          What are the benefits of making or mending my clothes?
+        </h3>
+        <ul
+          role="list"
+          className="marker:text-sky-400 list-disc pl-5 space-y-3 text-slate-500"
+        >
+          <li>
+            Making your own clothes is an environmentally friendly alternative
+            because you only use the amount of each material that you need and
+            can be sure that you will wear each garment.
+          </li>
+          <li>
+            You can personalise the look of garments and design them to fit your
+            specific body type exactly.
+          </li>
+          <li>You can express your personality in every fiber.</li>
+          <li>
+            Aside from the ethical and personal benefits, being able to make and
+            repair your own clothes is a calming and useful hobby.
+          </li>
+        </ul>
+      </div>
       <Search
         value={userInput}
         setUserInput={setUserInput}

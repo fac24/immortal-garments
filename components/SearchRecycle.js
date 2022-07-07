@@ -3,7 +3,12 @@ import { useState } from "react";
 import Loader from "./Loader";
 
 
-export default function SearchPostcode({ setData, setError, labelText, setUserPosition }) {
+export default function SearchPostcode({
+  setData,
+  setError,
+  labelText,
+  setUserPosition,
+}) {
   const onChange = (event) => setUserInput(event.target.value);
 
   const [userInput, setUserInput] = useState("");
@@ -15,7 +20,7 @@ export default function SearchPostcode({ setData, setError, labelText, setUserPo
     setLoading(true)
 
     const result = await fetch(
-      `../api/recylePoint?abc=${x.toUpperCase()}
+      `../api/recylePoint?abc=${x.toLowerCase().replace(/ /g, "")}
       `
 
     );

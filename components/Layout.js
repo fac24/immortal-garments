@@ -13,11 +13,12 @@ export default function Layout({ children }) {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
+        <link href="/dist/output.css" rel="stylesheet" />
       </Head>
       <header>
         <Navbar />
       </header>
-      <main className="mx-8">{children}</main>
+      <main className="mx-4 px-4 min-h-[32rem]">{children}</main>
       <Footer />
     </>
   );

@@ -20,8 +20,27 @@ a {
 }
 
 .leaflet-container {
-  width: 500px;
+  width: 700px;
   height: 500px;
+  /* min-width: 250px;
+  max-height: 500px; */
+  border-radius: 14px;
+  border: solid 1px gray;
+}
+
+@media all and (max-width: 768px) {
+  .leaflet-container {
+    min-width: 400px;
+    width: 300px;
+    height: 340px;
+    margin-bottom: 1rem;
+  }
+
+  .wrap-items {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
 }
 
 @keyframes loader {

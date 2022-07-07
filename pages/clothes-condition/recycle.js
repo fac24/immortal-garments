@@ -4,9 +4,7 @@ import dynamic from "next/dynamic";
 import SearchRecycleAPI from "../../components/SearchRecycle";
 import ProgressBar from "../../components/ProgressBar";
 import UpdateCount from "../../components/UpdateCount";
-import SearchByUserLocation from "../../components/SearchByUserLocation";
-import Loader from "../../components/Loader";
-
+import Link from "next/link";
 
 //this was needed to get the full map to load, rather than just a couple of squares
 //I don't fully understand how it's working, but setting server-side rendering to false means that the map is dynamically loaded on the client side
@@ -50,59 +48,124 @@ export default function Recycle({ userPosition, setUserPosition }) {
         </div>
       </section>
 
-      <h2 className="text-xl py-3">Recycle</h2>
-      <p>Find your nearest textile recycling point.</p>
+      <h2 className="text-2xl py-3 text-center">Recycle</h2>
+      <div className="border-solid border-4 p-6">
+        <h3 className="text-xl pb-1 font-semibold">
+          Why should I recycle my clothes?
+        </h3>
+        <ul
+          role="list"
+          className="marker:text-sky-400 list-disc pl-5 space-y-3 text-slate-500"
+        >
+          <li>
+            Textiles are almost always recyclable, yet they make up a
+            significant portion of landfill waste, where they will take a long
+            time to break down, especially in the case of synthetic textiles.
+          </li>
+          <li>
+            It takes a lot of energy to produce clothing. By recycling clothes
+            when they are no longer wanted, you ensure that all that energy does
+            not simply go to waste.
+          </li>
+          <li className="mb-2">
+            The more you&apos;re able to reuse or recycle old clothing, the less
+            room it takes up in landfill. Many of the items that end up in
+            landfills could have been recycled.
+          </li>
+        </ul>
+
+        <h3 className="text-xl pb-1 font-semibold">
+          What happens to my clothes after I recycle them?
+        </h3>
+        <p className="mb-2">
+          <Link href="https://londonrecycles.co.uk/">
+            <a>London Recycles </a>
+          </Link>
+          summarises:
+        </p>
+        <ul
+          role="list"
+          className="marker:text-sky-400 list-disc pl-5 space-y-3 text-slate-500"
+        >
+          <li>natural textiles are sorted by colour</li>
+          <li>material textiles are broken down, cleaned and respun</li>
+          <li>
+            where appropriate some textiles are used to make filling material
+            for padding and insulation
+          </li>
+          <li>
+            synthetic textiles are broken down then melted the melted textiles
+            can then be used to create fibres which can then be used to make new
+            fabrics.
+          </li>
+          <li className="mb-2">In this way, your clothes can live on.</li>
+        </ul>
+        <p>
+          However, it still requires a lot of energy to break down and remake
+          clothing items. If you think your clothes are still useable, but you
+          don&apos;t want to use them, consider donating them.
+        </p>
+        <h3 className="text-xl pb-1 font-semibold">
+          How can I recycle my clothes?
+        </h3>
+        <p>
+          If you decide that recycling clothes is the best option for you, use
+          our search feature to find your nearest textile recycling point.
+        </p>
+      </div>
       <SearchRecycleAPI
         setData={setData}
         setError={setError}
         setUserPosition={setUserPosition}
         labelText={"Enter your postcode..."}
       />
-      {
-        data ? (
+      <div>
+        {data ? (
           <button
-            className="font-medium hover:underline decoration-coral underline-offset-4"
+            className="text-base bg-eggshellWhite hover:bg-lightGray text-gray-800 px-4 border border-gray-400 rounded shadow my-2"
             onClick={handleToggle}
           >
-            Switch to {km ? "miles" : "km"}
+            Switch distance to {km ? "miles" : "km"}
           </button>
-        ) : ''
-      }
-      <ul>
-        {data
-          ? data.map((item, index) => {
-            if (index < listCount)
-              return (
-                <li key={item.id}>
-                  <p> {item.name} </p>
-                  <p> {item.address}</p>
-                  <p>
-                    {km ? getKm(item.distance) : item.distance}{" "}
-                    <span>{unit}</span>
-                  </p>
-                  <br />
-                </li>
-              );
-          })
-          : ""}
-      </ul>
+        ) : null}
+        <div className="flex flex-row gap-14 wrap-items">
+          <ul className="text-base py-2 mt-2 border-t">
+            {data
+              ? data.map((item, index) => {
+                if (index < listCount)
+                  return (
+                    <li key={item.id} className="border-b pt-2">
+                      <p> {item.name} </p>
+                      <p> {item.address}</p>
+                      <p>
+                        {km ? getKm(item.distance) : item.distance}{" "}
+                        <span>{unit}</span>
+                      </p>
+                      <br />
+                    </li>
+                  );
+              })
+              : ""}
+          </ul>
+          <div className="w-2/3">
+            {data ? (
+              <LondonMap
+                data={data}
+                listCount={listCount}
+                userPosition={userPosition}
+              ></LondonMap>
+            ) : (
+              ""
+            )}
+          </div>
+        </div>
+        <UpdateCount
+          data={data}
+          listCount={listCount}
+          setListCount={setListCount}
+        />
+      </div>
       {error ? error : ""}
-      <UpdateCount
-        data={data}
-        listCount={listCount}
-        setListCount={setListCount}
-      />
-      {
-        data ? (
-          <LondonMap
-            data={data}
-            listCount={listCount}
-            userPosition={userPosition}
-          ></LondonMap>
-        ) : (
-          ""
-        )
-      }
     </>
   );
 }
