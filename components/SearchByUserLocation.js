@@ -11,9 +11,9 @@ export default function SearchByUserLocation({
 }) {
 
     const [loading, setLoading] = useState(false);
+    const [locError, setLocError] = useState(false);
 
     async function handleSearchFromLocation(pos) {
-
 
         //extracts longitude and latitude from geolocation info from locator function
         const crd = pos.coords;
@@ -43,14 +43,17 @@ export default function SearchByUserLocation({
     }
 
     function geoError(err) {
+        setLoading(false);
+        setLocError(true);
         console.warn(`ERROR(${err.code}): ${err.message}`);
-        return (<p>We could not locate your device. Check privacy settings.</p>)
+        return;
     }
 
     //get's location of user's device and takes success and error callback functions as parameters
 
 
     function locator() {
+        setLocError(false);
         navigator.geolocation.getCurrentPosition(
             handleSearchFromLocation,
             geoError
@@ -69,6 +72,7 @@ export default function SearchByUserLocation({
                 Use my current location 📌
             </button>
             {loading ? <Loader /> : ''}
+            {locError ? <p>We could not locate your device. Check your privacy settings.</p> : null}
         </>
     );
 }
