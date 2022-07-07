@@ -37,7 +37,6 @@ function BarChart() {
                         .attr("fill", "steelblue")
                         .attr("text-anchor", "end")
                         .text("Year →"))
-            // );
 
             const y1Axis = (g) =>
                 g
@@ -61,13 +60,12 @@ function BarChart() {
             svg.select(".x-axis").call(xAxis);
             svg.select(".y-axis").call(y1Axis);
 
-            // svg.append("text")
-            //     .attr("x", (width / 2))
-            //     .attr("y", 0 - (margin.top / 2))
-            //     .attr("text-anchor", "middle")
-            //     .style("font-size", "16px")
-            //     .style("text-decoration", "underline")
-            //     .text("C02 emissions from the clothing industry in the UK, 1990-2020")
+            svg.append("text")
+                .attr("x", width - 75)
+                .attr("y", height)
+                .attr("text-anchor", "middle")
+                .style("font-size", "9px")
+                .text("Source: ONS");
 
             svg.append("text")
                 .attr("x", width / 2)
@@ -75,8 +73,6 @@ function BarChart() {
                 .attr("text-anchor", "middle")
                 .style("font-size", "16px")
                 .text("C02 emissions from the clothing industry in the UK, 1990-2020");
-
-
 
             svg.append("path")
                 .datum(data)
