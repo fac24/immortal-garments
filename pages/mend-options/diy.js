@@ -10,6 +10,7 @@ import video from "../../public/images/video.png";
 
 export default function Diy() {
   const [userInput, setUserInput] = useState("");
+  const [category, setCategory] = useState("all");
 
   return (
     <>
@@ -31,8 +32,15 @@ export default function Diy() {
         labelText={"Enter a keyword"}
       />
       <div>
-        <p className="text-base font-medium">Key:</p>
-        <Image src={video} alt="video camera" width={20} height={20} />{" "}
+        <p>
+          <span className="text-base font-medium">Key:</span>{" "}
+          <span className="text-sm">
+            (click on key icon to filter by catergory)
+          </span>
+        </p>
+        <span onClick={() => setCategory("video")}>
+          <Image src={video} alt="video camera" width={20} height={20} />{" "}
+        </span>
         <span>
           {" "}
           Resourse will take you to a new page with a video tutorial.
@@ -69,6 +77,13 @@ export default function Diy() {
       </div>
       <div className="flex flex-wrap">
         {resources
+          .filter((item) =>
+            category === "all"
+              ? item
+              : category === "video"
+              ? (item.type = "video")
+              : (item.type = "article")
+          )
           .filter((item) =>
             item.title.toLowerCase().includes(userInput.toLowerCase())
           )
