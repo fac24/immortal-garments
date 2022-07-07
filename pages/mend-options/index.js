@@ -20,19 +20,24 @@ export default function MendOptions() {
         <h2 className="py-3 text-xl text-center">
           How do you want to mend the clothes?
         </h2>
-        <div className="lg:flex justify-center no-wrap sm:flex flex-wrap flex-col text-center">
-          <ChoiceButton
-            href="/mend-options/diy"
-            src={MendByMyself}
-            alt="Gold needle and thread"
-          ></ChoiceButton>
-          <Link href="/mend-options/diy">By myself 💡</Link>
-          <ChoiceButton
-            href="/mend-options/tailors"
-            src={Tailors}
-            alt="Seamstress sewing green fabric"
-          ></ChoiceButton>
-          <Link href="/mend-options/tailors">By a professional 🪡</Link>
+        <div className="flex flex-col flex-wrap lg:flex-row lg:justify-center gap-20 mb-5 min-h-[12rem]">
+          <section className="flex flex-col items-center flex-wrap">
+            <ChoiceButton
+              href="/mend-options/diy"
+              src={MendByMyself}
+              alt="Gold needle and thread"
+            ></ChoiceButton>
+            <Link href="/mend-options/diy">By myself 💡</Link>
+          </section>
+
+          <section className="flex flex-col items-center flex-wrap">
+            <ChoiceButton
+              href="/mend-options/tailors"
+              src={Tailors}
+              alt="Seamstress sewing green fabric"
+            ></ChoiceButton>
+            <Link href="/mend-options/tailors">By a professional 🪡</Link>
+          </section>
         </div>
       </section>
     </>

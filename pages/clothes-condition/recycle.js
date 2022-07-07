@@ -49,8 +49,8 @@ export default function Recycle({ userPosition, setUserPosition }) {
       </section>
 
       <h2 className="text-2xl py-3 text-center">Recycle</h2>
-      <div className="border-solid border-4 p-6">
-        <h3 className="text-xl pb-1 font-semibold">
+      <div className="green-border p-6">
+        <h3 className="text-xl my-1 font-semibold ">
           Why should I recycle my clothes?
         </h3>
         <ul
@@ -74,7 +74,7 @@ export default function Recycle({ userPosition, setUserPosition }) {
           </li>
         </ul>
 
-        <h3 className="text-xl pb-1 font-semibold">
+        <h3 className="text-xl my-2 font-semibold">
           What happens to my clothes after I recycle them?
         </h3>
         <p className="mb-2">
@@ -98,14 +98,14 @@ export default function Recycle({ userPosition, setUserPosition }) {
             can then be used to create fibres which can then be used to make new
             fabrics.
           </li>
-          <li className="mb-2">In this way, your clothes can live on.</li>
+          <li className="pb-2">In this way, your clothes can live on.</li>
         </ul>
         <p>
           However, it still requires a lot of energy to break down and remake
           clothing items. If you think your clothes are still useable, but you
           don&apos;t want to use them, consider donating them.
         </p>
-        <h3 className="text-xl pb-1 font-semibold">
+        <h3 className="text-xl my-2 font-semibold">
           How can I recycle my clothes?
         </h3>
         <p>
@@ -132,19 +132,19 @@ export default function Recycle({ userPosition, setUserPosition }) {
           <ul className="text-base py-2 mt-2 border-t">
             {data
               ? data.map((item, index) => {
-                if (index < listCount)
-                  return (
-                    <li key={item.id} className="border-b pt-2">
-                      <p> {item.name} </p>
-                      <p> {item.address}</p>
-                      <p>
-                        {km ? getKm(item.distance) : item.distance}{" "}
-                        <span>{unit}</span>
-                      </p>
-                      <br />
-                    </li>
-                  );
-              })
+                  if (index < listCount)
+                    return (
+                      <li key={item.id} className="border-b pt-2">
+                        <p> {item.name} </p>
+                        <p> {item.address}</p>
+                        <p>
+                          {km ? getKm(item.distance) : item.distance}{" "}
+                          <span>{unit}</span>
+                        </p>
+                        <br />
+                      </li>
+                    );
+                })
               : ""}
           </ul>
           <div className="w-2/3">
@@ -165,7 +165,7 @@ export default function Recycle({ userPosition, setUserPosition }) {
           setListCount={setListCount}
         />
       </div>
-      {error ? error : ""}
+      {error ? <p>{error}</p> : ""}
     </>
   );
 }

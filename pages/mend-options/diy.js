@@ -10,6 +10,7 @@ import video from "../../public/images/video.png";
 
 export default function Diy() {
   const [userInput, setUserInput] = useState("");
+  const [category, setCategory] = useState("all");
 
   return (
     <>
@@ -21,7 +22,7 @@ export default function Diy() {
       </section>
 
       <h2 className="text-2xl py-3 text-center">DIY</h2>
-      <div className="border-solid border-4 p-6">
+      <div className="green-border p-6">
         <h3 className="text-xl pb-1 font-semibold">
           What are the benefits of making or mending my clothes?
         </h3>
@@ -51,44 +52,83 @@ export default function Diy() {
         labelText={"Enter a keyword"}
       />
       <div>
-        <p className="text-base font-medium">Key:</p>
-        <Image src={video} alt="video camera" width={20} height={20} />{" "}
+        <p>
+          <span className="text-base font-medium">Key:</span>{" "}
+          <span className="text-sm">
+            (click on key icon to filter by catergory)
+          </span>
+        </p>
+        <span onClick={() => setCategory("video")}>
+          <Image src={video} alt="video camera" width={20} height={20} />{" "}
+        </span>
         <span>
           {" "}
           Resourse will take you to a new page with a video tutorial.
         </span>
         <br></br>
-        <Image
-          src={article}
-          alt="an article on paper"
-          width={20}
-          height={20}
-        />{" "}
+        <span onClick={() => setCategory("article")}>
+          <Image
+            src={article}
+            alt="an article on paper"
+            width={20}
+            height={20}
+          />{" "}
+        </span>
         <span> Resourse will take you to a new page with article.</span>
         <br></br>
-        <div aria-hidden="true" className="flex">
+        <div aria-hidden="true" className="flex items-center gap-6">
           <p>
-            <span className=" px-2.5 py-px mr-2 rounded-lg grey border shadow-sm">
+            <span
+              onClick={() => setCategory("stains")}
+              className=" px-2.5 py-px mr-2 rounded-lg grey border shadow-sm cursor-pointer"
+            >
               {" "}
             </span>
             Stain removal
           </p>
           <p>
-            <span className=" px-2.5 py-px mx-2 rounded-lg pink shadow-sm border">
+            <span
+              onClick={() => setCategory("care")}
+              className=" px-2.5 py-px mx-2 rounded-lg pink shadow-sm border cursor-pointer"
+            >
               {" "}
             </span>
             Material care
           </p>
           <p>
-            <span className=" px-2.5 py-px mx-2 rounded-lg green outline-dashed shadow-sm">
+            <span
+              onClick={() => setCategory("sew")}
+              className=" px-2.5 py-px mx-2 rounded-lg green outline-dashed shadow-sm cursor-pointer"
+            >
               {" "}
             </span>
             Sewing and craft
           </p>
+          <button
+            className="text-base bg-eggshellWhite hover:bg-lightGray text-gray-800 px-4 border border-gray-400 rounded shadow my-2"
+            onClick={() => setCategory("all")}
+          >
+            Show all
+          </button>
         </div>
       </div>
       <div className="flex flex-wrap">
         {resources
+          .filter((item) =>
+            category === "all"
+              ? item
+              : category === "video"
+              ? item.type === "video"
+              : category === "stains"
+              ? item.category === "stains"
+              : category === "article"
+              ? item.type === "article"
+              : category === "sew"
+              ? item.category === "sew"
+              : category === "care"
+              ? item.category === "care"
+              : item
+          )
           .filter((item) =>
             item.title.toLowerCase().includes(userInput.toLowerCase())
           )

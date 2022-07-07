@@ -32,8 +32,8 @@ export default function Donate({ userPosition, setUserPosition }) {
         </div>
       </section>
       <h2 className="text-2xl py-3 text-center">Donate</h2>
-      <div className="border-solid border-4 p-6">
-        <h3 className="text-xl pb-1 font-semibold">
+      <div className="green-border p-6">
+        <h3 className="text-xl my-2 font-semibold">
           Why should I donate my old clothes?
         </h3>
         <ul
@@ -58,17 +58,17 @@ export default function Donate({ userPosition, setUserPosition }) {
             seasonless, slow fashion model.{" "}
           </li>
         </ul>
-        <h3 className="text-xl pb-1 font-semibold mt-2">
+        <h3 className="text-xl my-2 font-semibold">
           What should I do with my clothes before donating them?
         </h3>
-        <p className="mb-3">
+        <p className="leading-7 mb-3">
           Before donating your clothing, make sure all items are clean, dry and
           sealed in a bag or container specified by the charity you are donating
           to. If you have recently worn something that you are now donating,
           wash it before you put it in the donation bag.
         </p>
 
-        <h3 className="text-xl pb-1 font-semibold">
+        <h3 className="text-xl my-2 font-semibold">
           How can I donate my clothes?
         </h3>
         <p>

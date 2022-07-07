@@ -23,7 +23,7 @@ export default function SearchResults({ data, error, listCount, tailors }) {
 
   return (
     <div className="">
-      {error ? error : ""}
+      {error ? <p>{error}</p> : ""}
       {data ? (
         <button
           className="text-base bg-eggshellWhite hover:bg-lightGray text-gray-800 px-4 border border-gray-400 rounded shadow mb-1"

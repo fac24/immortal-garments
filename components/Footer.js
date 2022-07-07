@@ -5,8 +5,8 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="text-xs bg-pistachioGreen pt-6 pb-8 px-4">
-      <div className=" grid grid-cols-3 gap-6 px-4">
+    <footer className="text-xs bg-pistachioGreen pt-6 pb-8 px-11">
+      <div className="grid grid-cols-3 gap-6 px-4 wrap-items">
         <div className="">
           <h2 className="text-[16px] py-1 font-semibold">About Us</h2>
           <p>
@@ -61,20 +61,22 @@ export default function Footer() {
 
         <div className="flex flex-col items-start gap-4">
           <p className="text-[16px] py-1 font-semibold">Data Sources</p>
-          <Image
-            src={valpakLogo}
-            alt={"Valpak logo and text that says a Reconomy Group company"}
-            width={136}
-            height={50}
-            className=""
-          ></Image>
-          <Image
-            src={yelpLogo}
-            alt={"Yelp logo"}
-            width={136}
-            height={50}
-            className=""
-          ></Image>
+          <div className="flex gap-10">
+            <Image
+              src={valpakLogo}
+              alt={"Valpak logo and text that says a Reconomy Group company"}
+              width={136}
+              height={50}
+              className=""
+            ></Image>
+            <Image
+              src={yelpLogo}
+              alt={"Yelp logo"}
+              width={120}
+              height={40}
+              className=""
+            ></Image>
+          </div>
         </div>
       </div>
     </footer>
