@@ -60,48 +60,57 @@ export default function Recycle({ userPosition, setUserPosition }) {
         >
           <li>
             Textiles are almost always recyclable, yet they make up a
-            significant portion of landfill waste, where it will take a long
-            time to break down, especially with synthetic textiles.
+            significant portion of landfill waste, where they will take a long
+            time to break down, especially in the case of synthetic textiles.
           </li>
           <li>
             It takes a lot of energy to produce clothing. By recycling clothes
             when they are no longer wanted, you ensure that all that energy does
             not simply go to waste.
           </li>
-          <li>
+          <li className="mb-2">
             The more you&apos;re able to reuse or recycle old clothing, the less
             room it takes up in landfill. Many of the items that end up in
             landfills could have been recycled.
-          </li>
-          <li>
-            It&apos;s easy to do. There&apos;s no huge risk to your safety when
-            dealing with clothes, unlike when you&apos;re trying to recycle an
-            appliance or large furniture.
           </li>
         </ul>
 
         <h3 className="text-xl pb-1 font-semibold">
           What happens to my clothes after I recycle them?
         </h3>
-        <p>
+        <p className="mb-2">
           <Link href="https://londonrecycles.co.uk/">
             <a>London Recycles </a>
           </Link>
-          summarises: natural textiles are sorted by colour and material
-          textiles are broken down, cleaned and respun where appropriate some
-          textiles are used to make filling material for padding and insulation
-          synthetic textiles are broken down then melted the melted textiles can
-          then be used to create fibres which can then be used to make new
-          fabrics. In this way, your clothes can live on. However, it still
-          requires a lot of energy to break down and remake clothing items. If
-          you think your clothes are still useable, but you don&apos;t want to
-          use them, consider donating them.
+          summarises:
+        </p>
+        <ul
+          role="list"
+          className="marker:text-sky-400 list-disc pl-5 space-y-3 text-slate-500"
+        >
+          <li>natural textiles are sorted by colour</li>
+          <li>material textiles are broken down, cleaned and respun</li>
+          <li>
+            where appropriate some textiles are used to make filling material
+            for padding and insulation
+          </li>
+          <li>
+            synthetic textiles are broken down then melted the melted textiles
+            can then be used to create fibres which can then be used to make new
+            fabrics.
+          </li>
+          <li className="mb-2">In this way, your clothes can live on.</li>
+        </ul>
+        <p>
+          However, it still requires a lot of energy to break down and remake
+          clothing items. If you think your clothes are still useable, but you
+          don&apos;t want to use them, consider donating them.
         </p>
         <h3 className="text-xl pb-1 font-semibold">
           How can I recycle my clothes?
         </h3>
         <p>
-          If you decide that recycling clothes, is the best option for you, use
+          If you decide that recycling clothes is the best option for you, use
           our search feature to find your nearest textile recycling point.
         </p>
       </div>

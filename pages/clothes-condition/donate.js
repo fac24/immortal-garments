@@ -42,8 +42,8 @@ export default function Donate({ userPosition, setUserPosition }) {
         >
           <li>
             Donating your clothes is a great way to get rid of clothes you do
-            not wear or no longer fit and give to a cause that is meaningful to
-            you.
+            not wear or which no longer fit. With donation, you can give them to
+            a cause that is meaningful to you.
           </li>
           <li>
             It keeps textiles out of the bin and gives your unwanted items the
@@ -62,10 +62,10 @@ export default function Donate({ userPosition, setUserPosition }) {
           What should I do with my clothes before donating them?
         </h3>
         <p className="mb-3">
-          Before donating clothing make sure all items are clean, dry and sealed
-          in a bag or container specified by the charity you`re donating to. If
-          you have recently worn something you are now donating, wash it before
-          you put it in the donation bag.
+          Before donating your clothing, make sure all items are clean, dry and
+          sealed in a bag or container specified by the charity you are donating
+          to. If you have recently worn something that you are now donating,
+          wash it before you put it in the donation bag.
         </p>
 
         <h3 className="text-xl pb-1 font-semibold">
