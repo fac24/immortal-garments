@@ -80,7 +80,7 @@ export default function Diy() {
           <p>
             <span
               onClick={() => setCategory("stains")}
-              className=" px-2.5 py-px mr-2 rounded-lg grey border shadow-sm"
+              className=" px-2.5 py-px mr-2 rounded-lg grey border shadow-sm cursor-pointer"
             >
               {" "}
             </span>
@@ -89,7 +89,7 @@ export default function Diy() {
           <p>
             <span
               onClick={() => setCategory("care")}
-              className=" px-2.5 py-px mx-2 rounded-lg pink shadow-sm border"
+              className=" px-2.5 py-px mx-2 rounded-lg pink shadow-sm border cursor-pointer"
             >
               {" "}
             </span>
@@ -98,7 +98,7 @@ export default function Diy() {
           <p>
             <span
               onClick={() => setCategory("sew")}
-              className=" px-2.5 py-px mx-2 rounded-lg green outline-dashed shadow-sm"
+              className=" px-2.5 py-px mx-2 rounded-lg green outline-dashed shadow-sm cursor-pointer"
             >
               {" "}
             </span>
