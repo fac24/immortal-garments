@@ -46,7 +46,7 @@ export default function Diy() {
         />{" "}
         <span> Resourse will take you to a new page with article.</span>
         <br></br>
-        <div className="flex">
+        <div aria-hidden="true" className="flex">
           <p>
             <span className=" px-2.5 py-px mr-2 rounded-lg grey border shadow-sm">
               {" "}
