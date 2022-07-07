@@ -41,33 +41,42 @@ export default function Donate({ userPosition, setUserPosition }) {
         Please note: clothes should be in a good condition. If your items are
         still wearable then this is the perfect option for you!
       </p>
-      <SearchAPI
-        searchCategory="donate"
-        setData={setData}
-        setError={setError}
-        userPosition={userPosition}
-        setUserPosition={setUserPosition}
-      />
-      <SearchResults
-        data={data}
-        error={error}
-        listCount={listCount}
-        setListCount={setListCount}
-      />
+      <div>
+        <SearchAPI
+          searchCategory="donate"
+          setData={setData}
+          setError={setError}
+          userPosition={userPosition}
+          setUserPosition={setUserPosition}
+        />
+        <div className="flex gap-10 wrap-items">
+          <div>
+            <SearchResults
+              data={data}
+              error={error}
+              listCount={listCount}
+              setListCount={setListCount}
+            />
+          </div>
+
+          <div className="w-2/3">
+            {data ? (
+              <LondonMap
+                data={data.businesses}
+                userPosition={userPosition}
+                listCount={listCount}
+              ></LondonMap>
+            ) : (
+              ""
+            )}
+          </div>
+        </div>
+      </div>
       <UpdateCount
         data={data}
         listCount={listCount}
         setListCount={setListCount}
       />
-      {data ? (
-        <LondonMap
-          data={data.businesses}
-          userPosition={userPosition}
-          listCount={listCount}
-        ></LondonMap>
-      ) : (
-        ""
-      )}
     </>
   );
 }

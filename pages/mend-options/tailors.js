@@ -48,8 +48,8 @@ export default function Tailors({ userPosition, setUserPosition }) {
         userPosition={userPosition}
         setUserPosition={setUserPosition}
       />
-      <section className="flex flex-wrap gap-10 sm:text-[0.8rem]">
-        <div className="">
+      <section className="flex flex-row gap-14 wrap-items">
+        <div className="text-base py-2">
           <SearchResults
             data={data}
             error={error}

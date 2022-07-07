@@ -90,47 +90,53 @@ export default function Recycle({ userPosition, setUserPosition }) {
         setData={setData}
         setError={setError}
       />
-      {data ? (
-        <button
-          className="text-base bg-eggshellWhite hover:bg-lightGray text-gray-800 px-4 border border-gray-400 rounded shadow my-2"
-          onClick={handleToggle}
-        >
-          Switch to {km ? "miles" : "km"}
-        </button>
-      ) : null}
-      <ul>
-        {data
-          ? data.map((item, index) => {
-              if (index < listCount)
-                return (
-                  <li key={item.id}>
-                    <p> {item.name} </p>
-                    <p> {item.address}</p>
-                    <p>
-                      {km ? getKm(item.distance) : item.distance}{" "}
-                      <span>{unit}</span>
-                    </p>
-                    <br />
-                  </li>
-                );
-            })
-          : ""}
-      </ul>
-      {error ? error : ""}
-      <UpdateCount
-        data={data}
-        listCount={listCount}
-        setListCount={setListCount}
-      />
-      {data ? (
-        <LondonMap
+      <div>
+        {data ? (
+          <button
+            className="text-base bg-eggshellWhite hover:bg-lightGray text-gray-800 px-4 border border-gray-400 rounded shadow my-2"
+            onClick={handleToggle}
+          >
+            Switch distance to {km ? "miles" : "km"}
+          </button>
+        ) : null}
+        <div className="flex flex-row gap-14 wrap-items">
+          <ul className="text-base py-2 mt-2 border-t">
+            {data
+              ? data.map((item, index) => {
+                  if (index < listCount)
+                    return (
+                      <li key={item.id} className="border-b pt-2">
+                        <p> {item.name} </p>
+                        <p> {item.address}</p>
+                        <p>
+                          {km ? getKm(item.distance) : item.distance}{" "}
+                          <span>{unit}</span>
+                        </p>
+                        <br />
+                      </li>
+                    );
+                })
+              : ""}
+          </ul>
+          <div className="w-2/3">
+            {data ? (
+              <LondonMap
+                data={data}
+                listCount={listCount}
+                userPosition={userPosition}
+              ></LondonMap>
+            ) : (
+              ""
+            )}
+          </div>
+        </div>
+        <UpdateCount
           data={data}
           listCount={listCount}
-          userPosition={userPosition}
-        ></LondonMap>
-      ) : (
-        ""
-      )}
+          setListCount={setListCount}
+        />
+      </div>
+      {error ? error : ""}
     </>
   );
 }
