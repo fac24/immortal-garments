@@ -21,6 +21,7 @@ export default function MendOptions() {
           How do you want to mend the clothes?
         </h2>
         <div className="lg:flex justify-center no-wrap sm:flex flex-wrap flex-col text-center">
+          <MendByMyself />
           <ChoiceButton
             href="/mend-options/diy"
             src={MendByMyself}
