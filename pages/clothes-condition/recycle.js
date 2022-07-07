@@ -27,33 +27,6 @@ export default function Recycle({ userPosition, setUserPosition }) {
     }
   }, [data]);
 
-  const onChange = (event) => setUserInput(event.target.value);
-
-  useEffect(() => {
-    if (userInput !== "") {
-      handleSearch();
-    }
-  }, [userInput]);
-
-  async function handleSearch() {
-    const result = await fetch(
-      `../api/recylePoint?abc=${userInput.toUpperCase()}
-      `
-    );
-    if (!result.ok) {
-      setData(null);
-      setError(
-        `Oops, looks like we don't have any information for this postcode, yet.`
-      );
-      return;
-    }
-
-    setError(null);
-    const newdata = await result.json();
-    setData(newdata.items);
-    setUserPosition([newdata.latitude, newdata.longitude]);
-  }
-
   const handleToggle = () => {
     if (unit === "km") {
       setUnit("miles");
