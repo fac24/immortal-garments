@@ -42,9 +42,9 @@ export default function Footer() {
             </Link>
           </li>
           <li className="no-underline hover:underline">
-            <Link href="https://www.loveyourclothes.org.uk/blogs/why-its-great-give-second-hand-shopping-go">
+            <Link href="../graph">
               <a target="_blank" rel="noopener noreferrer">
-                Why it `s great to give second hand shopping a go
+                Show me the secret graph
               </a>
             </Link>
           </li>
