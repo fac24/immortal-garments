@@ -1,7 +1,7 @@
 import ChoiceButton from "../../components/ChoiceButton";
 import Link from "next/link";
-import mendByMyself from "../../public/images/mendbymyself.png";
-import repair from "../../public/images/repair.png";
+import MendByMyself from "../../public/images/mendbymyself.svg";
+import Tailors from "../../public/images/tailors.svg";
 import Breadcrumb from "../../components/Breadcrumb";
 import React, { useState } from "react";
 import ProgressBar from "../../components/ProgressBar";
@@ -17,19 +17,21 @@ export default function MendOptions() {
           </div>
         </section>
 
-        <h2 className="py-3 text-xl">Mend...</h2>
-        <ChoiceButton
-          href="/mend-options/diy"
-          src={mendByMyself}
-          alt=""
-        ></ChoiceButton>
-        <Link href="/mend-options/diy">by myself</Link>
-        <ChoiceButton
-          href="/mend-options/tailors"
-          src={repair}
-          alt=""
-        ></ChoiceButton>
-        <Link href="/mend-options/tailors">by a professional</Link>
+        <h2 className="py-3 text-xl text-center">Mend...</h2>
+        <div className="lg:flex justify-center no-wrap sm:flex flex-wrap flex-col text-center">
+          <ChoiceButton
+            href="/mend-options/diy"
+            src={MendByMyself}
+            alt=""
+          ></ChoiceButton>
+          <Link href="/mend-options/diy">by myself</Link>
+          <ChoiceButton
+            href="/mend-options/tailors"
+            src={Tailors}
+            alt=""
+          ></ChoiceButton>
+          <Link href="/mend-options/tailors">by a professional</Link>
+        </div>
       </section>
     </>
   );

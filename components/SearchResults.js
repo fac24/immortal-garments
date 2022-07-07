@@ -22,7 +22,7 @@ export default function SearchResults({ data, error, listCount, tailors }) {
   };
 
   return (
-    <div className="w-[22.5rem]">
+    <div className="">
       {error ? error : ""}
       {data ? (
         <button
