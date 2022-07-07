@@ -1,6 +1,6 @@
 
 
-export default function SearchByUserLocation({ setData, setError, setUserInput }) {
+export default function SearchByUserLocation({ setData, setError, setUserInput, fetchData }) {
 
     async function handleSearchFromLocation(pos) {
 
@@ -18,7 +18,7 @@ export default function SearchByUserLocation({ setData, setError, setUserInput }
         let userPostcode = postJson.result[0].postcode;
 
         //this use state can be used in SearchAPI.js (for donate and tailors) and recycle.js (for recycling)
-        await setUserInput(userPostcode);
+        await fetchData(userPostcode);
 
         if (!postcode.ok) {
             setData(null);

@@ -31,11 +31,11 @@ export default function Recycle({ userPosition, setUserPosition }) {
 
   const onChange = (event) => setUserInput(event.target.value);
 
-  useEffect(() => {
-    if (userInput !== "") {
-      handleSearch()
-    }
-  }, [userInput])
+  // useEffect(() => {
+  //   if (userInput !== "") {
+  //     handleSearch()
+  //   }
+  // }, [userInput])
 
   async function handleSearch() {
     const result = await fetch(
@@ -95,6 +95,7 @@ export default function Recycle({ userPosition, setUserPosition }) {
         setUserInput={setUserInput}
         setData={setData}
         setError={setError}
+        fetchData={handleSearch}
       />
       {
         data ? (
