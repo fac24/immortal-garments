@@ -43,8 +43,18 @@ a {
   }
 }
 
+@keyframes loader {
+  from {
+    rotate: 0
+  }
+
+  to {
+    rotate: 360
+  }
+}
+
 .pink {
-background-color:#fca5a5;
+  background-color: #fca5a5;
 }
 
 .green {
@@ -53,32 +63,4 @@ background-color:#fca5a5;
 
 .grey {
   background-color: #99b59f41;
-}
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.x.axis path {
-  display: none;
-}
-
-.line {
-  fill: none;
-  stroke: steelblue;
-  stroke-width: 1.5px;
-}
-
-
-.focus circle {
-  fill: none;
-  stroke: steelblue;
-}
-
-.overlay {
-  fill: none;
-  pointer-events: all;
 }
