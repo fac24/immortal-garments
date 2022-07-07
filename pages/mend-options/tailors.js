@@ -35,13 +35,17 @@ export default function Tailors({ userPosition, setUserPosition }) {
       </section>
 
       <h2 className="text-2xl py-3 text-center">Tailors</h2>
-      <p className="border-solid border-4 p-6">
-        {" "}
-        Sometimes, finding time to mend your clothes can be difficult. In
-        situations such as these, you have a range of options including tailors,
-        drycleaners, and seamstresses. Use our search feature to find a
-        professional in your area.
-      </p>
+      <section className="green-border p-6">
+        <h3 className="text-xl my-2 font-semibold">
+          Why might tailors be a good choice for me?
+        </h3>
+        <p>
+          Sometimes, finding time to mend your clothes can be difficult. In
+          situations such as these, you have a range of options including
+          tailors, drycleaners, and seamstresses. Use our search feature to find
+          a professional in your area.
+        </p>
+      </section>
       <SearchAPI
         searchCategory="tailors"
         setData={setData}
