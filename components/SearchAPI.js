@@ -5,17 +5,9 @@ export default function SearchAPI({
   searchCategory,
   setData,
   setError,
-  // userPosition,
   setUserPosition,
 }) {
   const [userInput, setUserInput] = useState("");
-
-  //if clause stops fetch from running immediately; useEffect runs fetchData on update to userInput
-  // useEffect(() => {
-  //   if (userInput !== "") {
-  //     fetchData(userInput);
-  //   }
-  // }, [userInput])
 
   async function fetchData(x) {
     const result = await fetch(`../api/${searchCategory}?input=${x}`);

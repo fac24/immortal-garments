@@ -27,15 +27,6 @@ export default function Recycle({ userPosition, setUserPosition }) {
     }
   }, [data]);
 
-
-  // useEffect(() => {
-  //   if (userInput !== "") {
-  //     handleSearch()
-  //   }
-  // }, [userInput])
-
-
-
   const handleToggle = () => {
     if (unit === "km") {
       setUnit("miles");
@@ -45,12 +36,6 @@ export default function Recycle({ userPosition, setUserPosition }) {
       setKm(true);
     }
   };
-
-
-
-
-
-
 
   const getKm = (miles) => Number(miles * 1.6).toFixed(2);
 

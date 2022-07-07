@@ -2,8 +2,8 @@ import SearchByUserLocation from "./SearchByUserLocation";
 import { useState } from "react";
 
 export default function SearchPostcode({ setData, setError, labelText, setUserPosition }) {
-
   const onChange = (event) => setUserInput(event.target.value);
+
   const [userInput, setUserInput] = useState("");
   async function handleSearch(x) {
     const result = await fetch(
