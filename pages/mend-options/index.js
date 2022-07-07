@@ -17,20 +17,22 @@ export default function MendOptions() {
           </div>
         </section>
 
-        <h2 className="py-3 text-xl text-center">Mend...</h2>
+        <h2 className="py-3 text-xl text-center">
+          How do you want to mend the clothes?
+        </h2>
         <div className="lg:flex justify-center no-wrap sm:flex flex-wrap flex-col text-center">
           <ChoiceButton
             href="/mend-options/diy"
             src={MendByMyself}
             alt=""
           ></ChoiceButton>
-          <Link href="/mend-options/diy">by myself</Link>
+          <Link href="/mend-options/diy">By myself 💡</Link>
           <ChoiceButton
             href="/mend-options/tailors"
             src={Tailors}
             alt=""
           ></ChoiceButton>
-          <Link href="/mend-options/tailors">by a professional</Link>
+          <Link href="/mend-options/tailors">By a professional 🪡</Link>
         </div>
       </section>
     </>
