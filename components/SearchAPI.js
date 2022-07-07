@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SearchByUserLocation from "./SearchByUserLocation";
+import Loader from "./Loader";
 
 export default function SearchAPI({
   searchCategory,
@@ -8,10 +9,12 @@ export default function SearchAPI({
   setUserPosition,
 }) {
   const [userInput, setUserInput] = useState("");
-
+  const [loading, setLoading] = useState(false);
   async function fetchData(x) {
+    setLoading(true);
     const result = await fetch(`../api/${searchCategory}?input=${x}`);
     const data = await result.json();
+    setLoading(false);
     // Error handling incase of a failed fetch
     if (data.error) {
       setData(null);
@@ -59,6 +62,7 @@ export default function SearchAPI({
         setError={setError}
         fetchData={fetchData}
       />
+      {loading ? <Loader /> : ''}
     </>
   );
 }

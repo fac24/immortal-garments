@@ -1,5 +1,7 @@
 import SearchByUserLocation from "./SearchByUserLocation";
 import { useState } from "react";
+import Loader from "./Loader";
+
 
 export default function SearchPostcode({
   setData,
@@ -10,11 +12,20 @@ export default function SearchPostcode({
   const onChange = (event) => setUserInput(event.target.value);
 
   const [userInput, setUserInput] = useState("");
+  const [loading, setLoading] = useState(false)
+
+
+
   async function handleSearch(x) {
+    setLoading(true)
+
     const result = await fetch(
       `../api/recylePoint?abc=${x.toLowerCase().replace(/ /g, "")}
       `
+
     );
+    setLoading(false)
+
     if (!result.ok) {
       console.log(result);
       setData(null);
@@ -26,6 +37,14 @@ export default function SearchPostcode({
     const newdata = await result.json();
     setData(newdata.items);
     setUserPosition([newdata.latitude, newdata.longitude]);
+  }
+
+  function toggleLoaderHidden() {
+    if (Loader.classList.includes("hide")) {
+      Loader.classList.remove("hide")
+    } else {
+      Loader.classList.add("hide");
+    }
   }
 
   return (
@@ -63,6 +82,9 @@ export default function SearchPostcode({
         setError={setError}
         fetchData={handleSearch}
       />
+
+      {loading ? <Loader /> : ''}
+
     </div>
   );
 }

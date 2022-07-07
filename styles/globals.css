@@ -48,8 +48,18 @@ a {
   }
 }
 
+@keyframes loader {
+  from {
+    rotate: 0
+  }
+
+  to {
+    rotate: 360
+  }
+}
+
 .pink {
-background-color:#fca5a5;
+  background-color: #fca5a5;
 }
 
 .green {
