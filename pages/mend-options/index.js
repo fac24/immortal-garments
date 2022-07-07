@@ -1,7 +1,7 @@
 import ChoiceButton from "../../components/ChoiceButton";
 import Link from "next/link";
-import MendByMyself from "../../public/images/mendbymyself.svg";
-import Tailors from "../../public/images/tailors.svg";
+import MendByMyself from "../../public/images/mendbymyself.png";
+import Tailors from "../../public/images/tailors.png";
 import Breadcrumb from "../../components/Breadcrumb";
 import React, { useState } from "react";
 import ProgressBar from "../../components/ProgressBar";
@@ -21,7 +21,6 @@ export default function MendOptions() {
           How do you want to mend the clothes?
         </h2>
         <div className="lg:flex justify-center no-wrap sm:flex flex-wrap flex-col text-center">
-          <MendByMyself />
           <ChoiceButton
             href="/mend-options/diy"
             src={MendByMyself}

@@ -2,8 +2,8 @@ import Breadcrumb from "../../components/Breadcrumb";
 import ChoiceButton from "../../components/ChoiceButton";
 import Link from "next/link";
 // import Image from "next/image";
-import GoodCondition from "../../public/images/goodcondition.svg";
-import DamagedWornout from "../../public/images/damagedwornout.svg";
+import GoodCondition from "../../public/images/goodcondition.png";
+import DamagedWornout from "../../public/images/damagedwornout.png";
 import ProgressBar from "../../components/ProgressBar";
 
 export default function ClothesCondition() {
