@@ -5,6 +5,8 @@ import SearchRecycleAPI from "../../components/SearchRecycle";
 import ProgressBar from "../../components/ProgressBar";
 import UpdateCount from "../../components/UpdateCount";
 import SearchByUserLocation from "../../components/SearchByUserLocation";
+import Loader from "../../components/Loader";
+
 
 //this was needed to get the full map to load, rather than just a couple of squares
 //I don't fully understand how it's working, but setting server-side rendering to false means that the map is dynamically loaded on the client side
@@ -64,7 +66,7 @@ export default function Recycle({ userPosition, setUserPosition }) {
           >
             Switch to {km ? "miles" : "km"}
           </button>
-        ) : null
+        ) : <Loader />
       }
       <ul>
         {data

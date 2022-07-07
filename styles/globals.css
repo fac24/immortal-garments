@@ -23,3 +23,13 @@ a {
   width: 500px;
   height: 500px;
 }
+
+@keyframes loader {
+  from {
+    rotate: 0
+  }
+
+  to {
+    rotate: 360
+  }
+}
