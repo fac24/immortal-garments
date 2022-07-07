@@ -45,6 +45,27 @@ export default function Diy() {
           height={20}
         />{" "}
         <span> Resourse will take you to a new page with article.</span>
+        <br></br>
+        <div aria-hidden="true" className="flex">
+          <p>
+            <span className=" px-2.5 py-px mr-2 rounded-lg grey border shadow-sm">
+              {" "}
+            </span>
+            Stain removal
+          </p>
+          <p>
+            <span className=" px-2.5 py-px mx-2 rounded-lg pink shadow-sm border">
+              {" "}
+            </span>
+            Material care
+          </p>
+          <p>
+            <span className=" px-2.5 py-px mx-2 rounded-lg green outline-dashed shadow-sm">
+              {" "}
+            </span>
+            Sewing and craft
+          </p>
+        </div>
       </div>
       <div className="flex flex-wrap">
         {resources
@@ -57,13 +78,17 @@ export default function Diy() {
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`bg-${
-                    item.type === "video" ? "darkGreen" : "pistachioGreen"
-                  } block p-6 max-w-sm rounded-lg border shadow-md cursor-pointer m-4`}
+                  className={`${
+                    item.category === "sew"
+                      ? "green outline-dashed outline-2"
+                      : item.category === "care"
+                      ? "pink border"
+                      : "grey border"
+                  } block p-6 w-40 h-40 rounded-lg shadow-md cursor-pointer m-4 relative`}
                 >
-                  <p className="diy-link">{item.title}</p>
+                  <p className="font-medium">{item.title}</p>
                   {/* next Image needs to be in a realive div to have tailwind classes */}
-                  <div className="relative h-6 w-6 float-right mt-4">
+                  <div className="absolute h-6 w-6 bottom-2 right-2">
                     <Image
                       src={item.type === "video" ? video : article}
                       alt={item.type}

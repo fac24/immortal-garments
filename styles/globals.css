@@ -24,6 +24,18 @@ a {
   height: 500px;
 }
 
+.pink {
+background-color:#fca5a5;
+}
+
+.green {
+  background-color: #A3D9B0;
+}
+
+.grey {
+  background-color: #99b59f41;
+}
+
 .axis path,
 .axis line {
   fill: none;
