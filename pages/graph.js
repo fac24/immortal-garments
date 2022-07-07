@@ -55,11 +55,28 @@ function BarChart() {
                                 .attr("y", 10)
                                 .attr("fill", "steelblue")
                                 .attr("text-anchor", "start")
-                                .text("↑ C02 emissions"))
+                                .text("↑ C02 emissions (in thousand tonnes)"))
                     );
 
             svg.select(".x-axis").call(xAxis);
             svg.select(".y-axis").call(y1Axis);
+
+            // svg.append("text")
+            //     .attr("x", (width / 2))
+            //     .attr("y", 0 - (margin.top / 2))
+            //     .attr("text-anchor", "middle")
+            //     .style("font-size", "16px")
+            //     .style("text-decoration", "underline")
+            //     .text("C02 emissions from the clothing industry in the UK, 1990-2020")
+
+            svg.append("text")
+                .attr("x", width / 2)
+                .attr("y", 20)
+                .attr("text-anchor", "middle")
+                .style("font-size", "16px")
+                .text("C02 emissions from the clothing industry in the UK, 1990-2020");
+
+
 
             svg.append("path")
                 .datum(data)
