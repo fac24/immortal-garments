@@ -16,10 +16,9 @@ export default function SearchPostcode({
       `
     );
     if (!result.ok) {
+      console.log(result);
       setData(null);
-      setError(
-        `Oops, looks like we don't have any information for this postcode, yet.`
-      );
+      setError(`Oops, something went wrong. Please try again.`);
       return;
     }
 
