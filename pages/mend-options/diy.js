@@ -54,13 +54,13 @@ export default function Diy() {
             Stain removal
           </p>
           <p>
-            <span className=" px-2.5 py-px mx-2 rounded-lg green border shadow-sm">
+            <span className=" px-2.5 py-px mx-2 rounded-lg pink shadow-sm border">
               {" "}
             </span>
             Material care
           </p>
           <p>
-            <span className=" px-2.5 py-px mx-2 rounded-lg pink border shadow-sm">
+            <span className=" px-2.5 py-px mx-2 rounded-lg green outline-dashed shadow-sm">
               {" "}
             </span>
             Sewing and craft
@@ -80,11 +80,11 @@ export default function Diy() {
                   rel="noopener noreferrer"
                   className={`${
                     item.category === "sew"
-                      ? "green"
+                      ? "green outline-dashed outline-2"
                       : item.category === "care"
-                      ? "pink"
-                      : "grey"
-                  } block p-6 w-40 h-40 rounded-lg border shadow-md cursor-pointer m-4 relative`}
+                      ? "pink border"
+                      : "grey border"
+                  } block p-6 w-40 h-40 rounded-lg shadow-md cursor-pointer m-4 relative`}
                 >
                   <p className="font-medium">{item.title}</p>
                   {/* next Image needs to be in a realive div to have tailwind classes */}
