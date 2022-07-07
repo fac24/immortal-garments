@@ -132,19 +132,19 @@ export default function Recycle({ userPosition, setUserPosition }) {
           <ul className="text-base py-2 mt-2 border-t">
             {data
               ? data.map((item, index) => {
-                if (index < listCount)
-                  return (
-                    <li key={item.id} className="border-b pt-2">
-                      <p> {item.name} </p>
-                      <p> {item.address}</p>
-                      <p>
-                        {km ? getKm(item.distance) : item.distance}{" "}
-                        <span>{unit}</span>
-                      </p>
-                      <br />
-                    </li>
-                  );
-              })
+                  if (index < listCount)
+                    return (
+                      <li key={item.id} className="border-b pt-2">
+                        <p> {item.name} </p>
+                        <p> {item.address}</p>
+                        <p>
+                          {km ? getKm(item.distance) : item.distance}{" "}
+                          <span>{unit}</span>
+                        </p>
+                        <br />
+                      </li>
+                    );
+                })
               : ""}
           </ul>
           <div className="w-2/3">
@@ -165,7 +165,7 @@ export default function Recycle({ userPosition, setUserPosition }) {
           setListCount={setListCount}
         />
       </div>
-      {error ? error : ""}
+      {error ? <p>{error}</p> : ""}
     </>
   );
 }
