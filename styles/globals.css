@@ -36,7 +36,30 @@ background-color:#fca5a5;
   background-color: #99b59f41;
 }
 
-.key-colour-block {
-  padding: 2px 10px;
-  border: 2px solid black;
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+
+.focus circle {
+  fill: none;
+  stroke: steelblue;
+}
+
+.overlay {
+  fill: none;
+  pointer-events: all;
 }
