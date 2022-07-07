@@ -1,13 +1,18 @@
 import SearchByUserLocation from "./SearchByUserLocation";
 import { useState } from "react";
 
-export default function SearchPostcode({ setData, setError, labelText, setUserPosition }) {
+export default function SearchPostcode({
+  setData,
+  setError,
+  labelText,
+  setUserPosition,
+}) {
   const onChange = (event) => setUserInput(event.target.value);
 
   const [userInput, setUserInput] = useState("");
   async function handleSearch(x) {
     const result = await fetch(
-      `../api/recylePoint?abc=${x.toUpperCase()}
+      `../api/recylePoint?abc=${x.toLowerCase().replace(/ /g, "")}
       `
     );
     if (!result.ok) {
