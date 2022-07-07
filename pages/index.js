@@ -16,11 +16,13 @@ export default function Home() {
         </div>
       </section>
       {/* <h1 className="text-2xl pb-4">Immortal Garments</h1> */}
-      <p className="text-center text-lg my-5 font-medium ">
+      <p className="text-center text-xl my-5 font-semibold ">
         {" "}
         An estimated £140m worth of clothing is sent to UK landfill each year.
-        What do you want to do with your unwanted garments? <br />
-        Here are some suggestions.{" "}
+      </p>
+      <p className="text-center text-lg my-5 font-medium ">
+        What are you planning to do with your unwanted garments? <br />
+        Here are our suggestions.{" "}
       </p>
       <div className="flex flex-col flex-wrap lg:flex-row lg:justify-center gap-20 mb-5 min-h-[12rem]">
         <section className="flex flex-col items-center flex-wrap">

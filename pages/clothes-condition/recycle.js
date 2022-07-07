@@ -5,6 +5,7 @@ import SearchRecycleAPI from "../../components/SearchRecycle";
 import ProgressBar from "../../components/ProgressBar";
 import UpdateCount from "../../components/UpdateCount";
 import SearchByUserLocation from "../../components/SearchByUserLocation";
+import Link from "next/link";
 
 //this was needed to get the full map to load, rather than just a couple of squares
 //I don't fully understand how it's working, but setting server-side rendering to false means that the map is dynamically loaded on the client side
@@ -48,8 +49,62 @@ export default function Recycle({ userPosition, setUserPosition }) {
         </div>
       </section>
 
-      <h2 className="text-xl py-3">Recycle</h2>
-      <p>Find your nearest textile recycling point.</p>
+      <h2 className="text-2xl py-3 text-center">Recycle</h2>
+      <div className="border-solid border-4 p-6">
+        <h3 className="text-xl pb-1 font-semibold">
+          Why should I recycle my clothes?
+        </h3>
+        <ul
+          role="list"
+          className="marker:text-sky-400 list-disc pl-5 space-y-3 text-slate-500"
+        >
+          <li>
+            Textiles are almost always recyclable, yet they make up a
+            significant portion of landfill waste, where it will take a long
+            time to break down, especially with synthetic textiles.
+          </li>
+          <li>
+            It takes a lot of energy to produce clothing. By recycling clothes
+            when they are no longer wanted, you ensure that all that energy does
+            not simply go to waste.
+          </li>
+          <li>
+            The more you're able to reuse or recycle old clothing, the less room
+            it takes up in landfill. Many of the items that end up in landfills
+            could have been recycled.
+          </li>
+          <li>
+            It's easy to do. There's no huge risk to your safety when dealing
+            with clothes, unlike when you're trying to recycle an appliance or
+            large furniture.
+          </li>
+        </ul>
+
+        <h3 className="text-xl pb-1 font-semibold">
+          What happens to my clothes after I recycle them?
+        </h3>
+        <p>
+          <Link href="https://londonrecycles.co.uk/">
+            <a>London Recycles </a>
+          </Link>
+          summarises: natural textiles are sorted by colour and material
+          textiles are broken down, cleaned and respun where appropriate some
+          textiles are used to make filling material for padding and insulation
+          synthetic textiles are broken down then melted the melted textiles can
+          then be used to create fibres which can then be used to make new
+          fabrics. In this way, your clothes can live on. However, it still
+          requires a lot of energy to break down and remake clothing items. If
+          you think your clothes are still useable, but you don’t want to use
+          them, consider donating them.
+        </p>
+        <h3 className="text-xl pb-1 font-semibold">
+          How can I recycle my clothes?
+        </h3>
+        <p>
+          If you decide that recycling clothes, is the best option for you, use
+          our search feature to find your nearest textile recycling point.
+        </p>
+      </div>
       <SearchRecycleAPI
         setData={setData}
         setError={setError}

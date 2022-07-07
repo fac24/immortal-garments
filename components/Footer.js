@@ -64,15 +64,15 @@ export default function Footer() {
           <Image
             src={valpakLogo}
             alt={"Valpak logo and text that says a Reconomy Group company"}
-            width={200}
-            height={80}
+            width={136}
+            height={50}
             className=""
           ></Image>
           <Image
             src={yelpLogo}
             alt={"Yelp logo"}
-            width={216}
-            height={80}
+            width={136}
+            height={50}
             className=""
           ></Image>
         </div>

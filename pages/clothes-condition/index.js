@@ -17,21 +17,27 @@ export default function ClothesCondition() {
           </div>
         </section>
 
-        <h2 className="text-xl py-3 text-center">My item of clothing is...</h2>
+        <h2 className="text-xl py-3 text-center">
+          Are your clothing items in good condition?
+        </h2>
         <div className="lg:flex justify-center sm:flex flex-wrap flex-col text-center">
           <ChoiceButton
             href="/clothes-condition/donate"
             src={GoodCondition}
             alt="image of a T-shirt and clothes with sparkles"
           ></ChoiceButton>
-          <Link href="/clothes-condition/donate">in good condition ✨</Link>
+          <Link href="/clothes-condition/donate">
+            Yes, they're still wearable ✨
+          </Link>
 
           <ChoiceButton
             href="/clothes-condition/recycle"
             src={DamagedWornout}
             alt="a tatted a blue jumper with sewn on patches"
           ></ChoiceButton>
-          <Link href="/clothes-condition/recycle">damaged or worn out</Link>
+          <Link href="/clothes-condition/recycle">
+            Nope, they're quite damaged 💔
+          </Link>
         </div>
       </section>
     </>

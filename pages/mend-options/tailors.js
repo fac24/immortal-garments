@@ -34,11 +34,13 @@ export default function Tailors({ userPosition, setUserPosition }) {
         </div>
       </section>
 
-      <h2 className="text-xl py-3">Tailors</h2>
-      <p>
-        Find your nearest tailors, dry cleaners or seamstress for your clothes
-        repairs. The perfect option for you if you do not want to part with
-        damaged items in your wardrobe!
+      <h2 className="text-2xl py-3 text-center">Tailors</h2>
+      <p className="border-solid border-4 p-6">
+        {" "}
+        Sometimes, finding time to mend your clothes can be difficult. In
+        situations such as these, you have a range of options including tailors,
+        drycleaners, and seamstresses. Use our search feature to find a
+        professional in your area.
       </p>
       <SearchAPI
         searchCategory="tailors"
