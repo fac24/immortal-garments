@@ -4,7 +4,6 @@ import React from "react";
 
 const Breadcrumb = () => {
   const router = useRouter();
-  console.log(router);
   const items = router.asPath.split("/");
 
   return (

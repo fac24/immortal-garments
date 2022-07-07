@@ -4,23 +4,40 @@ import Link from "next/link";
 import React, { useState } from "react";
 import donateclothes from "../public/images/donateclothes.png";
 import repair from "../public/images/repair.png";
+import ProgressBar from "../components/ProgressBar";
 
 export default function Home() {
   return (
     <>
-      <h1 className="text-2xl pb-4">Immortal Garments</h1>
-      <div className="flex flex-col flex-wrap gap-3">
+      <section>
+        <div>
+          <p className="text-base">Your immortal garments journey</p>
+          <ProgressBar completed={0} aria-valuenow={0} />
+        </div>
+      </section>
+      {/* <h1 className="text-2xl pb-4">Immortal Garments</h1> */}
+      <p className="text-center text-lg my-5 ">
+        {" "}
+        An estimated £140m worth of clothing is sent to UK landfill each year.
+        What do you want to do with your unwanted garments? <br />
+        Here are some suggestions{" "}
+      </p>
+      <div className="flex gap-3 justify-center">
         <section>
           <ChoiceButton
             href="/clothes-condition"
             src={donateclothes}
-            alt=""
+            alt="Cartoon of a pink t-shirt with a while heart in good contion half inside a yellow box"
           ></ChoiceButton>
           <Link href="/clothes-condition">Donate And Recycle</Link>
         </section>
 
         <section>
-          <ChoiceButton href="/mend-options" src={repair}></ChoiceButton>
+          <ChoiceButton
+            href="/mend-options"
+            src={repair}
+            alt="cartoon of a pair of jeans with a belt and a t-shirt with a smiley face, slighty worn condition"
+          ></ChoiceButton>
           <Link href="/mend-options">Care And Repair</Link>
         </section>
       </div>

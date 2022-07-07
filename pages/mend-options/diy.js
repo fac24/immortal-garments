@@ -1,9 +1,10 @@
 import Breadcrumb from "../../components/Breadcrumb";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { resources } from "../../data/diy-resources";
 import Link from "next/link";
 import Image from "next/image";
-import Search from "../../components/SearchDIY";
+import ProgressBar from "../../components/ProgressBar";
+import Search from "../../components/FilterDIY";
 import article from "../../public/images/article.png";
 import video from "../../public/images/video.png";
 
@@ -13,6 +14,12 @@ export default function Diy() {
   return (
     <>
       <Breadcrumb />
+      <section>
+        <div>
+          <ProgressBar completed={100} aria-valuenow={100} />
+        </div>
+      </section>
+
       <h2 className="text-xl py-3">DIY</h2>
       <p>
         We probably want to add some text here. Do you have some cothes to mend
@@ -45,10 +52,6 @@ export default function Diy() {
             item.title.toLowerCase().includes(userInput.toLowerCase())
           )
           .map((item) => {
-            // let color;
-            // item.type === "video"
-            //   ? (color = "piggyBankPink")
-            //   : (color = "lightGreen");
             return (
               <Link key={item.title} href={item.url}>
                 <a
