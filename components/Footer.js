@@ -1,5 +1,5 @@
 import Image from "next/image";
-import valpakLogo from "../public/images/valpak_logo.jpg";
+import valpakLogo from "../public/images/valpak_logo.png";
 import yelpLogo from "../public/images/yelp_logo.png";
 import Link from "next/link";
 
@@ -63,7 +63,7 @@ export default function Footer() {
         <Image
           src={valpakLogo}
           alt={"Valpak logo and text that says a Reconomy Group company"}
-          width={216}
+          width={200}
           height={80}
           className=""
         ></Image>
