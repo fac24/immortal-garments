@@ -1,6 +1,4 @@
-import { c02DataByIndustry } from "../data/c02DataByIndustryArea";
 import { c02DataWearingApparel } from "../data/c02DataWearingApparel";
-
 import { useD3 } from "../components/hooks/useD3";
 import React from 'react';
 import * as d3 from 'd3';

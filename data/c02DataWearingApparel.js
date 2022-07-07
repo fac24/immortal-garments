@@ -1,3 +1,5 @@
+//Source: ONS Dataset on Atmospheric Emissions by Industry (https://www.ons.gov.uk/economy/environmentalaccounts/datasets/ukenvironmentalaccountsatmosphericemissionsgreenhousegasemissionsbyeconomicsectorandgasunitedkingdom)
+
 export const c02DataWearingApparel = [
     { year: "1990", emissions: 724.7 },
     { year: "1991", emissions: 913.7 },
