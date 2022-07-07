@@ -23,3 +23,20 @@ a {
   width: 500px;
   height: 500px;
 }
+
+.pink {
+background-color:#fca5a5;
+}
+
+.green {
+  background-color: #A3D9B0;
+}
+
+.grey {
+  background-color: #99b59f41;
+}
+
+.key-colour-block {
+  padding: 2px 10px;
+  border: 2px solid black;
+}
