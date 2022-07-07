@@ -27,7 +27,7 @@ export default function ClothesCondition() {
             alt="image of a T-shirt and clothes with sparkles"
           ></ChoiceButton>
           <Link href="/clothes-condition/donate">
-            Yes, they're still wearable ✨
+            Yes, they&apos;re still wearable ✨
           </Link>
 
           <ChoiceButton
@@ -36,7 +36,7 @@ export default function ClothesCondition() {
             alt="a tatted a blue jumper with sewn on patches"
           ></ChoiceButton>
           <Link href="/clothes-condition/recycle">
-            Nope, they're quite damaged 💔
+            Nope, they&apos;re quite damaged 💔
           </Link>
         </div>
       </section>

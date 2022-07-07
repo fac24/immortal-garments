@@ -69,14 +69,14 @@ export default function Recycle({ userPosition, setUserPosition }) {
             not simply go to waste.
           </li>
           <li>
-            The more you're able to reuse or recycle old clothing, the less room
-            it takes up in landfill. Many of the items that end up in landfills
-            could have been recycled.
+            The more you&apos;re able to reuse or recycle old clothing, the less
+            room it takes up in landfill. Many of the items that end up in
+            landfills could have been recycled.
           </li>
           <li>
-            It's easy to do. There's no huge risk to your safety when dealing
-            with clothes, unlike when you're trying to recycle an appliance or
-            large furniture.
+            It&apos;s easy to do. There&apos;s no huge risk to your safety when
+            dealing with clothes, unlike when you&apos;re trying to recycle an
+            appliance or large furniture.
           </li>
         </ul>
 
@@ -94,8 +94,8 @@ export default function Recycle({ userPosition, setUserPosition }) {
           then be used to create fibres which can then be used to make new
           fabrics. In this way, your clothes can live on. However, it still
           requires a lot of energy to break down and remake clothing items. If
-          you think your clothes are still useable, but you don’t want to use
-          them, consider donating them.
+          you think your clothes are still useable, but you don&apos;t want to
+          use them, consider donating them.
         </p>
         <h3 className="text-xl pb-1 font-semibold">
           How can I recycle my clothes?
