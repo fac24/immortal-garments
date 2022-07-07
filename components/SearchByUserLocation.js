@@ -1,8 +1,14 @@
+import { useState } from "react";
+import Loader from "./Loader";
 
 
 export default function SearchByUserLocation({ setData, setError, setUserInput, fetchData }) {
 
+
+    const [loading, setLoading] = useState(false);
+
     async function handleSearchFromLocation(pos) {
+
 
         //extracts longitude and latitude from geolocation info from locator function
         const crd = pos.coords;
@@ -14,12 +20,13 @@ export default function SearchByUserLocation({ setData, setError, setUserInput, 
         const postcode = await fetch(`https://api.postcodes.io/postcodes?lon=${lon}&lat=${lat}`);
         const postJson = await postcode.json();
 
+
         //accuracy of the geolocator isn't perfect; this just takes the first postcode that the API finds for the coordinates
         let userPostcode = postJson.result[0].postcode;
+        setLoading(false);
 
         //this use state can be used in SearchAPI.js (for donate and tailors) and recycle.js (for recycling)
         await fetchData(userPostcode);
-
         if (!postcode.ok) {
             setData(null);
             setError(
@@ -42,7 +49,9 @@ export default function SearchByUserLocation({ setData, setError, setUserInput, 
 
     return (
         <>
-            <button onClick={() => { locator() }}>Search by my location</button>
+            <button onClick={() => { setLoading(true); locator() }}>Search by my location</button>
+
+            {loading ? <Loader /> : ''}
         </>
     )
 }

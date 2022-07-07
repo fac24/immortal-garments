@@ -66,7 +66,7 @@ export default function Recycle({ userPosition, setUserPosition }) {
           >
             Switch to {km ? "miles" : "km"}
           </button>
-        ) : <Loader />
+        ) : ''
       }
       <ul>
         {data

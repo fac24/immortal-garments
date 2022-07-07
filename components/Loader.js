@@ -9,9 +9,9 @@ export default function Loader() {
         <Image
             src={simpleLogo}
             alt="Loading..."
-            width={200}
-            height={200}
-            animation={loader}
+            width={100}
+            height={100}
+            className="animate-spin"
         />
     )
 }
