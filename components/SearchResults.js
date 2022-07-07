@@ -1,14 +1,14 @@
 import { useState } from "react";
 
+// The API gives us distance in meters, getMiles converts it to miles and trims it to 2 decimal places
+const getMiles = (meters) => Number(meters * 0.000621371192).toFixed(2);
+
+// Simular to function above but for km conversion
+const getKm = (meters) => Number(meters / 1000).toFixed(2);
+
 export default function SearchResults({ data, error, listCount, tailors }) {
   const [unit, setUnit] = useState("miles");
   const [km, setKm] = useState(false);
-
-  // The API gives us distance in meters, getMiles converts it to miles and trims it to 2 decimal places
-  const getMiles = (meters) => Number(meters * 0.000621371192).toFixed(2);
-
-  // Simular to function above but for km conversion
-  const getKm = (meters) => Number(meters / 1000).toFixed(2);
 
   // Toggle the unit and the distance that will be displayed on the list returned from the API
   const handleToggle = () => {
@@ -76,3 +76,5 @@ export default function SearchResults({ data, error, listCount, tailors }) {
     </div>
   );
 }
+
+export { getMiles, getKm };
