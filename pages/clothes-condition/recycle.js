@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Breadcrumb from "../../components/Breadcrumb";
 import dynamic from "next/dynamic";
-import Search from "../../components/SearchRecycle";
+import SearchRecycleAPI from "../../components/SearchRecycle";
 import ProgressBar from "../../components/ProgressBar";
 import UpdateCount from "../../components/UpdateCount";
 import SearchByUserLocation from "../../components/SearchByUserLocation";
@@ -12,12 +12,10 @@ const LondonMap = dynamic(() => import("../../components/Map"), { ssr: false });
 
 export default function Recycle({ userPosition, setUserPosition }) {
   const [data, setData] = useState(null);
-  const [userInput, setUserInput] = useState("");
   const [error, setError] = useState([]);
   const [unit, setUnit] = useState("miles");
   const [km, setKm] = useState(false);
   const [listCount, setListCount] = useState(7);
-  const [userLocation, setUserLocation] = useState(null);
 
   const [progress, setProgress] = useState(65);
 
@@ -29,33 +27,6 @@ export default function Recycle({ userPosition, setUserPosition }) {
     }
   }, [data]);
 
-  const onChange = (event) => setUserInput(event.target.value);
-
-  useEffect(() => {
-    if (userInput !== "") {
-      handleSearch()
-    }
-  }, [userInput])
-
-  async function handleSearch() {
-    const result = await fetch(
-      `../api/recylePoint?abc=${userInput.toUpperCase()}
-      `
-    );
-    if (!result.ok) {
-      setData(null);
-      setError(
-        `Oops, looks like we don't have any information for this postcode, yet.`
-      );
-      return;
-    }
-
-    setError(null);
-    const newdata = await result.json();
-    setData(newdata.items);
-    setUserPosition([newdata.latitude, newdata.longitude]);
-  }
-
   const handleToggle = () => {
     if (unit === "km") {
       setUnit("miles");
@@ -65,12 +36,6 @@ export default function Recycle({ userPosition, setUserPosition }) {
       setKm(true);
     }
   };
-
-
-
-
-
-
 
   const getKm = (miles) => Number(miles * 1.6).toFixed(2);
 
@@ -85,16 +50,11 @@ export default function Recycle({ userPosition, setUserPosition }) {
 
       <h2 className="text-xl py-3">Recycle</h2>
       <p>Find your nearest textile recycling point.</p>
-      <Search
-        onChange={onChange}
-        value={userInput}
-        handleSearch={handleSearch}
-        labelText={"Enter your postcode..."}
-      />
-      <SearchByUserLocation
-        setUserInput={setUserInput}
+      <SearchRecycleAPI
         setData={setData}
         setError={setError}
+        setUserPosition={setUserPosition}
+        labelText={"Enter your postcode..."}
       />
       {
         data ? (
