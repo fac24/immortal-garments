@@ -27,7 +27,7 @@ export default function Navbar() {
           <img
             src="../../images/logo.png"
             alt="Immortal Garments"
-            className="  w-[91px]
+            className=" w-[70px] md:w-[91px]
               
               "
           />
