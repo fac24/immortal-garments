@@ -21,13 +21,13 @@ export default function MendOptions() {
         <ChoiceButton
           href="/mend-options/diy"
           src={mendByMyself}
-          alt=""
+          alt="Annimation of pink thread with a needle"
         ></ChoiceButton>
         <Link href="/mend-options/diy">by myself</Link>
         <ChoiceButton
           href="/mend-options/tailors"
           src={repair}
-          alt=""
+          alt="Annimation of blue jeans and a yellow t-shirt"
         ></ChoiceButton>
         <Link href="/mend-options/tailors">by a professional</Link>
       </section>
