@@ -29,7 +29,7 @@ export default function ClothesCondition() {
           <ChoiceButton
             href="/clothes-condition/recycle"
             src={DamagedWornout}
-            alt=""
+            alt="a tatted a blue jumper with sewn on patches"
           ></ChoiceButton>
           <Link href="/clothes-condition/recycle">damaged or worn out</Link>
         </div>

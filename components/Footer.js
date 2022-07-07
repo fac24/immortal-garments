@@ -1,5 +1,5 @@
 import Image from "next/image";
-import valpakLogo from "../public/images/valpak_logo.jpg";
+import valpakLogo from "../public/images/valpak_logo.png";
 import yelpLogo from "../public/images/yelp_logo.png";
 import Link from "next/link";
 
@@ -43,9 +43,9 @@ export default function Footer() {
               </Link>
             </li>
             <li className="no-underline hover:underline">
-              <Link href="https://www.loveyourclothes.org.uk/blogs/why-its-great-give-second-hand-shopping-go">
+              <Link href="../graph">
                 <a target="_blank" rel="noopener noreferrer">
-                  Why it `s great to give second hand shopping a go
+                  Show me the secret graph
                 </a>
               </Link>
             </li>
@@ -64,15 +64,15 @@ export default function Footer() {
           <Image
             src={valpakLogo}
             alt={"Valpak logo and text that says a Reconomy Group company"}
-            width={100}
-            height={36}
+            width={200}
+            height={80}
             className=""
           ></Image>
           <Image
             src={yelpLogo}
             alt={"Yelp logo"}
-            width={100}
-            height={36}
+            width={216}
+            height={80}
             className=""
           ></Image>
         </div>
