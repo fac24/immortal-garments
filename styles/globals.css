@@ -46,11 +46,6 @@ a {
     flex-wrap: wrap;
     flex-direction: column;
   }
-
-  .justify-content-class {
-    justify-content: center;
-    display: flex;
-  }
 }
 
 @keyframes loader {
