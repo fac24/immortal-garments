@@ -49,12 +49,12 @@ export default function SearchAPI({
           className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline min-w-full"
         />
         <button
+          disabled={loading}
           type="submit"
-          className="bg-darkGreen hover:bg-[#51ae68] text-gray-900 font-semibold py-2 px-4 border border-gray-400 rounded shadow flex-auto"
+          className="disabled:opacity-25 bg-darkGreen hover:bg-[#51ae68] text-gray-900 font-semibold py-2 px-4 border border-gray-400 rounded shadow flex-auto"
         >
           Search
         </button>
-
       </form>
       <SearchByUserLocation
         setUserInput={setUserInput}
@@ -62,7 +62,7 @@ export default function SearchAPI({
         setError={setError}
         fetchData={fetchData}
       />
-      {loading ? <Loader /> : ''}
+      {loading ? <Loader /> : ""}
     </>
   );
 }
