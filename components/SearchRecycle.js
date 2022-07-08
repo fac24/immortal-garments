@@ -2,7 +2,6 @@ import SearchByUserLocation from "./SearchByUserLocation";
 import { useState } from "react";
 import Loader from "./Loader";
 
-
 export default function SearchPostcode({
   setData,
   setError,
@@ -12,19 +11,16 @@ export default function SearchPostcode({
   const onChange = (event) => setUserInput(event.target.value);
 
   const [userInput, setUserInput] = useState("");
-  const [loading, setLoading] = useState(false)
-
-
+  const [loading, setLoading] = useState(false);
 
   async function handleSearch(x) {
-    setLoading(true)
+    setLoading(true);
 
     const result = await fetch(
       `../api/recylePoint?abc=${x.toLowerCase().replace(/ /g, "")}
       `
-
     );
-    setLoading(false)
+    setLoading(false);
 
     if (!result.ok) {
       console.log(result);
@@ -41,7 +37,7 @@ export default function SearchPostcode({
 
   function toggleLoaderHidden() {
     if (Loader.classList.includes("hide")) {
-      Loader.classList.remove("hide")
+      Loader.classList.remove("hide");
     } else {
       Loader.classList.add("hide");
     }
@@ -64,14 +60,16 @@ export default function SearchPostcode({
           id="search"
           onChange={onChange}
           value={userInput}
-          className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline min-w-full"
+          className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline min-w-full
+          "
         ></input>
         <button
+          disabled={loading}
           type="submit"
           onClick={() => {
             handleSearch(userInput);
           }}
-          className="bg-darkGreen hover:bg-[#51ae68] text-gray-900 font-semibold py-2 px-4 border border-gray-400 rounded shadow flex-auto"
+          className="bg-darkGreen hover:bg-[#51ae68] text-gray-900 font-semibold py-2 px-4 border border-gray-400 rounded shadow flex-auto disabled:opacity-25"
         >
           Search
         </button>
@@ -83,8 +81,7 @@ export default function SearchPostcode({
         fetchData={handleSearch}
       />
 
-      {loading ? <Loader /> : ''}
-
+      {loading ? <Loader /> : ""}
     </div>
   );
 }

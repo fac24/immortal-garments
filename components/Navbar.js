@@ -9,33 +9,35 @@ export default function Navbar() {
 
   return (
     <>
+      <Link
+        href={{
+          pathname: "/",
+        }}
+      >
+        <a
+          className="LOGO z-50 grid
+      place-items-center 
+      absolute
+      left-10
+      top-2
+      
+      "
+          aria-label=""
+        >
+          <img
+            src="../../images/logo.png"
+            alt="Immortal Garments"
+            className=" w-[70px] md:w-[91px]
+              
+              "
+          />
+        </a>
+      </Link>
       <header
-        className="relative mx-auto mt-5 mb-14  flex justify-center px-[clamp(0.75rem,3.9630rem+-14.8148vw,0rem)] md:max-w-[800px] 
+        className="relative mx-auto mt-5 mb-20  flex justify-center px-[clamp(0.75rem,3.9630rem+-14.8148vw,0rem)] md:max-w-[800px] 
       xl:max-w-[1200px] xl:px-[clamp(1.5rem,4.1667rem+-5.5556vw,0rem)] "
       >
         {/* logo */}
-        <Link
-          href={{
-            pathname: "/",
-          }}
-        >
-          <a
-            className="LOGO z-50 grid
-      place-items-center 
-      absolute
-      left-5
-      "
-            aria-label=""
-          >
-            <img
-              src="../../images/logo.png"
-              alt="Immortal Garments"
-              className=" h-12 w-12
-              
-              "
-            />
-          </a>
-        </Link>
 
         {/* burger logic */}
         <div className="absolute top-0 right-5 z-[100] md:hidden ">
@@ -44,25 +46,32 @@ export default function Navbar() {
             className="relative flex h-[1.65rem] w-[2rem] flex-col justify-between  "
           >
             <input
-              onChange={() => setChecked(!checked)}
+              onClick={() => setChecked(!checked)}
               defaultChecked={checked}
               id="checkbox"
               type="checkbox"
-              className="peer hidden"
+              className="hidden"
             />
 
             <div
-              className="m-0 h-[0.35rem] w-full  rounded-b-md bg-coral   transition-all
-           peer-checked:scale-0 peer-checked:transition-all"
+              className={`m-0 h-[0.35rem] w-full  rounded-b-md bg-coral   transition-all ${
+                checked ? "scale-0 transition-all" : ""
+              }`}
+            />
+
+            <div
+              className={`m-0 h-[0.35rem]  rounded bg-coral transition-all  ${
+                checked
+                  ? "absolute  top-[50%] rotate-45 rounded transition-all bg-darkGreen w-full"
+                  : "w-[50%]"
+              }`}
             />
             <div
-              className="m-0 h-[0.35rem] w-[50%] rounded bg-coral transition-all peer-checked:absolute  peer-checked:top-[50%] 
-          peer-checked:rotate-45 peer-checked:rounded peer-checked:transition-all peer-checked:bg-darkGreen peer-checked:w-full"
-            />
-            <div
-              className="m-0 h-[0.35rem] w-full rounded-t-md bg-coral transition-all  
-          peer-checked:absolute peer-checked:top-[50%] peer-checked:rotate-[-45deg] 
-          peer-checked:rounded peer-checked:transition-all peer-checked:bg-darkGreen"
+              className={`m-0 h-[0.35rem] w-full rounded-t-md bg-coral transition-all  ${
+                checked
+                  ? "absolute top-[50%] rotate-[-45deg]  rounded transition-all bg-darkGreen "
+                  : ""
+              }`}
             />
           </label>
         </div>
@@ -107,6 +116,7 @@ export default function Navbar() {
             }}
           >
             <a
+              onClick={() => setChecked(!checked)}
               className={`decoration-coral underline-offset-4 ${
                 router.pathname === "/" ? "underline " : "hover:underline"
               }`}
@@ -121,6 +131,7 @@ export default function Navbar() {
             }}
           >
             <a
+              onClick={() => setChecked(!checked)}
               className={` decoration-coral underline-offset-4 ${
                 router.pathname === "/clothes-condition/donate"
                   ? "underline "
@@ -137,6 +148,7 @@ export default function Navbar() {
             }}
           >
             <a
+              onClick={() => setChecked(!checked)}
               className={`decoration-coral underline-offset-4 ${
                 router.pathname === "/clothes-condition/recycle"
                   ? "underline "
@@ -153,6 +165,7 @@ export default function Navbar() {
             }}
           >
             <a
+              onClick={() => setChecked(!checked)}
               className={`decoration-coral underline-offset-4 ${
                 router.pathname === "/mend-options/diy"
                   ? "underline "
@@ -169,6 +182,7 @@ export default function Navbar() {
             }}
           >
             <a
+              onClick={() => setChecked(!checked)}
               className={`decoration-coral underline-offset-4 ${
                 router.pathname === "/mend-options/tailors"
                   ? "underline "
