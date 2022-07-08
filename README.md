@@ -1,34 +1,51 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Immortal Garments
 
-## Getting Started
+<img src="https://i.imgur.com/aYVT8hO.png" width="400" />
 
-First, run the development server:
+Did you know an estimated £140m worth of clothing is sent to UK landfill each year? Immortal garments is a website created to help tackle this issue. If a user has unwanted clothes at home, immortal garments is the platform to help them what's the best suited sustainable option. Whether that's find the nearest place to donate clothes, recycle clothes, have your clothes mended or even find tips on how to mend clothes yourself!
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Website designed, created and maintained by:
+- [Alex]() (DevOps)
+- [Hussian]() (Scrum Faciliator)
+- [Maria]() (QA)
+- [Sonia]() (Lead UX/UI)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- Coded in React and NextJS
+- Jest for unit tests and Cypress for e2e
+- Styled with Tailwind and CSS
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## User Journey:
+<--WILL GO HERE-->
 
-## Learn More
+Features to note include:
+- Ability to search by postcode or current location
+- Leaflet used for interactive maps
+- Breadcrumbs for user to easily navigate back
+- A progress bar for users to see their journey
+- Ability for users to toggle between km and miles
+- A spinning loader while waiting for search results
 
-To learn more about Next.js, take a look at the following resources:
+To view the webpage as a user simply visit https://immortal-garments.vercel.app/
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### For developers 
 
-## Deploy on Vercel
+To use as a developer:
+1) [Sign up to yelp ](https://www.yelp.com/developers/documentation/v3/get_started) to get the authenication key for the API - keep this handy for step 5!
+2) In the terminal run `git clone https://github.com/fac24/immortal-garments.git immortal-garments`
+3) Then run `cd immortal-garments`
+4) Then `code .` to open repo in your code editor
+5) Create an `env.local` file in the root of the project and add the following: `API_KEY="Bearer <YOUR-BEARER-FROM-YELP-GOES-HERE>"`
+7) Run `npm install` to get the depenencies (this may take a few minutes)
+8) Now you should be good to go!
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+*Please note: you can skip steps #1 and #5 and still be able to clone and view the repo - but doing so you will not be able to use all the search functionality*
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+To test as a developer follow the steps above and then:
+9.  Run `npm run test` for Jest unit tests (these wukk display in the terminal - CLI) 
+10. Or run `npm run cypress` for cypress e2e tests (this will open up cypress - GUI)
+
