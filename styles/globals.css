@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 :root {
---piggyBankPink: #F2949C;
---pistachioGreen: #C9F2E3;
---lightGreen: #A3D9B0;
---darkGreen: #75BF87;
+  --piggyBankPink: #F2949C;
+  --pistachioGreen: #C9F2E3;
+  --lightGreen: #A3D9B0;
+  --darkGreen: #75BF87;
 }
 
 html,
@@ -45,6 +45,11 @@ a {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+  }
+
+  .justify-content-class {
+    justify-content: center;
+    display: flex;
   }
 }
 

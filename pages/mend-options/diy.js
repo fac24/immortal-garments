@@ -76,7 +76,7 @@ export default function Diy() {
         </span>
         <span> Resourse will take you to a new page with article.</span>
         <br></br>
-        <div aria-hidden="true" className="flex items-center gap-6">
+        <div aria-hidden="true" className="flex gap-6 wrap-items items-center">
           <p>
             <span
               onClick={() => setCategory("stains")}
@@ -112,7 +112,7 @@ export default function Diy() {
           </button>
         </div>
       </div>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap justify-center">
         {resources
           .filter((item) =>
             category === "all"
