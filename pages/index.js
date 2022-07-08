@@ -9,13 +9,13 @@ import ProgressBar from "../components/ProgressBar";
 export default function Home() {
   return (
     <>
-      <section>
+      <section className="mb-3">
         <div>
           <p className="text-base">Your immortal garments journey</p>
           <ProgressBar completed={0} aria-valuenow={0} />
         </div>
       </section>
-      {/* <h1 className="text-2xl pb-4">Immortal Garments</h1> */}
+      <h1 className="text-2xl pb-4 text-center font-bold">Immortal Garments</h1>
       <p className="text-center text-xl my-5 font-semibold ">
         {" "}
         An estimated £140m worth of clothing is sent to UK landfill each year.
